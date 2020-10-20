@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div class="rightDiv">
-			<form action="home.jsp">
+			<form action="profile.jsp">
 				<div class="inputArea">
 					<input type="text" name="twitterId" class="form-control" id="IDPW" placeholder="휴대폰, 이메일, 사용자 아이디">
 					<input type="text" name="twitterPw" class="form-control" id="IDPW" placeholder="비밀번호">
