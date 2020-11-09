@@ -122,15 +122,15 @@ body, html {
 }
 .signUp_select {
 	text-align:center;
-	
 }
 #select {
 	display:inline-block;
 	margin:3px;
 }
-#signUp_exception {
+#signUp_comment {
 	text-align:left;
 	margin-bottom: 10px; 
+	font-weight:bold;
 }
 
 /* nav */
@@ -222,7 +222,24 @@ body, html {
 	/* background-color: red; */
 }
 
+/* login */
 
+.login_header {
+	margin: 20px;
+	/* margin-left: 30px; */
+}
 
+#login_comment {
+	text-align:center;
+	margin-bottom: 10px; 
+	font-weight:bold;
+}
+
+.login_mainDiv {
+	width: 30%;
+	height: 50%;
+	margin:0 auto;
+	text-align:center;
+}
 
 

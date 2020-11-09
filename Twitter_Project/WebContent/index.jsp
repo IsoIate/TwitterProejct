@@ -15,6 +15,9 @@
 			$("#signUp").click(function(){
 				window.open('./signUp.jsp', 'signUp', 'width=500,height=550,location=no,status=no,scrollbars=no');
 			});
+			$("#login").click(function(){
+				location.href="./login.jsp";
+			});
 		});
 	</script>
 </head>
@@ -43,7 +46,7 @@
 				<p id="boldText">지금 전 세계에서 무슨 일이 일어나고 있는지 알아보세요<br><br>
 				<p id="miniText">오늘 트위터에 가입하세요.<br>
 				<input type="button" value="가입하기" class="btn btn-info btn-block" id="signUp">
-				<input type="button" value="로그인" class="btn btn-default btn-block" style="font-size: 16px; font-weight: bold;">
+				<input type="button" value="로그인" class="btn btn-default btn-block" id="login" style="font-size: 16px; font-weight: bold;">
 			</div>
 		</div>
 	</div>

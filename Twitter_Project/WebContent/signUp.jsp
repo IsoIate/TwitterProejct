@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>회원가입</title>
 	<link rel="stylesheet" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	
@@ -20,14 +20,14 @@
 		
 		<section class="signUp_section">
 		
-			<h3 id="signUp_exception" style="font-weight:bold;">계정을 생성하세요</h3><br>
+			<h3 id="signUp_comment">계정을 생성하세요</h3><br>
 			
 			<div class="signUp_input">
 				<input type="text" name="creatId" class="form-control" placeholder="이름"><br>
 				<input type="text" name="createPhoneNumber" class="form-control" placeholder="휴대폰"><br>
 			</div>
 			
-			<div id="signUp_exception">
+			<div id="signUp_comment">
 			
 				<a href="">대신 이메일 사용하기</a><br><br>
 				
