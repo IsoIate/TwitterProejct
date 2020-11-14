@@ -12,25 +12,19 @@ public class TwitterDAO {
 	private Statement st;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	private UserData userdata;
 	
-	private TwitterDAO() {
+	public TwitterDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/twitterdb?characterEncoding=UTF-8&serverTimezone=UTC", "root", "root");
 		}catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
 	
-	public static TwitterDAO getInstance() {
-		if(twitterDAO == null) {
-			twitterDAO = new TwitterDAO();
-		}
-		return twitterDAO;
-	}
-	
-	public void signUp(String id, String password){	 // 회원가입
+	// 회원가입
+	public void signUp(String id, String password){	 
 		try {
 			String sql = "INSERT INTO USER_DATABASE (ID, PW) VALUE (?, ?)";
 
@@ -43,19 +37,21 @@ public class TwitterDAO {
 		}
 	}
 	
-	public int signIn(String id, String password){ 	// 로그인
+	// 로그인
+	public int signIn(String id, String password){ 	
 		int cnt = 0;
 		try {
-			String sql = "SELECT COUNT(*) CNT FROM USER_DATABASE WHERE ID = ? AND PW = ?";
+			String sql = "SELECT COUNT(*) CNT FROM USER_DATABASE WHERE ID=? AND PW=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id); 
 			pstmt.setString(2, password);
-			rs = pstmt.executeQuery(sql);
-			rs.next();
-			cnt = rs.getInt("CNT");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) cnt = rs.getInt(1);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			System.out.println("로그인 예외");
 		}
 		return cnt;
 	}

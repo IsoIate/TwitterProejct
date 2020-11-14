@@ -242,4 +242,45 @@ body, html {
 	text-align:center;
 }
 
+#loginError {
+	color: red;
+	font-size: 16px;
+}
+
+/* pwReset */
+
+.pwResetMain {
+	width: 30%;
+	height: 50%;
+	margin:0 auto;
+	text-align:center;
+}
+
+#pwResetHeader {
+	width: 100%;
+	font-size: 20px;
+	color: gray;
+	border-bottom: 2px solid gray;
+	text-align:center;
+	margin: 10px;
+}
+
+#pwResetH2 {
+	margin: 40px;
+}
+
+#pwResetInput {
+	width: 300px;
+	margin-bottom: 20px;
+	margin-left: 85px;
+}
+
+
+
+
+
+
+
+
+
 

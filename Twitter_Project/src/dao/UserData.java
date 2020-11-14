@@ -1,0 +1,42 @@
+package dao;
+
+public class UserData {
+	private String id = null;
+	private String pw = null;
+	private int userNumber = 0;
+	private String nickname = null;
+
+	public UserData(String id, String pw, int userNumber, String nickname) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.userNumber = userNumber;
+		this.nickname = nickname;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	public int getUserNumber() {
+		return userNumber;
+	}
+	public void setUserNumber(int userNumber) {
+		this.userNumber = userNumber;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
+}

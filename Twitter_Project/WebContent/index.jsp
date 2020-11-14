@@ -31,12 +31,12 @@
 			</div>
 		</div>
 		<div class="rightDiv">
-			<form action="profile.jsp">
+			<form action="LoginController" method="post">
 				<div class="inputArea">
-					<input type="text" name="twitterId" class="form-control" id="IDPW" placeholder="휴대폰, 이메일, 사용자 아이디">
-					<input type="text" name="twitterPw" class="form-control" id="IDPW" placeholder="비밀번호">
+					<input type="text" name="loginId" class="form-control" id="IDPW" placeholder="휴대폰, 이메일, 사용자 아이디">
+					<input type="text" name="loginPw" class="form-control" id="IDPW" placeholder="비밀번호">
 					<input type="submit" value="로그인" class="btn btn-default" style="margin-left:10px;">
-					<br><a href="#" style="margin-left: 100px;"> 비밀번호를 잊으셨나요? </a>
+					<br><a href="pwReset.jsp" style="margin-left: 100px;"> 비밀번호를 잊으셨나요? </a>
 				</div>
 			</form>
 			<div class="rightText">
