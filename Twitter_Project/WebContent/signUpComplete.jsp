@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h2>회원가입이 완료되었습니다.</h2>
+	<p>다시 로그인하여 주십시오.</p>
 </body>
 </html>

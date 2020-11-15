@@ -22,19 +22,25 @@ public class TwitterDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// 회원가입
-	public void signUp(String id, String password){	 
+	public void signUp(String id, String password, String email, String year, String month, String day){	 
 		try {
-			String sql = "INSERT INTO USER_DATABASE (ID, PW) VALUE (?, ?)";
+			String sql = "INSERT INTO USER_DATABASE (ID, PW, EMAIL, YEAR, MONTH, DAY) VALUE (?, ?, ?, ?, ?, ?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
+			pstmt.setString(3, email);
+			pstmt.setString(4, year);
+			pstmt.setString(5, month);
+			pstmt.setString(6, day);
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
+			System.out.println("회원가입 오류");
 		}
+
 	}
 	
 	// 로그인
@@ -65,5 +71,7 @@ public class TwitterDAO {
 			e.printStackTrace();
 		}
 	}
+
+
 
 }

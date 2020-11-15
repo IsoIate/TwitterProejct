@@ -21,14 +21,15 @@
 			<li><img id="navImg" src="./img/message.png"><a id="navA" href="">쪽지</a>  </li>
 			<li><img id="navImg" src="./img/bookmark.png" width="23" height="37"><a id="navA" href="">북마크</a>  </li>
 			<li><img id="navImg" src="./img/list.png"><a id="navA" href="">리스트</a>  </li>
-			<li><img id="navImg" src="./img/list.png"><a id="navA" href="">프로필</a>  </li>
+			<li><img id="navImg" src="./img/list.png"><a id="navA" href="profile.jsp">프로필</a>  </li>
 			<li><img id="navImg" src="./img/list.png"><a id="navA" href="">더보기</a>  </li>
 		</ul>
 		
 		<input type="button" class="btn btn-info btn-block" value="트윗" id="navTwitButton">
-	
-	
-	
+		
+		<form action="LogoutController" method="post">
+			<input type="submit" value="로그아웃" class="btn btn-info btn-block" id="navTwitButton">
+		</form>
 	</div>
 </body>
 </html>

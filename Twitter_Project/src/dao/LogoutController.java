@@ -10,30 +10,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+@WebServlet("/LogoutController")
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-    public LoginController() {
+
+    public LogoutController() {
         super();
     }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("loginId");
-		String password = request.getParameter("loginPw");
-		String nextPage = null;
-		HttpSession session = request.getSession();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
 
-		TwitterDAO dao = new TwitterDAO();
-		int user = dao.signIn(id, password);
-		if(user == 1) {
-			nextPage = "home.jsp";
-			session.setAttribute("userId", id);
-			session.setAttribute("userPw", password);
-		}
-		else nextPage = "loginError.jsp";
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		
-		RequestDispatcher disp = request.getRequestDispatcher(nextPage);
+		// 세션 삭제
+		session.invalidate();
+		
+		RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
 		disp.forward(request, response);
 	}
 
