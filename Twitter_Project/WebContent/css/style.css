@@ -176,6 +176,7 @@ body, html {
 	width: 200px;
 	margin: 7px 20px 7px 20px;
 	border-radius: 25px;
+	outline: none;
 }
 
 #navImg {
@@ -506,6 +507,7 @@ body, html {
 	font-size: 16px;
 	font-weight: bold;
 	margin-right: 16px;
+	outline: none;
 }
 
 

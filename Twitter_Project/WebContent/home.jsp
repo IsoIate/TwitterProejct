@@ -57,7 +57,7 @@
 					</div>
 				</div>
 				<div class="homeTimeline">
-					<p>timeline test</p>
+					
 				</div>
 			</div>
 		</section>
