@@ -22,6 +22,23 @@ public class TwitterDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+		데이터베이스 -> 추후 세분화
+		
+		CREATE TABLE `user_database` (
+		  `id` varchar(30) NOT NULL,
+		  `pw` varchar(45) NOT NULL,
+		  `number` int NOT NULL AUTO_INCREMENT,
+		  `nickname` varchar(45) DEFAULT NULL,
+		  `email` varchar(40) NOT NULL,
+		  `year` int DEFAULT NULL,
+		  `month` int DEFAULT NULL,
+		  `day` int DEFAULT NULL,
+		  PRIMARY KEY (`number`)
+		);
+	*/
+	
 
 	// 회원가입
 	public void signUp(String id, String password, String email, String year, String month, String day){	 

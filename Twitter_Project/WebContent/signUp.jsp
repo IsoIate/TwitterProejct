@@ -16,7 +16,7 @@
 		<form action="signUp_1.jsp" method="post">
 			<header class="signUp_header">
 				<img alt="" src="./img/twitter_logo.png" width="45" height="37" style="margin-left: 30px;">
-				<input type="submit" value="다음" class="btn btn-info" style="float:right;">
+				<input type="submit" value="다음" class="btn btn-info" id="signUpNextbtn">
 			</header>
 			
 			<section class="signUp_section">

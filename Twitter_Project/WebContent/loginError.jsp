@@ -42,14 +42,14 @@
 					<p id="loginError">입력하신 아이디와 비밀번호가 등록된 정보와 일치하지 않습니다. 확인 후 다시 시도하세요.</p>
 					<input type="text" name="loginId" class="form-control" placeholder="휴대폰, 이메일, 사용자 아이디"><br>
 					<input type="password" name="loginPw" class="form-control" placeholder="비밀번호"><br>
-					<input type=submit class="btn btn-info btn-block" value="로그인">
+					<input type=submit id="loginPageBtn" class="btn btn-info btn-block" value="로그인">
 				</form>
 			</div>
 			
 			<div id="login_bottom" style="margin-top:30px;">
-				<a href="pwReset.jsp">비밀번호를 잊으셨나요?</a>
+				<a href="pwReset.jsp" style="text-decoration: none;">비밀번호를 잊으셨나요?</a>
 				·
-				<a href="#" class="signUp">트위터 가입</a>
+				<a href="#" class="signUp" style="text-decoration: none;">트위터 가입</a>
 			</div>
 		</section>
 	</div>

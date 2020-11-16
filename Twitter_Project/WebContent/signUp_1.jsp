@@ -31,7 +31,7 @@
 				<h3 id="signUp_comment">계정을 생성하세요</h3><br>
 				<div class="signUp_input">
 					<input type="text" class="form-control" name="createId" value="<% out.println(id);%>"><br>
-					<input type="text" class="form-control" name="createPw" placeholder="비밀번호 입력"><br>
+					<input type="password" class="form-control" name="createPw" placeholder="비밀번호 입력"><br>
 					<input class="form-control" name="createEmail" value="<% out.println(email); %>"><br>
 					<input type="hidden" name="createDate" value="<% out.println(date); %>"><br>
 				</div>
@@ -39,7 +39,7 @@
 				<div id="signUp_comment">
 					<p>가입 시 이용약관 및 쿠키 사용을 포함한 개인정보 처리방침에 동의하게 됩니다.</br>개인정보 설정에 따라 이메일 주소 또는 휴대폰 번호로 나를 찾을 수 있습니다.</p>
 				</div>
-				<input type="submit" value="가입" class="btn btn-info btn-block">
+				<input type="submit" value="가입" class="btn btn-info btn-block" id="signUpNextbtn2">
 			</section>
 		</form>
 	</div>

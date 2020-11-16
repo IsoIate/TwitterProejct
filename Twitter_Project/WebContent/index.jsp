@@ -38,11 +38,18 @@
 		<div class="rightDiv">
 			<form action="LoginController" method="post">
 				<div class="inputArea">
-					<input type="text" name="loginId" class="form-control" id="IDPW" placeholder="휴대폰, 이메일, 사용자 아이디">
-					<input type="password" name="loginPw" class="form-control" id="IDPW" placeholder="비밀번호">
-					<input type="submit" value="로그인" class="btn btn-default" style="margin-left:10px;">
-					<br><a href="pwReset.jsp" style="margin-left: 100px;"> 비밀번호를 잊으셨나요? </a>
+					<div id="indexIDPW">
+						<span>휴대폰, 이메일, 사용자 아이디</span>
+						<input type="text" name="loginId" id="IDPW">
+					</div>
+					<div id="indexIDPW">
+						<span>비밀번호</span>
+						<input type="password" name="loginPw" id="IDPW">
+					</div>
+					
+					<input type="submit" value="로그인" class="btn btn-default" id="indexLogin">
 				</div>
+				<a href="pwReset.jsp" style="margin-left: 100px; text-decoration: none;"> 비밀번호를 잊으셨나요? </a>
 			</form>
 			<div class="rightText">
 				<div class="img_wrap">
