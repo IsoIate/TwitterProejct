@@ -28,8 +28,7 @@ public class LogoutController extends HttpServlet {
 		// 세션 삭제
 		session.invalidate();
 		
-		RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
-		disp.forward(request, response);
+		response.sendRedirect("index.jsp");
 	}
 
 }

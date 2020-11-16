@@ -32,8 +32,7 @@ public class SignUpController extends HttpServlet {
 		TwitterDAO dao = new TwitterDAO();
 		dao.signUp(id, pw, email, year, month, day);
 		
-		RequestDispatcher disp = request.getRequestDispatcher("signUpComplete.jsp");
-		disp.forward(request, response);
+		response.sendRedirect("signUpComplete.jsp");
 	}
 
 }

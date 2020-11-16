@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%! String[] src = {"./img/home.png", "./img/sharp.png", "./img/alarm.png", "./img/message.png", "./img/bookmark.png",
+					"./img/list.png", "./img/list.png", "./img/list.png"};
+	String[] href = {"./home.jsp", "", "", "", "", "", "./profile.jsp", ""};
+	String[] text = {"홈", "탐색하기", "알림", "쪽지", "북마크", "리스트", "프로필", "더보기"};
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,23 +18,27 @@
 </head>
 <body style="width:100%; height:100%;">
 	<div class="navDiv">
-		<img src="./img/twitter_logo.png" width="30" height="27">
-		<ul class="navUl">
-			<li><img id="navImg" src="./img/home.png"><a id="navA" href="./home.jsp">홈</a>  </li>
-			<li><img id="navImg" src="./img/sharp.png"><a id="navA" href="">탐색하기</a>  </li>
-			<li><img id="navImg" src="./img/alarm.png"><a id="navA" href="">알림</a>  </li>
-			<li><img id="navImg" src="./img/message.png"><a id="navA" href="">쪽지</a>  </li>
-			<li><img id="navImg" src="./img/bookmark.png" width="23" height="37"><a id="navA" href="">북마크</a>  </li>
-			<li><img id="navImg" src="./img/list.png"><a id="navA" href="">리스트</a>  </li>
-			<li><img id="navImg" src="./img/list.png"><a id="navA" href="profile.jsp">프로필</a>  </li>
-			<li><img id="navImg" src="./img/list.png"><a id="navA" href="">더보기</a>  </li>
-		</ul>
-		
-		<input type="button" class="btn btn-info btn-block" value="트윗" id="navTwitButton">
-		
-		<form action="LogoutController" method="post">
-			<input type="submit" value="로그아웃" class="btn btn-info btn-block" id="navTwitButton">
-		</form>
+		<div id="navBird">
+			<img src="./img/twitter_logo.png" width="30" height="27">
+		</div>
+		<div id="navList">
+			<ul class="navUl">
+				<% 
+					for(int i = 0; i < src.length; i++) {
+				%>
+					<li id="navLi"><a id="navA" href= <%= href[i] %>><img id="navImg" src=<%= src[i] %>><%= text[i] %></a></li>
+				<%		
+					}
+				%>
+			</ul>
+		</div>
+		<div id="navButton">
+			<input type="button" class="btn btn-info btn-block" value="트윗" id="navTwitButton">
+			
+			<form action="LogoutController" method="post">
+				<input type="submit" value="로그아웃" class="btn btn-info btn-block" id="navTwitButton">
+			</form>
+		</div>
 	</div>
 </body>
 </html>

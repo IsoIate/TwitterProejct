@@ -6,6 +6,13 @@ public class UserData {
 	private int userNumber = 0;
 	private String nickname = null;
 
+	/*
+		Database
+		
+	
+	
+	*/
+	
 	public UserData(String id, String pw, int userNumber, String nickname) {
 		super();
 		this.id = id;

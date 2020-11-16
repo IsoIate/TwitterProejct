@@ -136,21 +136,46 @@ body, html {
 /* nav */
 
 .navDiv {
-	margin-left: 45%;
+	display: flex;
+	flex-direction: column;
+}
+
+#navBird {
+	display: flex;
+	align-self: center;
+	margin: 20px 140px 20px 20px;
+}
+
+#navList {
+	display: flex;
+	align-self: center;
 }
 
 .navUl {
 	list-style: none;
 	font-size: 20px;
-	font-weight: 450;
+	font-weight: 450px;
 	line-height: 50px;
 	font-family: 'TmoneyRoundWindRegular';
-	text-decoration: none;
+	padding-right: 50px;
+}
+
+#navLi {	
+	margin-bottom: 10px;
+	border-radius: 25px;
+	padding: 0 10px 0 10px;
+}
+
+#navButton {
+	display: flex;
+	align-self: center;
+	flex-direction: column;
 }
 
 #navTwitButton {
 	width: 200px;
-	margin: 20px;
+	margin: 7px 20px 7px 20px;
+	border-radius: 25px;
 }
 
 #navImg {
@@ -159,67 +184,150 @@ body, html {
 }
 
 #navA {
+	text-decoration: none;
 	color: black;
+	font-weight: 500;	
+	padding: 10px 40px 10px 20px;
 }
 
-/* profile */
+#navA:hover {
+	background-color: #def8fe;
+	color: #2fccdd;
+	padding: 10px 40px 10px 20px;
+	border-radius: 25px;
+	text-decoration: none;
+}
 
-.profileDiv {
+/* home */
+
+.homeDiv {
 	width: 100%;
 	height: 100%;
+	display: flex;
+	flex-direction: row;
 }
 
-.profileNav {
-	width: 30%;
-	height: 100%;
-	float: left;
-	/* background-color: yellow; */
+.homeNav {
+	display: flex;
+	flex-direction: row-reverse;
+	width: 25%;	
 }
 
-.profileSection {
-	width: 40%;
+.homeSection {
+	width: 45%;
 	height: 100%;
 	border-left: 1px solid #e0e0e0;
 	border-right: 1px solid #e0e0e0;
-	float: left;
+	display: flex;
+	flex-direction: column; 
 	/* background-color: #0080ff; */
 }
 
-.profileSectionTop {
+.homeSectionTop {
 	width: 100%;
 	height: 5%;
-	float: left;
 	border-bottom: 1px solid #e0e0e0;
-	
+	height: 53px;
 }
 
-#profileBackButton {
-	margin: 10px;
-	float: left;
-}
-
-#profileTwitId {
-	float: left;
-	font-size: 18px;
+#homeText {
+	margin: 0 auto;
+	font-size: 20px;
 	font-weight: bold;
+	padding: 10px 0 5px 40px;
 	font-family: 'TmoneyRoundWindRegular';
-	float: left;
-	margin: 0 auto;
+}
+.homeInputArround {
+	display: flex;
+	flex-direction: row;
+	border-bottom: 2px solid #e0e0e0;
+}
+.homeInput {
+	display: flex;
+	flex-direction: column;
+	width: 85%;
 }
 
-#profileTwitCount {
-	
+#homeProfileImg {
+	display: flex;
+	margin: 0 6px 0 12px;
+	align-self: center;
+	border-radius: 50px;
+	width: 75px;
+	height: 75px;
 }
 
-#profileText {
-	margin: 0 auto;
+#homeTwitDiv {
+	display: flex;
 }
 
-.profileAside {
+#homeTwitWritePlace {
+	width: 100%;
+	margin: 10px 0 0 10px;
+	padding-top: 10px;
+    resize: none;
+    overflow-y: hidden; 
+	font-size: 18px;
+    line-height: 1.6;
+    border: none;
+    /* border-bottom: 2px solid #e0e0e0; */
+    outline: none;
+}
+
+.hometwc{
+	display: flex;
+	justify-content: space-between;
+}
+
+.homeTwb{
+	display: flex;	
+}
+
+.homeTwitIcon {
+	display: flex;
+	margin: 10px 0 10px 0;
+}
+
+#icon {
+	margin: 10px;
+}
+
+#homeTwitButton{
+	height: 40px;
+	align-self: center;
+	border-radius: 20px;
+	padding: 0 30px 0 30px;
+	font-size: 15px;
+	font-weight: bold;
+	outline: none;
+}
+
+.homeAside {
 	width: 30%;
 	height: 100%;
-	float: left;
-	/* background-color: red; */
+	display: flex;
+}
+
+.homeTimeline {
+	
+}
+#homeSearchImg {
+	margin: 0 auto;
+	padding-right: 5px;
+}
+#homeSearch {
+	display: flex;
+	background-color: #efefef;
+	margin: 10px;
+	padding: 5px 10px 10px 15px;
+	width: 250px;
+	height: 40px;
+	border-radius: 25px;
+}
+
+#homeSearchText {
+	border: none; background: transparent;
+	box-shadow: none;
 }
 
 /* login */
@@ -275,7 +383,163 @@ body, html {
 	margin-left: 85px;
 }
 
+/* profile */
 
+.profileMain {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.profileNav {
+	width: 30%;
+	height: 100%;
+	float: left;
+	/* background-color: yellow; */
+}
+
+.profileSection {
+	width: 40%;
+	height: 100%;
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	float: left;
+	/* background-color: #0080ff; */
+}
+
+.profileSectionTop {
+	width: 100%;
+	height: 5%;
+	border-bottom: 1px solid #e0e0e0;
+	height: 53px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+#profileBackButton {
+	margin: 15px 10px 10px 20px;
+	
+	width: 25px;
+	height: 15px;
+}
+
+#profileText {
+	margin-left: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+#profileTwitId {
+	margin-left: 5px;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: 'TmoneyRoundWindRegular';
+}
+
+#profileTwitCount {
+	font-size: 14px;
+	color: #657786;
+	font-weight: lighter;
+	margin: 0 5px 0 5px;
+}
+
+.profileSectionMid {
+	display: flex;
+	flex-direction: column;
+	
+}
+
+#profileBg{
+	background-color: #e0e0e0;
+	height: 250px;
+	
+}
+
+#profileImage {
+	
+	border-radius: 100px;
+	width: 175px;
+	height: 175px;
+	left: 30px;
+	position: relative;
+	bottom: 100px;
+	z-index: 10;
+}
+
+#profileSetting {
+	display: flex;
+	flex-direction: column;
+}
+
+#profileSettool {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 100px;
+}
+
+#profileInfo {
+	display: flex;
+	flex-direction: column;
+	margin: 10px 10px 10px 20px;
+}
+
+#profileFw {
+	flex-direction: row;
+}
+
+#profileText2 {
+	font-size: 16px;
+	color: #657786;
+	font-weight: lighter;
+	margin: 0 5px 0 5px;
+}
+
+#profileSettingBtn {
+	border: 1px solid #0080ff;
+	color: #0080ff;
+	border-radius: 25px;
+	align-self: center;
+	padding: 10px 10px 7px 10px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 16px;
+}
+
+
+#profileSectionBottom {
+	display: flex;
+	flex-direction: row;
+	border-bottom: 2px solid #e0e0e0;	
+	height: 52px;
+}
+
+#profileSectionBottom div {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	align-self: center;
+	font-size: 18px;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 0 5px 0 5px;
+}
+
+#profileSectionBottom div:hover {
+	color: #1da1f2;
+	font-weight: bold;
+	background-color: #e2f3fe;
+	border-bottom: 2px solid #1da1f2;
+	padding: 12px 5px 12px 5px;
+}
+
+.profileAside {
+	width: 30%;
+	height: 100%;
+	float: left;
+}
 
 
 

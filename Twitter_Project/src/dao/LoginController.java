@@ -26,6 +26,9 @@ public class LoginController extends HttpServlet {
 
 		TwitterDAO dao = new TwitterDAO();
 		int user = dao.signIn(id, password);
+		
+		// UserData user = dao.userData(year, month, day, follow, follower);
+		
 		if(user == 1) {
 			nextPage = "home.jsp";
 			session.setAttribute("userId", id);
@@ -33,8 +36,7 @@ public class LoginController extends HttpServlet {
 		}
 		else nextPage = "loginError.jsp";
 		
-		RequestDispatcher disp = request.getRequestDispatcher(nextPage);
-		disp.forward(request, response);
+		response.sendRedirect(nextPage);
 	}
 
 }

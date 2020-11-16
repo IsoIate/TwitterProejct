@@ -62,14 +62,21 @@ public class TwitterDAO {
 		return cnt;
 	}
 	
-	public void login(){
+	// 회원정보 조회
+	public UserData userData(int year, int month, int day, int follow, int follower){
 		try {
-			String sql = "select * from a where id = ?";
+			String sql = "SELECT * FROM USER_DATABASE WHERE YEAR = ? MONTH = ? DAY = ? FOLLOW = ? FOLLOWER = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, 5);
+			pstmt.setInt(1, year);
+			pstmt.setInt(1, month);
+			pstmt.setInt(1, day);
+			pstmt.setInt(1, follow);
+			pstmt.setInt(1, follower);
 		}catch(Exception e) {
 			e.printStackTrace();
+			System.out.println("회원정보 조회 오류");
 		}
+		return userdata;
 	}
 
 
