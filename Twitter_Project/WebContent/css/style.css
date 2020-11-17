@@ -6,7 +6,20 @@ body, html {
 	padding: 0;
 }
 
+.color {
+	color: #ff90b7;	/* 테마 색  */
+	color: #fff4f8;	/* 테마 색  (배경) */
+	color: #f3f4f5; /* 텍스트 배경 색  */
+	color: #efefef; /* 검색창 배경 색  */
+	color: #657786; /* 작은 글씨 색  */
+	color: #e0e0e0; /* 프로필 배경 색  */
+	color: #0080ff; /* 프로필 설정 버튼 색  */
+}
+
+
+
 /* font */
+
 @font-face {
     font-family: 'TmoneyRoundWindRegular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
@@ -14,11 +27,51 @@ body, html {
     font-style: normal;
 }
 
+
+
 /* index */
 
 .mainDiv {
 	width:100%;
 	height:100%;
+}
+
+.leftDiv {
+	width:50%;
+	height:100%;
+	float:left;
+	background-color: #ff90b7;
+	background-image: url("../img/twitter_logo.png");
+	background-position:7% 40%;
+	background-size: 160%;
+	margin:0 auto; 
+	text-align:center;
+}
+
+.leftText{
+	font-size:18px;
+	font-weight:bold;
+	color:white;
+	margin:0 auto; 
+	display:inline-block;
+	vertical-align: middle;
+	position:absolute;
+	top:50%;
+	left:25%;
+	transform: translate(-50%, -50%);
+}
+
+#text {
+	text-align:left;
+	margin-bottom:30px;
+}
+
+.rightDiv {
+	width:50%;
+	height:100%;
+	float:right;
+	margin:0 auto; 
+	text-align:center;
 }
 
 .inputArea {
@@ -57,7 +110,6 @@ body, html {
     color: #ff90b7;
     font-weight: bold;
     padding: 10px 20px 10px 20px;
-    
 	align-self: center;
 }
 
@@ -65,41 +117,6 @@ body, html {
 	background-color: #fff4f8;
 }
 
-.leftDiv {
-	width:50%;
-	height:100%;
-	float:left;
-	background-color: #ff90b7;
-	background-image: url("../img/twitter_logo.png");
-	background-position:7% 40%;
-	background-size: 160%;
-	margin:0 auto; 
-	text-align:center;
-}
-.leftText{
-	font-size:18px;
-	font-weight:bold;
-	color:white;
-	margin:0 auto; 
-	display:inline-block;
-	vertical-align: middle;
-	position:absolute;
-	top:50%;
-	left:25%;
-	transform: translate(-50%, -50%);
-}
-#text {
-	text-align:left;
-	margin-bottom:30px;
-}
-.rightDiv {
-	width:50%;
-	height:100%;
-	float:right;
-	margin:0 auto; 
-	text-align:center;
-	
-}
 .rightText {
 	float:left;
 	width: 380px;	
@@ -109,14 +126,17 @@ body, html {
 	top:50%;
 	transform: translate(-50%, -50%);
 }
+
 .img_wrap{
 	width: 100%;
 	height: 38px !important;
 	margin-bottom: 20px;
 }
+
 .main_img{
 	float:left
 }
+
 #boldText {
 	font-size:30px;
 	font-weight: bold;
@@ -127,6 +147,7 @@ body, html {
 	font-weight: bold;
 	text-align:left;
 }
+
 #signUp {
 	font-size: 16px;
 	font-weight: bold;
@@ -149,38 +170,25 @@ body, html {
 	background-color: #fff4f8;
 }
 
-@media (max-width:760px){
-	.rightText{ width : 30%;}
-	
-}
+
 
 /* signUp */
+
+.mainDiv {
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
 
 .signUp_header {
 	height: 10%;
 	text-align:center;
 	margin:15px 10px 10px 10px;
 }
-.signUp_section {
-	width: 80%;
-	height: 90%;
-	margin:0 auto;
-	text-align:center;
-}
-.signUp_input {
-	
-}
-.signUp_select {
-	text-align:center;
-}
-#select {
-	display:inline-block;
-	margin:3px;
-}
-#signUp_comment {
-	text-align:left;
-	margin-bottom: 10px; 
-	font-weight:bold;
+
+#logoImage {
+	width: 45px;
+	height: 37px;
+	margin-left: 30px;
 }
 
 #signUpNextbtn {
@@ -192,6 +200,63 @@ body, html {
 	 outline: none;
 }
 
+.signUp_section {
+	width: 80%;
+	height: 90%;
+	margin:0 auto;
+	text-align:center;
+}
+
+#signUp_comment {
+	text-align:left;
+	margin-bottom: 10px; 
+	font-weight:bold;
+}
+
+.birthText {
+	font-size:14px; 
+	font-weight:bold;
+}
+
+.signUp_select {
+	text-align:center;
+}
+
+#selectMonth {
+	display:inline-block;
+	margin:3px;
+	width: 150px;
+}
+
+#selectDay {
+	display:inline-block;
+	margin:3px;
+	width: 80px;
+}
+
+#selectYear {
+	display:inline-block;
+	margin:3px;
+	width: 120px;
+}
+
+
+
+/* signUp_1 */
+
+#arrowImg {
+	width: 30px; 
+	height: 20px;
+	float: left;
+	margin: 5px 5px 5px 10px;
+}
+
+#signUp_1_h4 {
+	margin: 0 auto; 
+	padding: 5px 280px 0px 0px; 
+	font-weight: bold;
+}
+
 #signUpNextbtn2 {
 	 border-radius: 50px;
 	 background-color: #ff90b7;
@@ -199,6 +264,92 @@ body, html {
 	 border: none;
 	 outline: none;
 }
+
+
+
+/* login */
+
+.login_mainDiv {
+	width: 30%;
+	height: 50%;
+	margin:0 auto;
+	text-align:center;
+	overflow-y: hidden; 
+	overflow-x: hidden;
+}
+
+.login_header {
+	margin: 20px;
+	/* margin-left: 30px; */
+}
+
+#loginLogoImg {
+	width: 35px;
+	height: 27px;
+}
+
+#login_comment {
+	text-align:center;
+	margin-bottom: 10px; 
+	font-weight:bold;
+}
+
+#loginPageBtn {
+	outline: none; 
+	border-radius: 50px; 
+	background-color: #ff90b7; 
+	font-weight: bold; 
+	border: none;
+}
+
+#login_bottom {
+	margin-top:30px;
+}
+
+#login_bottom a {
+	text-decoration: none;
+}
+
+
+
+/* loginError.jsp */
+
+#loginError {
+	color: red;
+	font-size: 16px;
+}
+
+
+
+/* pwReset */
+
+#pwResetHeader {
+	width: 100%;
+	font-size: 20px;
+	color: gray;
+	border-bottom: 2px solid gray;
+	text-align:center;
+	margin: 10px;
+}
+
+.pwResetMain {
+	width: 30%;
+	height: 50%;
+	margin:0 auto;
+	text-align:center;
+}
+
+#pwResetH2 {
+	margin: 40px;
+}
+
+#pwResetInput {
+	width: 300px;
+	margin-bottom: 20px;
+	margin-left: 85px;
+}
+
+
 
 /* nav */
 
@@ -211,6 +362,11 @@ body, html {
 	display: flex;
 	align-self: center;
 	margin: 20px 140px 20px 20px;
+}
+
+#navLogoImg {
+	width: 30px;
+	height: 27px;
 }
 
 #navList {
@@ -233,27 +389,6 @@ body, html {
 	padding: 0 10px 0 10px;
 }
 
-#navButton {
-	display: flex;
-	align-self: center;
-	flex-direction: column;
-}
-
-#navTwitButton {
-	width: 200px;
-	margin: 7px 20px 7px 20px;
-	border-radius: 25px;
-	outline: none;
-	background-color: #ff90b7; 
-	font-weight: bold; 
-	border: none;
-}
-
-#navImg {
-	margin:5px 20px 5px 5px;
-	padding-bottom: 10px;
-}
-
 #navA {
 	text-decoration: none;
 	color: black;
@@ -269,30 +404,82 @@ body, html {
 	text-decoration: none;
 }
 
-/* home */
+#navImg {
+	margin:5px 20px 5px 5px;
+	padding-bottom: 10px;
+}
 
-.homeDiv {
+#navButtons {
+	display: flex;
+	align-self: center;
+	flex-direction: column;
+}
+
+#navButton {
+	width: 200px;
+	margin: 7px 20px 7px 20px;
+	border-radius: 25px;
+	outline: none;
+	background-color: #ff90b7; 
+	font-weight: bold; 
+	border: none;
+}
+
+
+
+/*  home + nav */
+
+.hnDiv {
 	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: row;
 }
 
-.homeNav {
+.hnNav {
 	display: flex;
 	flex-direction: row-reverse;
 	width: 25%;	
 }
 
-.homeSection {
+.hnSection {
 	width: 45%;
 	height: 100%;
 	border-left: 1px solid #e0e0e0;
 	border-right: 1px solid #e0e0e0;
 	display: flex;
 	flex-direction: column; 
-	/* background-color: #0080ff; */
 }
+
+.hnAside {
+	width: 30%;
+	height: 100%;
+	display: flex;
+}
+
+#hnSearch {
+	display: flex;
+	background-color: #efefef;
+	margin: 10px;
+	padding: 5px 10px 10px 15px;
+	width: 250px;
+	height: 40px;
+	border-radius: 25px;
+}
+
+#hnSearchImg {
+	margin: 0 auto;
+	padding-right: 5px;
+}
+
+#hnSearchText {
+	border: none; background: transparent;
+	box-shadow: none;
+}
+
+
+
+/* home */
 
 .homeSectionTop {
 	width: 100%;
@@ -308,15 +495,11 @@ body, html {
 	padding: 10px 0 5px 40px;
 	font-family: 'TmoneyRoundWindRegular';
 }
+
 .homeInputArround {
 	display: flex;
 	flex-direction: row;
 	border-bottom: 2px solid #e0e0e0;
-}
-.homeInput {
-	display: flex;
-	flex-direction: column;
-	width: 85%;
 }
 
 #homeProfileImg {
@@ -326,6 +509,12 @@ body, html {
 	border-radius: 50px;
 	width: 75px;
 	height: 75px;
+}
+
+.homeInput {
+	display: flex;
+	flex-direction: column;
+	width: 85%;
 }
 
 #homeTwitDiv {
@@ -350,10 +539,6 @@ body, html {
 	justify-content: space-between;
 }
 
-.homeTwb{
-	display: flex;	
-}
-
 .homeTwitIcon {
 	display: flex;
 	margin: 10px 0 10px 0;
@@ -361,6 +546,10 @@ body, html {
 
 #icon {
 	margin: 10px;
+}
+
+.homeTwb{
+	display: flex;	
 }
 
 #homeTwitButton{
@@ -371,125 +560,18 @@ body, html {
 	font-size: 15px;
 	font-weight: bold;
 	outline: none;
- 
 	background-color: #ff90b7; 
 	font-weight: bold; 
 	border: none;
-}
-
-.homeAside {
-	width: 30%;
-	height: 100%;
-	display: flex;
 }
 
 .homeTimeline {
 	
 }
-#homeSearchImg {
-	margin: 0 auto;
-	padding-right: 5px;
-}
-#homeSearch {
-	display: flex;
-	background-color: #efefef;
-	margin: 10px;
-	padding: 5px 10px 10px 15px;
-	width: 250px;
-	height: 40px;
-	border-radius: 25px;
-}
 
-#homeSearchText {
-	border: none; background: transparent;
-	box-shadow: none;
-}
 
-/* login */
-
-.login_header {
-	margin: 20px;
-	/* margin-left: 30px; */
-}
-
-#login_comment {
-	text-align:center;
-	margin-bottom: 10px; 
-	font-weight:bold;
-}
-
-.login_mainDiv {
-	width: 30%;
-	height: 50%;
-	margin:0 auto;
-	text-align:center;
-}
-
-#loginError {
-	color: red;
-	font-size: 16px;
-}
-
-#loginPageBtn {
-	outline: none; 
-	border-radius: 50px; 
-	background-color: #ff90b7; 
-	font-weight: bold; 
-	border: none;
-}
-
-/* pwReset */
-
-.pwResetMain {
-	width: 30%;
-	height: 50%;
-	margin:0 auto;
-	text-align:center;
-}
-
-#pwResetHeader {
-	width: 100%;
-	font-size: 20px;
-	color: gray;
-	border-bottom: 2px solid gray;
-	text-align:center;
-	margin: 10px;
-}
-
-#pwResetH2 {
-	margin: 40px;
-}
-
-#pwResetInput {
-	width: 300px;
-	margin-bottom: 20px;
-	margin-left: 85px;
-}
 
 /* profile */
-
-.profileMain {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-}
-
-.profileNav {
-	width: 30%;
-	height: 100%;
-	float: left;
-	/* background-color: yellow; */
-}
-
-.profileSection {
-	width: 40%;
-	height: 100%;
-	border-left: 1px solid #e0e0e0;
-	border-right: 1px solid #e0e0e0;
-	float: left;
-	/* background-color: #0080ff; */
-}
 
 .profileSectionTop {
 	width: 100%;
@@ -503,7 +585,6 @@ body, html {
 
 #profileBackButton {
 	margin: 15px 10px 10px 20px;
-	
 	width: 25px;
 	height: 15px;
 }
@@ -531,24 +612,11 @@ body, html {
 .profileSectionMid {
 	display: flex;
 	flex-direction: column;
-	
 }
 
 #profileBg{
 	background-color: #e0e0e0;
 	height: 250px;
-	
-}
-
-#profileImage {
-	
-	border-radius: 100px;
-	width: 175px;
-	height: 175px;
-	left: 30px;
-	position: relative;
-	bottom: 100px;
-	z-index: 10;
 }
 
 #profileSetting {
@@ -563,21 +631,15 @@ body, html {
 	height: 100px;
 }
 
-#profileInfo {
-	display: flex;
-	flex-direction: column;
-	margin: 10px 10px 10px 20px;
-}
-
-#profileFw {
-	flex-direction: row;
-}
-
-#profileText2 {
-	font-size: 16px;
-	color: #657786;
-	font-weight: lighter;
-	margin: 0 5px 0 5px;
+#profileImage {
+	
+	border-radius: 100px;
+	width: 175px;
+	height: 175px;
+	left: 30px;
+	position: relative;
+	bottom: 100px;
+	z-index: 10;
 }
 
 #profileSettingBtn {
@@ -592,6 +654,22 @@ body, html {
 	outline: none;
 }
 
+#profileInfo {
+	display: flex;
+	flex-direction: column;
+	margin: 10px 10px 10px 20px;
+}
+
+#profileText2 {
+	font-size: 16px;
+	color: #657786;
+	font-weight: lighter;
+	margin: 0 5px 0 5px;
+}
+
+#profileFw {
+	flex-direction: row;
+}
 
 #profileSectionBottom {
 	display: flex;
@@ -619,16 +697,38 @@ body, html {
 	padding: 12px 5px 12px 5px;
 }
 
+
+
+
+
+/*	뭔지모를 무언가
+
+.profileMain {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.profileNav {
+	width: 30%;
+	height: 100%;
+	float: left;
+	/* background-color: yellow; */
+}
+
+.profileSection {
+	width: 40%;
+	height: 100%;
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	float: left;
+	/* background-color: #0080ff; */
+}
+
 .profileAside {
 	width: 30%;
 	height: 100%;
 	float: left;
 }
-
-
-
-
-
-
-
-
+*/

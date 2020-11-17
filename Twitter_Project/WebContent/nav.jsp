@@ -19,7 +19,7 @@
 <body style="width:100%; height:100%;">
 	<div class="navDiv">
 		<div id="navBird">
-			<img src="./img/twitter_logo.png" width="30" height="27">
+			<img src="./img/twitter_logo.png" id="navLogoImg">
 		</div>
 		<div id="navList">
 			<ul class="navUl">
@@ -32,11 +32,11 @@
 				%>
 			</ul>
 		</div>
-		<div id="navButton">
-			<input type="button" class="btn btn-info btn-block" value="트윗" id="navTwitButton">
+		<div id="navButtons">
+			<input type="button" class="btn btn-info btn-block" value="트윗" id="navButton">
 			
 			<form action="LogoutController" method="post">
-				<input type="submit" value="로그아웃" class="btn btn-info btn-block" id="navTwitButton">
+				<input type="submit" value="로그아웃" class="btn btn-info btn-block" id="navButton">
 			</form>
 		</div>
 	</div>

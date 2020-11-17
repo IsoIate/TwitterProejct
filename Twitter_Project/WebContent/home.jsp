@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>프로필</title>
+	<title>홈</title>
 	<link rel="stylesheet" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	
@@ -26,15 +26,15 @@
 			response.sendRedirect("index.jsp");
 		}
 	%>
-	<div class="homeDiv">
-		<nav class="homeNav">
+	<div class="hnDiv">
+		<nav class="hnNav">
 			<%@ include file = "./nav.jsp" %>
 		</nav>
 			
-		<section class="homeSection">
+		<section class="hnSection">
 			<div class="homeSectionTop">
-				<div id="homeText">
-					<p>홈</p>
+				<div>
+					<p id="homeText">홈</p>
 				</div>
 				<div class="homeInputArround">
 					<img src="./img/profile.png" id="homeProfileImg">
@@ -62,15 +62,12 @@
 			</div>
 		</section>
 	
-		<aside class="homeAside">
-			<div id="homeSearch">
-				<i id="homeSearchImg" class="fa fa-search fa-2x"></i>
-				<input type="text" class="form-control" id="homeSearchText" placeholder="트위터 검색">
+		<aside class="hnAside">
+			<div id="hnSearch">
+				<i id="hnSearchImg" class="fa fa-search fa-2x"></i>
+				<input type="text" class="form-control" id="hnSearchText" placeholder="트위터 검색">
 			</div>
 		</aside>
-	
-	
-	
 	</div>
 </body>
 </html>
