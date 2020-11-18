@@ -1,8 +1,8 @@
 package dao;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,14 +25,20 @@ public class LoginController extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		TwitterDAO dao = new TwitterDAO();
-		int user = dao.signIn(id, password);
+		ArrayList<Integer> user = dao.signIn(id, password);
 		
 		// UserData user = dao.userData(year, month, day, follow, follower);
 		
-		if(user == 1) {
+		if(user.get(0) == 1) {
 			nextPage = "home.jsp";
 			session.setAttribute("userId", id);
 			session.setAttribute("userPw", password);
+			session.setAttribute("twitCount",user.get(1));
+			session.setAttribute("follow",user.get(2));
+			session.setAttribute("follower",user.get(3));
+			session.setAttribute("madeYear",user.get(4));
+			session.setAttribute("madeMonth",user.get(5));
+			session.setAttribute("madeDay",user.get(6));
 		}
 		else nextPage = "loginError.jsp";
 		

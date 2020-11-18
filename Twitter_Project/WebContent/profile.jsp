@@ -34,7 +34,7 @@
 				<a href="home.jsp"><img id="profileBackButton" src="./img/arrow.png"></a>
 				<div id="profileText">
 					<span id="profileTwitId"><%= session.getAttribute("userId") %></span>
-					<span id="profileTwitCount">0 트윗</span>
+					<span id="profileTwitCount"><%= session.getAttribute("twitCount") %> 트윗</span>
 				</div>
 			</div>
 			<div class="profileSectionMid">
@@ -49,11 +49,14 @@
 						<span id="profileText2">@<%= session.getAttribute("userId") %></span>
 						<div id="profileFw">
 							<img src="./img/event.png" style="width: 18px; height: 18px; margin-left: 5px;">
-							<span id="profileText2" style="margin: 0 auto;"> 가입일: <%= session.getAttribute("userId") %></span>
+							<span id="profileText2" style="margin: 0 auto;"> 
+							가입일: 	<%= session.getAttribute("madeYear") %>년 
+									<%= session.getAttribute("madeMonth") %>월
+									<%= session.getAttribute("madeDay") %>일 </span>
 						</div>
 						<div id="profileFw">
-							<span id="profileText2"><span id="profileTwitId" style="margin: 0 auto;"><%= session.getAttribute("userId") %></span> 팔로워</span>
-							<span id="profileText2"><span id="profileTwitId" style="margin: 0 auto;"><%= session.getAttribute("userId") %></span> 팔로우 중</span>
+							<span id="profileText2"><span id="profileTwitId" style="margin: 0 auto;"><%= session.getAttribute("follow") %></span> 팔로워</span>
+							<span id="profileText2"><span id="profileTwitId" style="margin: 0 auto;"><%= session.getAttribute("follower") %></span> 팔로우 중</span>
 						</div>
 					</div>
 				</div>
@@ -64,11 +67,14 @@
 				<div Id="media"> 미디어 </div>
 				<div Id="heart"> 마음에 들어요 </div>
 			</div>
+			
+			<section class="profileTimeline">
+			<p>adlkjfaldks</p>
+			<jsp:include page="twit.jsp"></jsp:include>
+		</section>
 		</section>
 		
-		<section class="profileTimeline">
 		
-		</section>
 
 		<aside class="hnAside">
 			<div id="hnSearch">

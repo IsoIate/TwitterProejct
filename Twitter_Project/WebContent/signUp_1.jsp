@@ -4,7 +4,6 @@
 	String id = request.getParameter("createId");
 	String email = request.getParameter("createEmail");
 	String date = request.getParameter("year") + "." + request.getParameter("month") + "." + request.getParameter("day");
-
 %>
 <!DOCTYPE html>
 <html>
