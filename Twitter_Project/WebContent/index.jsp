@@ -40,7 +40,7 @@
 				<div class="inputArea">
 					<div id="indexIDPW">
 						<span>휴대폰, 이메일, 사용자 아이디</span>
-						<input type="text" name="loginId" id="IDPW">
+						<input type="text" name="loginId" id="IDPW" autocomplete=off>
 					</div>
 					<div id="indexIDPW">
 						<span>비밀번호</span>

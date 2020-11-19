@@ -24,8 +24,8 @@
 			<section class="signUp_section">
 				<h3 id="signUp_comment">계정을 생성하세요</h3><br>
 				<div>
-					<input type="text" name="createId" class="form-control" placeholder="이름"><br>
-					<input type="text" name="createEmail" class="form-control" placeholder="이메일"><br>
+					<input type="text" name="createId" class="form-control" placeholder="이름" autocomplete=off><br>
+					<input type="text" name="createEmail" class="form-control" placeholder="이메일" autocomplete=off><br>
 				</div>
 				<div id="signUp_comment">
 					<p id="birthText">생년월일</p>

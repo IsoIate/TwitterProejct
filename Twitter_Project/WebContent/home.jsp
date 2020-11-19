@@ -15,6 +15,15 @@
 			$("#homeTwitWritePlace").on('keydown keyup', function () {
 				  $(this).height(1).height( $(this).prop('scrollHeight')+12 );
 			});
+			
+			$("#homeTwitWritePlace").on('input', function() {
+				if($("#homeTwitWritePlace").val() == ''){
+					$("#homeTwitButton").prop("disabled", true);
+				}else{
+					$("#homeTwitButton").attr("disabled", false);
+				}
+			}); 
+			
 		});
 		
 	</script>
@@ -36,28 +45,34 @@
 				<div>
 					<p id="homeText">홈</p>
 				</div>
-				<div class="homeInputArround">
-					<img src="./img/profile.png" id="homeProfileImg">
-					<div class="homeInput">
-						<div id="homeTwitDiv">
-							<textarea id="homeTwitWritePlace" placeholder="무슨 일이 일어나고 있나요?"></textarea>
-						</div>
-						<div class="hometwc">
-							<div class="homeTwitIcon">
-								<img src="./img/img.png" id="icon">
-								<img src="./img/gif.png" id="icon">
-								<img src="./img/barchart.png" id="icon">
-								<img src="./img/smile.png" id="icon">
-								<img src="./img/event.png" id="icon">
+				<form action="TwitWriteController" method="post">
+					<div class="homeInputArround">
+						<img src="./img/profile.png" id="homeProfileImg">
+						<div class="homeInput">
+							<div id="homeTwitDiv">
+								<textarea id="homeTwitWritePlace" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>
 							</div>
-							<div class="homeTwb">
-								<input type="submit" value="트윗" class="btn btn-info" id="homeTwitButton">
+							<div class="hometwc">
+								<div class="homeTwitIcon">
+									<img src="./img/img.png" id="icon">
+									<img src="./img/gif.png" id="icon">
+									<img src="./img/barchart.png" id="icon">
+									<img src="./img/smile.png" id="icon">
+									<img src="./img/event.png" id="icon">
+								</div>
+								<div class="homeTwb">
+									<input type="submit" value="트윗" class="btn btn-info" id="homeTwitButton" disabled="disabled">
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 				<div class="homeTimeline">
+				<% if(session.getAttribute("twitCount").equals(0)) { %>
+					<%@ include file = "./noTwit.jsp" %>
+				<% } else { %>
 					
+				<% } %>
 				</div>
 			</div>
 		</section>

@@ -709,9 +709,25 @@ body, html {
 	height: 50px;
 }
 
+/* noTwit.jsp */
 
+.noTwitDiv {
+	display: flex;
+	flex-direction: column; 
+}
 
+#noTwitH3 {
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+	font-weight: bold;
+}
 
+#noTwitP {
+	display: flex;
+	justify-content: center;
+	color: #657786;
+}
 
 
 
