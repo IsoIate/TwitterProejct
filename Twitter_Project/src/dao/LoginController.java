@@ -29,7 +29,7 @@ public class LoginController extends HttpServlet {
 		
 		// UserData user = dao.userData(year, month, day, follow, follower);
 		
-		if(user.get(0) != null) {
+		if(user.get(0) != 0) {
 			nextPage = "home.jsp";
 			session.setAttribute("userId", id);
 			session.setAttribute("userPw", password);

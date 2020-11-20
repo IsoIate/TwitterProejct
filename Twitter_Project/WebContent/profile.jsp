@@ -70,7 +70,7 @@
 			
 			<section class="profileTimeline">
 			<p>adlkjfaldks</p>
-			<jsp:include page="twit.jsp"></jsp:include>
+			<%-- <jsp:include page="twit.jsp"></jsp:include> --%>
 		</section>
 		</section>
 		

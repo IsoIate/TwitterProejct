@@ -351,7 +351,7 @@ body, html {
 
 
 
-/* nav */
+/* nav.jsp */
 
 .navDiv {
 	display: flex;
@@ -729,43 +729,107 @@ body, html {
 	color: #657786;
 }
 
+/* writeTwit.jsp */
 
-
-
-
-
-
-
-
-
-/*	뭔지모를 무언가
-
-.profileMain {
-	width: 100%;
-	height: 100%;
+.wtDiv {
 	display: flex;
 	flex-direction: column;
 }
 
-.profileNav {
-	width: 30%;
-	height: 100%;
-	float: left;
-	/* background-color: yellow; */
+.wtTop {
+	display: flex;
+	border-bottom: 2px solid #efefef;;
+	width: 100%;
 }
 
-.profileSection {
-	width: 40%;
-	height: 100%;
-	border-left: 1px solid #e0e0e0;
-	border-right: 1px solid #e0e0e0;
-	float: left;
-	/* background-color: #0080ff; */
+#wtExitButton {
+	width: 25px;
+	height: 20px;
+	margin: 10px 10px 10px 20px;
 }
 
-.profileAside {
-	width: 30%;
-	height: 100%;
-	float: left;
+#wtFlex {
+	display: flex;
+	flex-direction: row;	
 }
-*/
+.wtLeft {
+	
+}
+
+.wtRight {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+#wtProfile {
+	width: 10%;
+	margin: 10px 10px 10px 15px;
+}
+
+#wtProfileImg {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	
+}
+
+#wtTwit {
+	width: 100%;
+	
+}
+
+#wtArea {
+	width: 100%;
+	
+	margin-top: 10px;
+	padding: 0px 10px 0px 5px;
+    resize: none;
+    overflow-y: hidden; 
+	font-size: 18px;
+    line-height: 1.6;
+    border: none;
+    outline: none;
+}
+
+#wtBot {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;	
+	border-top: 1px solid #e5e5e5;
+}
+
+.wtTwitIcon {
+	display: flex;
+	align-items: center;
+}
+
+#wtButton {
+	display: flex;
+	margin: 10px;
+	padding: 10px 17px 10px 17px;
+	
+	border-radius: 25px;
+	font-size: 15px;
+	font-weight: bold;
+	outline: none;
+	background-color: #ff90b7; 
+	font-weight: bold; 
+	border: none;
+}
+
+/* modal */
+
+#modalCloseBtn {
+	outline: none;
+	background-color: #fff;
+	border: none;
+	padding: 0px;
+}
+
+.modal-footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+

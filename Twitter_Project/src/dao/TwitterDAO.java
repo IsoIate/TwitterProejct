@@ -114,36 +114,39 @@ public class TwitterDAO {
 			int userNum = 0;
 			
 			String user_num = "SELECT USER_NUM FROM USER_LOGIN WHERE ID=? AND PW = ?";
-			String fCount = "SELECT user_info.twitcount,  user_fw.follow, user_fw.follower FROM user_info, user_fw "
-					+ "where user_info.user_num=? AND user_info.user_num = user_fw.user_num";
+			String fCount = "SELECT user_fw.follow, user_fw.follower FROM user_fw WHERE user_num=?";
 			String madeTime = "SELECT madetime FROM user_info WHERE user_num=?";
-	
+			String twitCount = "SELECT count(user_num) twits FROM twit_write WHERE user_num=?";
+			
 			userInfo.add(userNum = userNumEx(user_num, id, password));
-			
-			pstmt = conn.prepareStatement(fCount);
-			pstmt.setInt(1, userNum);
-			rs = pstmt.executeQuery(); 
-			
-			while(rs.next()) {
-				userInfo.add(rs.getInt(1));
-				userInfo.add(rs.getInt(2));
-				userInfo.add(rs.getInt(3));
+			if(userNum != 0) {
+				userInfo.add(selectTwits(twitCount, userNum));
+
+				pstmt = conn.prepareStatement(fCount);
+				pstmt.setInt(1, userNum);
+				rs = pstmt.executeQuery(); 
+				
+				while(rs.next()) {
+					userInfo.add(rs.getInt(1));
+					userInfo.add(rs.getInt(2));
+				}
+				rs.close();
+				
+				pstmt = conn.prepareStatement(madeTime);
+				pstmt.setInt(1, userNum);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Date tempDate = rs.getDate(1);
+					temp = format.format(tempDate);
+					date = temp.split("-");
+				}
+				
+				for (int i = 0; i < 3; i++) {
+					userInfo.add(Integer.parseInt(date[i]));
+				}
 			}
-			rs.close();
 			
-			pstmt = conn.prepareStatement(madeTime);
-			pstmt.setInt(1, userNum);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				Date tempDate = rs.getDate(1);
-				temp = format.format(tempDate);
-				date = temp.split("-");
-			}
-			
-			for (int i = 0; i < 3; i++) {
-				userInfo.add(Integer.parseInt(date[i]));
-			}
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("로그인 예외");
