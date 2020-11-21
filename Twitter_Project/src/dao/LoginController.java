@@ -33,12 +33,15 @@ public class LoginController extends HttpServlet {
 			nextPage = "home.jsp";
 			session.setAttribute("userId", id);
 			session.setAttribute("userPw", password);
-			session.setAttribute("twitCount",user.get(1));
-			session.setAttribute("follow",user.get(2));
-			session.setAttribute("follower",user.get(3));
-			session.setAttribute("madeYear",user.get(4));
-			session.setAttribute("madeMonth",user.get(5));
-			session.setAttribute("madeDay",user.get(6));
+			session.setAttribute("userNum",user.get(1));
+			session.setAttribute("twitCount",user.get(2));
+			session.setAttribute("follow",user.get(3));
+			session.setAttribute("follower",user.get(4));
+			session.setAttribute("madeYear",user.get(5));
+			session.setAttribute("madeMonth",user.get(6));
+			session.setAttribute("madeDay",user.get(7));
+			
+			session.setAttribute("twits", dao.selectTwit(user.get(1)));	// 트윗 조회 후 가져오기
 		}
 		else nextPage = "loginError.jsp";
 		

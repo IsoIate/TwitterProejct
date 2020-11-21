@@ -34,6 +34,7 @@
 		if(session.getAttribute("userId") == null) {
 			response.sendRedirect("index.jsp");
 		}
+		session.setAttribute("currentPage", "home.jsp");
 	%>
 	<div class="hnDiv">
 		<nav class="hnNav">

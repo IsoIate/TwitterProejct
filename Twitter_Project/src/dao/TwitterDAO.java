@@ -1,4 +1,5 @@
 package dao;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -120,8 +121,9 @@ public class TwitterDAO {
 			
 			userInfo.add(userNum = userNumEx(user_num, id, password));
 			if(userNum != 0) {
-				userInfo.add(selectTwits(twitCount, userNum));
-
+				userInfo.add(userNum);
+				userInfo.add(twitCounter(twitCount, userNum));
+				
 				pstmt = conn.prepareStatement(fCount);
 				pstmt.setInt(1, userNum);
 				rs = pstmt.executeQuery(); 
@@ -185,7 +187,7 @@ public class TwitterDAO {
 			int userNum = userNumExq(user_Num, userId);
 			
 			insertTwitEx(insertTwit, userNum, twit);	
-			twits = selectTwits(twitCount, userNum);
+			twits = twitCounter(twitCount, userNum);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -224,7 +226,7 @@ public class TwitterDAO {
 		}
 	}
 	
-	int selectTwits(String sql, int userNum) {
+	int twitCounter(String sql, int userNum) {
 		int twits = 0;
 		
 		try {
@@ -236,30 +238,33 @@ public class TwitterDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("insertTwitEx error");
+			System.out.println("twitCounter error");
 		}
 		
 		return twits;
 	}
 	
-	
-	
-	
-//	public UserData userData(int year, int month, int day, int follow, int follower){
-//		try {
-//			String sql = "SELECT * FROM USER_DATABASE WHERE YEAR = ? MONTH = ? DAY = ? FOLLOW = ? FOLLOWER = ?";
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, year);
-//			pstmt.setInt(2, month);
-//			pstmt.setInt(3, day);
-//			pstmt.setInt(4, follow);
-//			pstmt.setInt(5, follower);
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//			System.out.println("회원정보 조회 오류");
-//		}
-//		return userdata;
-//	}
+	// 트윗 조회
+	ArrayList<String> selectTwit(int userNum) {
+		ArrayList<String> twits = new ArrayList<>();
+
+		try {
+			String selectTwits = "SELECT TEXT FROM TWIT_WRITE WHERE USER_NUM=?";
+			
+			pstmt = conn.prepareStatement(selectTwits);
+			pstmt.setInt(1, userNum);
+			rs = pstmt.executeQuery(); 
+			
+			while(rs.next()) {
+				twits.add(rs.getString(1));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return twits;
+	}
 
 
 

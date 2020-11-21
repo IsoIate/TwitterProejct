@@ -1,6 +1,8 @@
 package dao;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,11 +28,23 @@ public class TwitWriteController extends HttpServlet {
 		
 		String twit = request.getParameter("twit");
 		String userId = (String) session.getAttribute("userId");
+		int userNum = (int) session.getAttribute("userNum");
+		ArrayList<String> twits = new ArrayList<>();
 		
 		TwitterDAO dao = new TwitterDAO();
 		session.setAttribute("twitCount", dao.insertTwit(twit, userId));
+
+		if(!session.getAttribute("twitCount").equals(0)) {
+			twits = dao.selectTwit(userNum);
+			session.setAttribute("twits", twits);
+		}
 		
-		response.sendRedirect("home.jsp");
+		if(session.getAttribute("currentPage").equals("home.jsp")) {
+			response.sendRedirect("home.jsp");
+		}
+		else if (session.getAttribute("currentPage").equals("profile.jsp")) {
+			response.sendRedirect("profile.jsp");
+		}
 	}
 
 }

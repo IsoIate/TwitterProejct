@@ -434,12 +434,13 @@ body, html {
 	height: 100%;
 	display: flex;
 	flex-direction: row;
+	
 }
 
 .hnNav {
 	display: flex;
 	flex-direction: row-reverse;
-	width: 25%;	
+	width: 25%;
 }
 
 .hnSection {
@@ -448,7 +449,8 @@ body, html {
 	border-left: 1px solid #e0e0e0;
 	border-right: 1px solid #e0e0e0;
 	display: flex;
-	flex-direction: column; 
+	flex-direction: column;
+	 
 }
 
 .hnAside {
@@ -697,16 +699,86 @@ body, html {
 	padding: 12px 5px 12px 5px;
 }
 
-/* twit.jsp */
-
-.twitDiv {
+.timelineContainer {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 }
 
-#twitProfileImg {
+.timeline {
+	display: flex;
+	flex-direction: row;
+	height: 90px;
+	width: 100%;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.TLLeft {
+	display: flex;
+	margin: 10px;
+}
+
+#TLProfileImg {
 	width: 50px;
 	height: 50px;
+	border-radius: 25px;
+}
+
+.TLRight {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 90%;
+}
+
+#TLTwitContainer {
+	
+}
+
+#TLTwitInfo {
+	display: flex;
+	justify-content: space-between;
+}
+
+#userNickname {
+	font-size: 18px;
+	font-weight: bold;
+	font-family: 'TmoneyRoundWindRegular';
+}
+
+#userId {
+	font-size: 16px;
+	color: #657786;
+	font-weight: lighter;
+}
+
+#twitTime {
+	
+}
+
+#detailButton {
+	padding-right: 10px;
+}
+
+#detailImg {
+	width: 18px;
+	height: 18px;
+}
+
+#TLTwitText {
+	
+}
+
+.TLTwitButtons {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+#TLButton {
+	width: 18px;
+	height: 18px;
+	
 }
 
 /* noTwit.jsp */
@@ -729,7 +801,7 @@ body, html {
 	color: #657786;
 }
 
-/* writeTwit.jsp */
+/* writeTwit.jsp -> nav.jsp (modal) */
 
 .wtDiv {
 	display: flex;
