@@ -446,11 +446,16 @@ body, html {
 .hnSection {
 	width: 45%;
 	height: 100%;
-	border-left: 1px solid #e0e0e0;
-	border-right: 1px solid #e0e0e0;
+	
 	display: flex;
 	flex-direction: column;
 	 
+}
+
+
+.hnLine {
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
 }
 
 .hnAside {
@@ -709,7 +714,8 @@ body, html {
 	flex-direction: row;
 	height: 90px;
 	width: 100%;
-	border-bottom: 1px solid #e0e0e0;
+	border: 1px solid #e0e0e0;
+	border-top: none;
 }
 
 .TLLeft {
@@ -760,8 +766,8 @@ body, html {
 }
 
 #detailImg {
-	width: 18px;
-	height: 18px;
+	width: 15px;
+	height: 15px;
 }
 
 #TLTwitText {
@@ -815,9 +821,9 @@ body, html {
 }
 
 #wtExitButton {
-	width: 25px;
+	width: 20px;
 	height: 20px;
-	margin: 10px 10px 10px 20px;
+	margin: 5px;
 }
 
 #wtFlex {

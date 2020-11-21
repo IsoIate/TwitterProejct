@@ -71,7 +71,7 @@
 				<div class="modal-dialog">
 			    	<div class="modal-content">
 			      		<div class="modal-header">
-			        		<button type="reset" data-dismiss="modal" id="modalCloseBtn"><img src="./img/arrow.png" id="wtExitButton"></button>
+			        		<button type="reset" data-dismiss="modal" id="modalCloseBtn"><img src="./img/exit.png" id="wtExitButton"></button>
 			      		</div>
 				      	<div class="modal-body" id="wtFlex">
 					        <section class="wtLeft">
