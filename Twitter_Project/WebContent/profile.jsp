@@ -1,9 +1,10 @@
+<%@page import="dao.TwitDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@	page import = "java.util.ArrayList" %>
 <%
 	Integer index = (Integer) session.getAttribute("twitCount");
-	ArrayList<String> array = (ArrayList) session.getAttribute("twits");
+	ArrayList<TwitDTO> array = (ArrayList) session.getAttribute("twits");
 %>
 <!DOCTYPE html>
 <html>
@@ -12,9 +13,9 @@
 	<title>
 		<%
 			if(session.getAttribute("userId") != null) {
+				out.print((String)session.getAttribute("userId")) ;
+			} 
 		%>
-			<%= (String) session.getAttribute("userId") %>
-		<%	} %>
 	</title>
 	<link rel="stylesheet" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -96,12 +97,12 @@
 												<span id="userId"><%= "@" + session.getAttribute("userId") %></span>
 												<span id="twitTime"><%= "25분" %></span>
 											</div>
-											<div id="detailButton">
-												<span><img src="./img/exit.png" id="detailImg"></span>
+											<div id="deleteButton">
+												<span><img src="./img/exit.png" id="deleteImg"></span>
 											</div>
 										</div>
 										<div id="TLTwitText">
-											<%= array.get(index - (i + 1)) %>
+											<%= array.get(i).getText() %>
 										</div>			
 										<div class="TLTwitButtons">
 											<img src="./img/img.png" id="TLButton">

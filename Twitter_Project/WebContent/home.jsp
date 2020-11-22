@@ -1,9 +1,10 @@
+<%@page import="dao.TwitDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@	page import = "java.util.ArrayList" %>
 <%
 	Integer index = (Integer) session.getAttribute("twitCount");
-	ArrayList<String> array = (ArrayList) session.getAttribute("twits");
+	ArrayList<TwitDTO> array = (ArrayList) session.getAttribute("twits");
 %>
 <!DOCTYPE html>
 <html>
@@ -36,10 +37,12 @@
 </head>
 <body>
 	<%
+		// 로그인하지 않고 접근 시 index로 돌려보냄
 		if(session.getAttribute("userId") == null) {
 			response.sendRedirect("index.jsp");
 		}
-		session.setAttribute("currentPage", "home.jsp");
+		// 현재 페이지 저장	
+		session.setAttribute("currentPage", "home.jsp");	
 	%>
 	<div class="hnDiv">
 		<nav class="hnNav">
@@ -76,12 +79,15 @@
 					</div>
 				</form>
 				<div class="homeTimeline">
-					
+				
+					<!-- 작성 트윗이 존재하지 않을 때  -->
 					<% if(index == 0) { %>
 						<div class="noTwitDiv">
 							<h3 id="noTwitH3">트위터에 오신 것을 환영합니다!</h3>
 							<p id="noTwitP">전 세계에서 무슨 일이 일어나고 있는지 알아보기에 최적인 장소입니다.<br>지금 팔로우할 사람과 주제를 찾아보세요.</p>
 						</div>
+						
+					<!-- 작성 트윗이 존재할 때  -->
 					<% } else { 
 							for(int i = 0; i < index; i++) { %>
 								<section class="timelineContainer">
@@ -91,28 +97,30 @@
 										</div>
 										<div class="TLRight">
 											<div id="TLTwitContainer">
-												<div id="TLTwitInfo">
-											
-													<div>
-														<span id="userNickname"><%= session.getAttribute("userId") %></span>
-														<span id="userId"><%= "@" + session.getAttribute("userId") %></span>
-														<span id="twitTime"><%= "25분" %></span>
+												<form action="TwitDeleteController" method="post">
+												<input type="hidden" name="twitnumber" value="<%= array.get(i).getTwitnumber() %>">
+													<div id="TLTwitInfo">
+														<div>
+															<span id="userNickname"><%= session.getAttribute("userId") %></span>
+															<span id="userId"><%= "@" + session.getAttribute("userId") %></span>
+															<span id="twitTime"><%= "25분" %></span>
+														</div>
+														<div id="deleteButton">
+															<span><input type="image" src="./img/exit.png" id="deleteImg"></span>
+														</div>
 													</div>
-													<div id="detailButton">
-														<span><img src="./img/exit.png" id="detailImg"></span>
+													<div id="TLTwitText">
+														<input type="text" name="twitContent" id="twitContents" value="<%= array.get(i).getText() %>" disabled="disabled">
+													</div>			
+													<div class="TLTwitButtons">
+														<img src="./img/img.png" id="TLButton">
+														<img src="./img/gif.png" id="TLButton">
+														<img src="./img/barchart.png" id="TLButton">
+														<img src="./img/smile.png" id="TLButton">
+														<img src="./img/event.png" id="TLButton">
+														<p id="TLButton" style="margin: 0px;"></p>
 													</div>
-												</div>
-												<div id="TLTwitText">
-													<%= array.get(index - (i + 1)) %>
-												</div>			
-												<div class="TLTwitButtons">
-													<img src="./img/img.png" id="TLButton">
-													<img src="./img/gif.png" id="TLButton">
-													<img src="./img/barchart.png" id="TLButton">
-													<img src="./img/smile.png" id="TLButton">
-													<img src="./img/event.png" id="TLButton">
-													<p id="TLButton" style="margin: 0px;"></p>
-												</div>
+												</form>
 											</div>
 										</div>
 									</div>

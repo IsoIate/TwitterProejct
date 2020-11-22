@@ -761,17 +761,23 @@ body, html {
 	
 }
 
-#detailButton {
+#deleteButton {
 	padding-right: 10px;
 }
 
-#detailImg {
+#deleteImg {
 	width: 15px;
 	height: 15px;
 }
 
 #TLTwitText {
 	
+}
+
+#twitContents {
+	border: none;
+	outline: none;
+	background-color: white;
 }
 
 .TLTwitButtons {

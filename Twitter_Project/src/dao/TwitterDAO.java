@@ -117,7 +117,7 @@ public class TwitterDAO {
 			String user_num = "SELECT USER_NUM FROM USER_LOGIN WHERE ID=? AND PW = ?";
 			String fCount = "SELECT user_fw.follow, user_fw.follower FROM user_fw WHERE user_num=?";
 			String madeTime = "SELECT madetime FROM user_info WHERE user_num=?";
-			String twitCount = "SELECT count(user_num) twits FROM twit_write WHERE user_num=?";
+			String twitCount = "SELECT count(user_num) twits FROM twit WHERE user_num=?";
 			
 			userInfo.add(userNum = userNumEx(user_num, id, password));
 			if(userNum != 0) {
@@ -182,8 +182,8 @@ public class TwitterDAO {
 		try {
 			
 			String user_Num = "SELECT USER_NUM FROM USER_LOGIN WHERE ID=?";
-			String insertTwit = "INSERT INTO twit_write (user_num, text, twittime) VALUE (?, ?, now())";
-			String twitCount = "SELECT count(user_num) twits FROM twit_write WHERE user_num=?";
+			String insertTwit = "INSERT INTO twit (user_num, text, twittime) VALUE (?, ?, now())";
+			String twitCount = "SELECT count(user_num) twits FROM twit WHERE user_num=?";
 			int userNum = userNumExq(user_Num, userId);
 			
 			insertTwitEx(insertTwit, userNum, twit);	
@@ -244,26 +244,55 @@ public class TwitterDAO {
 		return twits;
 	}
 	
-	// 트윗 조회
-	ArrayList<String> selectTwit(int userNum) {
-		ArrayList<String> twits = new ArrayList<>();
+	// 트윗 게시글 조회
+	ArrayList<TwitDTO> selectTwit(int userNum) {
+		ArrayList<TwitDTO> twits = new ArrayList<>();
 
 		try {
-			String selectTwits = "SELECT TEXT FROM TWIT_WRITE WHERE USER_NUM=?";
+			String selectTwits = "SELECT TEXT, TWITNUMBER FROM twit WHERE USER_NUM=? ORDER BY twitnumber DESC";
 			
 			pstmt = conn.prepareStatement(selectTwits);
 			pstmt.setInt(1, userNum);
 			rs = pstmt.executeQuery(); 
 			
 			while(rs.next()) {
-				twits.add(rs.getString(1));
+				TwitDTO dto = new TwitDTO();
+				dto.setText(rs.getString(1));
+				dto.setTwitnumber(rs.getInt(2));
+				twits.add(dto);
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("selectTwit error");
 		}
 		
 		return twits;
+	}
+	
+	// 트윗 번호 조회
+	
+	
+	// 트윗 삭제
+	void deleteTwit(int userNum, int twitnumber) {
+		
+		try {
+			String deleteTwitSql = "DELETE FROM twit WHERE user_num=? and twitnumber=?";
+			
+			pstmt = conn.prepareStatement(deleteTwitSql);
+			pstmt.setInt(1, userNum);
+			pstmt.setInt(2, twitnumber);
+			pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("deleteTwit error");
+		}
+	}
+	
+	int deleteTwitUser (int userNum) {
+		String twitCount = "SELECT count(user_num) twits FROM twit WHERE user_num=?";
+		return twitCounter(twitCount, userNum);
 	}
 
 
