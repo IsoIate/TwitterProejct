@@ -24,11 +24,14 @@ public class TwitDeleteController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		int userNum = (int) session.getAttribute("userNum");
+		String userId = (String) session.getAttribute("userId");
+
 		int twitnumber = Integer.parseInt(request.getParameter("twitnumber"));
 		ArrayList<TwitDTO> twits = new ArrayList<>();
 		
 		TwitterDAO dao = new TwitterDAO();
+		
+		int userNum = dao.userNumExq(userId);
 		dao.deleteTwit(userNum, twitnumber);
 		session.setAttribute("twitCount", dao.deleteTwitUser(userNum));
 		

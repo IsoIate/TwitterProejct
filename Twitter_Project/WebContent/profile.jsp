@@ -1,10 +1,18 @@
 <%@page import="dao.TwitDTO"%>
+<%@ page import="dao.InfoDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@	page import = "java.util.ArrayList" %>
 <%
-	Integer index = (Integer) session.getAttribute("twitCount");
-	ArrayList<TwitDTO> array = (ArrayList) session.getAttribute("twits");
+	InfoDTO info = null;
+	Integer index = 0;
+	
+	Object object = request.getAttribute("info");
+	if(object != null) {
+		info = (InfoDTO) object;
+		index = info.getTwitCount();
+	}
+	ArrayList<TwitDTO> array = (ArrayList) request.getAttribute("twits");
 %>
 <!DOCTYPE html>
 <html>
@@ -12,9 +20,9 @@
 	<meta charset="UTF-8">
 	<title>
 		<%
-			if(session.getAttribute("userId") != null) {
-				out.print((String)session.getAttribute("userId")) ;
-			} 
+// 			if(session.getAttribute("userId") != null) {
+// 				out.print((String)session.getAttribute("userId")) ;
+// 			} 
 		%>
 	</title>
 	<link rel="stylesheet" href="./css/bootstrap.css">
@@ -26,10 +34,10 @@
 </head>
 <body>
 	<%
-		if(session.getAttribute("userId") == null) {
-			response.sendRedirect("index.jsp");
-		}
-		session.setAttribute("currentPage", "profile.jsp");
+// 		if(session.getAttribute("userId") == null) {
+// 			response.sendRedirect("index.jsp");
+// 		}
+		session.setAttribute("currentPage", "./PageController");
 	%>
 	<div class="hnDiv">
 		<nav class="hnNav">
@@ -42,7 +50,7 @@
 					<a href="home.jsp"><img id="profileBackButton" src="./img/arrow.png"></a>
 					<div id="profileText">
 						<span id="profileTwitId"><%= session.getAttribute("userId") %></span>
-						<span id="profileTwitCount"><%= session.getAttribute("twitCount") %> 트윗</span>
+						<span id="profileTwitCount"><%= info.getTwitCount() %> 트윗</span>
 					</div>
 				</div>
 				<div class="profileSectionMid">
@@ -58,13 +66,13 @@
 							<div id="profileFw">
 								<img src="./img/event.png" style="width: 18px; height: 18px; margin-left: 5px;">
 								<span id="profileText2" style="margin: 0 auto;"> 
-								가입일: 	<%= session.getAttribute("madeYear") %>년 
-										<%= session.getAttribute("madeMonth") %>월
-										<%= session.getAttribute("madeDay") %>일 </span>
+								가입일: 	<%= info.getBirthdaDto().getYear() %>년 
+										<%= info.getBirthdaDto().getMonth() %>월
+										<%= info.getBirthdaDto().getDay() %>일 </span>
 							</div>
 							<div id="profileFw">
-								<span id="profileText2"><span id="profileTwitId" style="margin: 0 auto;"><%= session.getAttribute("follow") %></span> 팔로워</span>
-								<span id="profileText2"><span id="profileTwitId" style="margin: 0 auto;"><%= session.getAttribute("follower") %></span> 팔로우 중</span>
+								<span id="profileText2"><span id="profileTwitId" style="margin: 0 auto;"><%= info.getFwdto().getFollow() %></span> 팔로워</span>
+								<span id="profileText2"><span id="profileTwitId" style="margin: 0 auto;"><%= info.getFwdto().getFollower() %></span> 팔로우 중</span>
 							</div>
 						</div>
 					</div>
@@ -76,7 +84,7 @@
 					<div Id="heart"> 마음에 들어요 </div>
 				</div>
 			</div>
-			<% if(session.getAttribute("twitCount").equals(0)) { %>
+			<% if(info.getTwitCount() == 0) { %>
 				<div class="noTwitDiv">
 					<h3 id="noTwitH3">트위터에 오신 것을 환영합니다!</h3>
 					<p id="noTwitP">전 세계에서 무슨 일이 일어나고 있는지 알아보기에 최적인 장소입니다.<br>지금 팔로우할 사람과 주제를 찾아보세요.</p>
@@ -89,30 +97,33 @@
 									<img src="./img/profile.png" id="TLProfileImg">
 								</div>
 								<div class="TLRight">
-									<div id="TLTwitContainer">
-										<div id="TLTwitInfo">
-											
-											<div>
-												<span id="userNickname"><%= session.getAttribute("userId") %></span>
-												<span id="userId"><%= "@" + session.getAttribute("userId") %></span>
-												<span id="twitTime"><%= "25분" %></span>
+									<form action="TwitDeleteController" method="post">
+									<input type="hidden" name="twitnumber" value="<%= array.get(i).getTwitnumber() %>">
+										<div id="TLTwitContainer">
+											<div id="TLTwitInfo">
+												
+												<div>
+													<span id="userNickname"><%= session.getAttribute("userId") %></span>
+													<span id="userId"><%= "@" + session.getAttribute("userId") %></span>
+													<span id="twitTime"><%= "25분" %></span>
+												</div>
+												<div id="deleteButton">
+													<span><input type="image" src="./img/exit.png" id="deleteImg"></span>
+												</div>
 											</div>
-											<div id="deleteButton">
-												<span><img src="./img/exit.png" id="deleteImg"></span>
+											<div id="TLTwitText">
+												<%= array.get(i).getText() %>
+											</div>			
+											<div class="TLTwitButtons">
+												<img src="./img/img.png" id="TLButton">
+												<img src="./img/gif.png" id="TLButton">
+												<img src="./img/barchart.png" id="TLButton">
+												<img src="./img/smile.png" id="TLButton">
+												<img src="./img/event.png" id="TLButton">
+												<p id="TLButton" style="margin: 0px;"></p>
 											</div>
 										</div>
-										<div id="TLTwitText">
-											<%= array.get(i).getText() %>
-										</div>			
-										<div class="TLTwitButtons">
-											<img src="./img/img.png" id="TLButton">
-											<img src="./img/gif.png" id="TLButton">
-											<img src="./img/barchart.png" id="TLButton">
-											<img src="./img/smile.png" id="TLButton">
-											<img src="./img/event.png" id="TLButton">
-											<p id="TLButton" style="margin: 0px;"></p>
-										</div>
-									</div>
+									</form>
 								</div>
 							</div>
 						</section>

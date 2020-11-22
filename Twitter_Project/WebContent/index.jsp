@@ -23,9 +23,9 @@
 </head>
 <body>
 	<%
-		if(session.getAttribute("userId") != null) {
-			response.sendRedirect("home.jsp");
-		}
+// 		if(session.getAttribute("userId") != null) {
+// 			response.sendRedirect("home.jsp");
+// 		}
 	%>
 	<div class="mainDiv">
 		<div class="leftDiv">

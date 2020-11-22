@@ -3,6 +3,7 @@ package dao;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,34 +19,40 @@ public class LoginController extends HttpServlet {
         super();
     }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("loginId");
-		String password = request.getParameter("loginPw");
-		String nextPage = null;
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		String id = request.getParameter("loginId") == null ? (String) session.getAttribute("userId") : request.getParameter("loginId");
+		String password = request.getParameter("loginPw") == null ? (String) session.getAttribute("userPw") : request.getParameter("loginPw");
+		
+		
+		String nextPage = null;
 
 		TwitterDAO dao = new TwitterDAO();
-		ArrayList<Integer> user = dao.signIn(id, password);
+		InfoDTO info = dao.signIn(id, password);
+		
 		
 		// UserData user = dao.userData(year, month, day, follow, follower);
 		
-		if(user.get(0) != 0) {
+		if(info.getUser_num() != 0) {
 			nextPage = "home.jsp";
 			session.setAttribute("userId", id);
 			session.setAttribute("userPw", password);
-			session.setAttribute("userNum",user.get(1));
-			session.setAttribute("twitCount",user.get(2));
-			session.setAttribute("follow",user.get(3));
-			session.setAttribute("follower",user.get(4));
-			session.setAttribute("madeYear",user.get(5));
-			session.setAttribute("madeMonth",user.get(6));
-			session.setAttribute("madeDay",user.get(7));
 			
-			session.setAttribute("twits", dao.selectTwit(user.get(1)));	// 트윗 조회 후 가져오기
+			request.setAttribute("info", info);
+//			session.setAttribute("userNum",user.get(0));
+//			session.setAttribute("twitCount",user.get(1));
+//			session.setAttribute("follow",user.get(2));
+//			session.setAttribute("follower",user.get(3));
+//			session.setAttribute("madeYear",user.get(4));
+//			session.setAttribute("madeMonth",user.get(5));
+//			session.setAttribute("madeDay",user.get(6));
+			
+			session.setAttribute("twits", dao.selectTwit(info.getUser_num()));	// 트윗 조회 후 가져오기
 		}
 		else nextPage = "loginError.jsp";
 		
-		response.sendRedirect(nextPage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+		dispatcher.forward(request, response);
 	}
 
 }

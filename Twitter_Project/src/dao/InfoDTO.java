@@ -9,6 +9,8 @@ public class InfoDTO {
 	private String img;
 	private int twitCount;
 	private Date madeTime;
+	private BirthdayDTO birthdaDto;
+	private FWDTO fwdto;
 	
 	public InfoDTO() {}
 	
@@ -58,6 +60,21 @@ public class InfoDTO {
 	public void setMadeTime(Date madeTime) {
 		this.madeTime = madeTime;
 	}
-	
-	
+
+	public BirthdayDTO getBirthdaDto() {
+		return birthdaDto;
+	}
+
+	public void setBirthdaDto(BirthdayDTO birthdaDto) {
+		this.birthdaDto = birthdaDto;
+	}
+
+	public FWDTO getFwdto() {
+		return fwdto;
+	}
+
+	public void setFwdto(FWDTO fwdto) {
+		this.fwdto = fwdto;
+	}
+		
 }

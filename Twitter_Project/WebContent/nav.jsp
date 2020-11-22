@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%! String[] src = {"./img/home.png", "./img/sharp.png", "./img/alarm.png", "./img/message.png", "./img/bookmark.png",
 					"./img/list.png", "./img/list.png", "./img/list.png"};
-	String[] href = {"./home.jsp", "", "", "", "", "", "./profile.jsp", ""};
+	String[] href = {"./LoginController", "", "", "", "", "", "./PageController", ""};
 	String[] text = {"홈", "탐색하기", "알림", "쪽지", "북마크", "리스트", "프로필", "더보기"};
 %>
 <!DOCTYPE html>

@@ -1,9 +1,17 @@
-<%@page import="dao.TwitDTO"%>
+<%@ page import="dao.TwitDTO" %>
+<%@ page import="dao.InfoDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@	page import = "java.util.ArrayList" %>
 <%
-	Integer index = (Integer) session.getAttribute("twitCount");
+	InfoDTO info = null;
+	Integer index = 0;
+	
+	Object object = request.getAttribute("info");
+	if(object != null) {
+		info = (InfoDTO) object;
+		index = info.getTwitCount();
+	}
 	ArrayList<TwitDTO> array = (ArrayList) session.getAttribute("twits");
 %>
 <!DOCTYPE html>
@@ -38,11 +46,11 @@
 <body>
 	<%
 		// 로그인하지 않고 접근 시 index로 돌려보냄
-		if(session.getAttribute("userId") == null) {
-			response.sendRedirect("index.jsp");
-		}
+// 		if(info.getUser_num() == 0) {
+// 			response.sendRedirect("index.jsp");
+// 		}
 		// 현재 페이지 저장	
-		session.setAttribute("currentPage", "home.jsp");	
+		session.setAttribute("currentPage", "./LoginController");	
 	%>
 	<div class="hnDiv">
 		<nav class="hnNav">

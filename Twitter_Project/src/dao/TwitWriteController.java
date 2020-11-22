@@ -28,22 +28,22 @@ public class TwitWriteController extends HttpServlet {
 		
 		String twit = request.getParameter("twit");
 		String userId = (String) session.getAttribute("userId");
-		int userNum = (int) session.getAttribute("userNum");
+//		int userNum = (int) session.getAttribute("userNum");
 		ArrayList<TwitDTO> twits = new ArrayList<>();
 		
 		TwitterDAO dao = new TwitterDAO();
 		session.setAttribute("twitCount", dao.insertTwit(twit, userId));
-
-		if(!session.getAttribute("twitCount").equals(0)) {
-			twits = dao.selectTwit(userNum);
-			session.setAttribute("twits", twits);
-		}
+		
+//		if(!session.getAttribute("twitCount").equals(0)) {
+//			twits = dao.selectTwit(userNum);
+//			session.setAttribute("twits", twits);
+//		}
 		
 		if(session.getAttribute("currentPage").equals("home.jsp")) {
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("./LoginController");
 		}
 		else if (session.getAttribute("currentPage").equals("profile.jsp")) {
-			response.sendRedirect("profile.jsp");
+			response.sendRedirect("./PageController");
 		}
 	}
 

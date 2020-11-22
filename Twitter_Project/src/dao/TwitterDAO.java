@@ -32,6 +32,8 @@ public class TwitterDAO {
 
 	// 회원가입
 	public void signUp(String id, String password, String email, String year, String month, String day){	 
+		LoginDTO login = new LoginDTO();
+		
 		try {
 			String sql[] = {"INSERT INTO user_login (ID, PW) VALUE (?, ?)",					// login
 					"INSERT INTO user_info (EMAIL, NICKNAME, PROFILEIMG) VALUE (?, ?, ?)",	// info
@@ -44,9 +46,9 @@ public class TwitterDAO {
 			insertLogin(sql[0], id, password);
 			insertInfo(sql[1], email, id, img);
 			insertBirthday(sql[2], year, month, day);
-			int userNum = userNumEx(sql[3], id, password);
-			insertNum(sql[4], userNum);
-			
+			login.setUser_num(userNumEx(sql[3], id, password));
+			insertNum(sql[4], login.getUser_num());
+
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("회원가입 오류");
@@ -104,9 +106,10 @@ public class TwitterDAO {
 	}
 	
 	// 로그인
-	public ArrayList<Integer> signIn(String id, String password){ 	
-
-		ArrayList<Integer> userInfo = new ArrayList<>();
+	public InfoDTO signIn(String id, String password){ 	
+		InfoDTO info = new InfoDTO();
+		BirthdayDTO birthday = new BirthdayDTO();
+		FWDTO fw = new FWDTO();
 		
 		try {
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -118,19 +121,19 @@ public class TwitterDAO {
 			String fCount = "SELECT user_fw.follow, user_fw.follower FROM user_fw WHERE user_num=?";
 			String madeTime = "SELECT madetime FROM user_info WHERE user_num=?";
 			String twitCount = "SELECT count(user_num) twits FROM twit WHERE user_num=?";
+			userNum = userNumEx(user_num, id, password);			
 			
-			userInfo.add(userNum = userNumEx(user_num, id, password));
 			if(userNum != 0) {
-				userInfo.add(userNum);
-				userInfo.add(twitCounter(twitCount, userNum));
+				info.setUser_num(userNum);
+				info.setTwitCount(twitCounter(twitCount, userNum));
 				
 				pstmt = conn.prepareStatement(fCount);
 				pstmt.setInt(1, userNum);
 				rs = pstmt.executeQuery(); 
 				
-				while(rs.next()) {
-					userInfo.add(rs.getInt(1));
-					userInfo.add(rs.getInt(2));
+				while(rs.next()) {					
+					fw.setFollow(rs.getInt(1));
+					fw.setFollower(rs.getInt(2));
 				}
 				rs.close();
 				
@@ -143,17 +146,18 @@ public class TwitterDAO {
 					temp = format.format(tempDate);
 					date = temp.split("-");
 				}
-				
-				for (int i = 0; i < 3; i++) {
-					userInfo.add(Integer.parseInt(date[i]));
-				}
+				birthday.setYear(Integer.parseInt(date[0]));
+				birthday.setMonth(Integer.parseInt(date[1]));
+				birthday.setDay(Integer.parseInt(date[2]));
 			}
-			
+			info.setBirthdaDto(birthday);
+			info.setFwdto(fw);
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("로그인 예외");
 		}
-		return userInfo;
+		
+		return info;
 	}
 	
 	int userNumEx(String sql, String id, String pw) {
@@ -194,6 +198,25 @@ public class TwitterDAO {
 		}
 		
 		return twits;
+	}
+	
+	int userNumExq(String userId) {
+		int user_num = 0;
+		
+		try {
+			String sql = "SELECT USER_NUM FROM USER_LOGIN WHERE ID=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				user_num = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("userNumExq error");
+		}
+		
+		return user_num;
 	}
 	
 	int userNumExq(String sql, String userId) {
@@ -269,9 +292,6 @@ public class TwitterDAO {
 		
 		return twits;
 	}
-	
-	// 트윗 번호 조회
-	
 	
 	// 트윗 삭제
 	void deleteTwit(int userNum, int twitnumber) {

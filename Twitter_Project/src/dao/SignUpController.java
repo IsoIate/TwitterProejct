@@ -19,8 +19,7 @@ public class SignUpController extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		
+		request.setCharacterEncoding("utf-8");		
 		String id = request.getParameter("createId");
 		String pw = request.getParameter("createPw");
 		String email = request.getParameter("createEmail");
@@ -44,6 +43,7 @@ public class SignUpController extends HttpServlet {
 		}
 	}
 	
+	// 입력 값이 공백인지 판별하는 메소드
 	public boolean errorCheck(String[] args) {
 		for(int i = 0; i < args.length; i++) {
 			System.out.println(args[i]);
