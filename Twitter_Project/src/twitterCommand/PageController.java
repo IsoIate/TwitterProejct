@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.InfoDTO;
 import dao.TwitterDAO;
+import dto.InfoDTO;
 
 public class PageController implements TCommand {
 

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.TwitDTO;
 import dao.TwitterDAO;
+import dto.TwitDTO;
 
 public class TwitDeleteController implements TCommand {
 

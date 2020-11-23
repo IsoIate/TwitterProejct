@@ -12,6 +12,13 @@ import java.util.Date;
 
 import com.mysql.cj.Session;
 
+import dto.BirthdayDTO;
+import dto.FWDTO;
+import dto.InfoDTO;
+import dto.LoginDTO;
+import dto.TwitDTO;
+import dto.UserData;
+
 public class TwitterDAO {
 	
 	private static TwitterDAO twitterDAO = null;
