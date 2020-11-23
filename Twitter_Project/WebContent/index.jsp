@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		<div class="rightDiv">
-			<form action="LoginController" method="post">
+			<form action="login.do" method="post">
 				<div class="inputArea">
 					<div id="indexIDPW">
 						<span>휴대폰, 이메일, 사용자 아이디</span>

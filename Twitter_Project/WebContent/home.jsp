@@ -1,5 +1,5 @@
-<%@ page import="dao.TwitDTO" %>
-<%@ page import="dao.InfoDTO" %>
+<%@ page import="dto.TwitDTO" %>
+<%@ page import="dto.InfoDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@	page import = "java.util.ArrayList" %>
@@ -50,7 +50,7 @@
 // 			response.sendRedirect("index.jsp");
 // 		}
 		// 현재 페이지 저장	
-		session.setAttribute("currentPage", "./LoginController");	
+		session.setAttribute("currentPage", "home");	
 	%>
 	<div class="hnDiv">
 		<nav class="hnNav">
@@ -62,7 +62,7 @@
 				<div>
 					<p id="homeText">홈</p>
 				</div>
-				<form action="TwitWriteController" method="post">
+				<form action="write.do" method="post">
 					<div class="hnLine">
 						<div class="homeInputArround">
 							<img src="./img/profile.png" id="homeProfileImg">
@@ -105,7 +105,7 @@
 										</div>
 										<div class="TLRight">
 											<div id="TLTwitContainer">
-												<form action="TwitDeleteController" method="post">
+												<form action="delete.do" method="post">
 												<input type="hidden" name="twitnumber" value="<%= array.get(i).getTwitnumber() %>">
 													<div id="TLTwitInfo">
 														<div>

@@ -49,7 +49,7 @@
 				</div>
 			</section>
 			<section class="wtRight">
-				<form action="TwitWriteController" method="post">
+				<form action="write.do" method="post">
 					<div id="wtTwit">
 						<textarea id="wtArea" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>				
 					</div>
