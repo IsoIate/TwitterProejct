@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%! String[] src = {"./img/home.png", "./img/sharp.png", "./img/alarm.png", "./img/message.png", "./img/bookmark.png",
 					"./img/list.png", "./img/list.png", "./img/list.png"};
-	String[] href = {"./LoginController", "/sharp.do", "", "", "", "", "./PageController", ""};
+	String[] href = {"./login.do", "/sharp.do", "", "", "", "", "./Page.do", ""};
 	String[] text = {"홈", "탐색하기", "알림", "쪽지", "북마크", "리스트", "프로필", "더보기"};
 %>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
 			}); 
 			
 			$("#wtButton").submit(function(){
-				document.form_chk.action = "${./TwitWrite.do}";
+				document.form_chk.action = "./TwitWrite.do";
 				document.form_chk.submit();				 
 			});
 		});

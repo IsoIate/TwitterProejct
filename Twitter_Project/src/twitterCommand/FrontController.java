@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/*.do")
+@WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static HashMap<String, TCommand> hashmap = new HashMap<String, TCommand>();
@@ -18,12 +18,12 @@ public class FrontController extends HttpServlet {
     }
 
     static {
-    	hashmap.put("./login.do", new LoginController());
-    	hashmap.put("./logout.do", new LogoutController());
-    	hashmap.put("./SignUp.do", new SignUpController());
-    	hashmap.put("./TwitDelete.do", new TwitDeleteController());
-    	hashmap.put("./TwitWrite.do", new TwitWriteController());
-    	hashmap.put("./Page.do", new PageController());
+    	hashmap.put("/login.do", new LoginController());
+    	hashmap.put("/logout.do", new LogoutController());
+    	hashmap.put("/SignUp.do", new SignUpController());
+    	hashmap.put("/TwitDelete.do", new TwitDeleteController());
+    	hashmap.put("/TwitWrite.do", new TwitWriteController());
+    	hashmap.put("/Page.do", new PageController());
     }
     
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,10 +31,9 @@ public class FrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
 		String cmd = command.substring(1, command.length() - 3);
-		System.out.println(cmd);
-		
+
 		try {
-			TCommand tc = hashmap.get(cmd);
+			TCommand tc = hashmap.get(command);
 			tc.execute(request, response);
 		} catch (Exception e) {
 			// TODO: handle exception

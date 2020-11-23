@@ -33,11 +33,11 @@ public class TwitWriteController implements TCommand {
 //			session.setAttribute("twits", twits);
 //		}
 		
-		if(session.getAttribute("currentPage").equals("home.jsp")) {
-			response.sendRedirect("./LoginController");
+		if(session.getAttribute("currentPage").equals("./login.do")) {
+			response.sendRedirect("./login.do");
 		}
-		else if (session.getAttribute("currentPage").equals("profile.jsp")) {
-			response.sendRedirect("./PageController");
+		else if (session.getAttribute("currentPage").equals("./Page.do")) {
+			response.sendRedirect("./Page.do");
 		}		
 	}
 

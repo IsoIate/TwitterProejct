@@ -34,7 +34,7 @@ public class LoginController implements TCommand {
 		// UserData user = dao.userData(year, month, day, follow, follower);
 		
 		if(info.getUser_num() != 0) {
-			nextPage = "home.jsp";
+			nextPage = "./home.jsp";
 			session.setAttribute("userId", id);
 			session.setAttribute("userPw", password);
 			
@@ -49,7 +49,7 @@ public class LoginController implements TCommand {
 			
 			session.setAttribute("twits", dao.selectTwit(info.getUser_num()));	// 트윗 조회 후 가져오기
 		}
-		else nextPage = "loginError.jsp";
+		else nextPage = "./loginError.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
