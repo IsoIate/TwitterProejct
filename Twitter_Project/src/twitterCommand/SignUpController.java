@@ -1,4 +1,4 @@
-package dao;
+package twitterCommand;
 
 import java.io.IOException;
 
@@ -9,16 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/SignUpController")
-public class SignUpController extends HttpServlet {
+import dao.TwitterDAO;
+
+public class SignUpController implements TCommand {
 	private static final long serialVersionUID = 1L;
 	String nextPage = null;
 	boolean check = false;
-    public SignUpController() {
-        super();
-    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");		
 		String id = request.getParameter("createId");
 		String pw = request.getParameter("createPw");
@@ -41,17 +40,18 @@ public class SignUpController extends HttpServlet {
 			
 			response.sendRedirect("signUpComplete.jsp");
 		}
+		
 	}
 	
 	// 입력 값이 공백인지 판별하는 메소드
-	public boolean errorCheck(String[] args) {
-		for(int i = 0; i < args.length; i++) {
-			System.out.println(args[i]);
-			if(args[i] == null || args[i].trim().isEmpty()) {
-				return false;
+		public boolean errorCheck(String[] args) {
+			for(int i = 0; i < args.length; i++) {
+				System.out.println(args[i]);
+				if(args[i] == null || args[i].trim().isEmpty()) {
+					return false;
+				}
 			}
+			return true;
 		}
-		return true;
-	}
 
 }

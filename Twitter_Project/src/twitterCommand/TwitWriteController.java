@@ -1,4 +1,4 @@
-package dao;
+package twitterCommand;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,19 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/TwitWriteController")
-public class TwitWriteController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import dao.TwitDTO;
+import dao.TwitterDAO;
 
-    public TwitWriteController() {
-        super();
-    }
+public class TwitWriteController implements TCommand {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
 		
@@ -44,7 +38,7 @@ public class TwitWriteController extends HttpServlet {
 		}
 		else if (session.getAttribute("currentPage").equals("profile.jsp")) {
 			response.sendRedirect("./PageController");
-		}
+		}		
 	}
 
 }

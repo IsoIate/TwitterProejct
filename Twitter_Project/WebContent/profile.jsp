@@ -37,7 +37,7 @@
 // 		if(session.getAttribute("userId") == null) {
 // 			response.sendRedirect("index.jsp");
 // 		}
-		session.setAttribute("currentPage", "./PageController");
+		session.setAttribute("currentPage", "./Page.do");
 	%>
 	<div class="hnDiv">
 		<nav class="hnNav">
@@ -97,7 +97,7 @@
 									<img src="./img/profile.png" id="TLProfileImg">
 								</div>
 								<div class="TLRight">
-									<form action="TwitDeleteController" method="post">
+									<form action="./TwitDelete.do" method="post">
 									<input type="hidden" name="twitnumber" value="<%= array.get(i).getTwitnumber() %>">
 										<div id="TLTwitContainer">
 											<div id="TLTwitInfo">

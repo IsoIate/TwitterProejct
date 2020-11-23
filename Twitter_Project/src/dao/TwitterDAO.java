@@ -200,7 +200,7 @@ public class TwitterDAO {
 		return twits;
 	}
 	
-	int userNumExq(String userId) {
+	public int userNumExq(String userId) {
 		int user_num = 0;
 		
 		try {
@@ -268,7 +268,7 @@ public class TwitterDAO {
 	}
 	
 	// 트윗 게시글 조회
-	ArrayList<TwitDTO> selectTwit(int userNum) {
+	public ArrayList<TwitDTO> selectTwit(int userNum) {
 		ArrayList<TwitDTO> twits = new ArrayList<>();
 
 		try {
@@ -294,7 +294,7 @@ public class TwitterDAO {
 	}
 	
 	// 트윗 삭제
-	void deleteTwit(int userNum, int twitnumber) {
+	public void deleteTwit(int userNum, int twitnumber) {
 		
 		try {
 			String deleteTwitSql = "DELETE FROM twit WHERE user_num=? and twitnumber=?";
@@ -310,7 +310,7 @@ public class TwitterDAO {
 		}
 	}
 	
-	int deleteTwitUser (int userNum) {
+	public int deleteTwitUser (int userNum) {
 		String twitCount = "SELECT count(user_num) twits FROM twit WHERE user_num=?";
 		return twitCounter(twitCount, userNum);
 	}

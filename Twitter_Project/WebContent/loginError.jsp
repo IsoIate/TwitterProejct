@@ -33,7 +33,7 @@
 			<h3 id="login_comment">트위터 로그인</h3><br>
 			
 			<div class="signUp_input">
-				<form action="LoginController" method="post">
+				<form action="./login.do" method="post">
 					<p id="loginError">입력하신 아이디와 비밀번호가 등록된 정보와 일치하지 않습니다.<br>확인 후 다시 시도하세요.</p>
 					<input type="text" name="loginId" class="form-control" placeholder="휴대폰, 이메일, 사용자 아이디"><br>
 					<input type="password" name="loginPw" class="form-control" placeholder="비밀번호"><br>

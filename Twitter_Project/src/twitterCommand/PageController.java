@@ -1,4 +1,4 @@
-package dao;
+package twitterCommand;
 
 import java.io.IOException;
 
@@ -10,15 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/PageController")
-public class PageController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import dao.InfoDTO;
+import dao.TwitterDAO;
 
-    public PageController() {
-        super();
-    }
+public class PageController implements TCommand {
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		
 		String userId = (String) session.getAttribute("userId");
@@ -32,5 +31,6 @@ public class PageController extends HttpServlet {
 		request.setAttribute("twits", dao.selectTwit(info.getUser_num()));
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./profile.jsp");
 		dispatcher.forward(request, response);
+		
 	}
 }

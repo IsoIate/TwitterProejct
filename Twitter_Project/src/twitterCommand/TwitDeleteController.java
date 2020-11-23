@@ -1,4 +1,4 @@
-package dao;
+package twitterCommand;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,19 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/TwitDeleteController")
-public class TwitDeleteController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import dao.TwitDTO;
+import dao.TwitterDAO;
 
-    public TwitDeleteController() {
-        super();
-    }
+public class TwitDeleteController implements TCommand {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 
@@ -41,6 +35,7 @@ public class TwitDeleteController extends HttpServlet {
 		}
 		
 		response.sendRedirect((String) session.getAttribute("currentPage"));
+		
 	}
 
 }
