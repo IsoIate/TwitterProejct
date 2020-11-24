@@ -11,6 +11,9 @@ public class CommandHandler {
 		command.put("profile", "controller.ProfileController");
 		command.put("write", "controller.TwitWriteController");
 		command.put("delete", "controller.TwitDeleteController");
+		command.put("searchID", "controller.SearchIDController");
+		command.put("pwReset", "controller.PwResetController");
+		command.put("pwChange", "controller.PwChangeController");
 	}
 	
 	public Command getCommand(String cmd) {

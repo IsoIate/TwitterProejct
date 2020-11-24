@@ -20,9 +20,9 @@
 	<meta charset="UTF-8">
 	<title>
 		<%
-// 			if(session.getAttribute("userId") != null) {
-// 				out.print((String)session.getAttribute("userId")) ;
-// 			} 
+			if(session.getAttribute("userId") != null) {
+				out.print((String)session.getAttribute("userId")) ;
+			} 
 		%>
 	</title>
 	<link rel="stylesheet" href="./css/bootstrap.css">

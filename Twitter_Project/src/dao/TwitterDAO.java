@@ -320,6 +320,69 @@ public class TwitterDAO {
 		return twitCounter(twitCount, userNum);
 	}
 
-
+	public int searchId(String id) {
+		int isID = 0;
+		
+		try {
+			String sql = "SELECT count(id) id FROM user_login WHERE id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				isID = rs.getInt(1);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("searchId error");
+		}
+		
+		return isID;
+	}
+	
+	public int searchInfo(String email, int year, int month, int day) {
+		int correct = 0;
+		
+		try {
+			String sql = "SELECT count(*) cnt "
+					+ "FROM user_info, user_birthday "
+					+ "WHERE user_info.email=? AND user_birthday.year=? AND user_birthday.month=? AND user_birthday.day=? "
+					+ "AND user_info.user_num = user_birthday.user_num;";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setInt(2, year);
+			pstmt.setInt(3, month);
+			pstmt.setInt(4, day);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				correct = rs.getInt(1);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("searchId error");
+		}
+		
+		return correct;
+	}
+	
+	public void changePw(String newPw, String userId) {		
+		try {
+			String sql = "UPDATE user_login set pw=? WHERE id=?" ;
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPw);
+			pstmt.setString(2, userId);
+			pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("changePw error");
+		}
+	}
 
 }

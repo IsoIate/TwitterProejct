@@ -17,12 +17,7 @@ public class TwitWriteController implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		request.setCharacterEncoding("utf-8");
 		
 		String twit = request.getParameter("twit");
 		String userId = (String) session.getAttribute("userId");
@@ -41,7 +36,7 @@ public class TwitWriteController implements Command {
 			response.sendRedirect("login.do");
 		}
 		else if (session.getAttribute("currentPage").equals("profile")) {
-			response.sendRedirect("page.do");
+			response.sendRedirect("profile.do");
 		}		
 	}
 

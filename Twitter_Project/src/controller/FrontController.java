@@ -27,7 +27,7 @@ public class FrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
 		String cmd =  command.substring(1, command.length() - 3);
-		System.out.println(cmd);
+		System.out.println("현재 페이지 : " + cmd);
 		try {
 			handler.getCommand(cmd).execute(request, response);
 		} catch (Exception e) {
