@@ -1,4 +1,4 @@
-package dao;
+package dto;
 
 public class LoginDTO {
 	private int user_num;

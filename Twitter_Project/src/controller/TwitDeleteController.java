@@ -1,4 +1,4 @@
-package dao;
+package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,19 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/TwitDeleteController")
-public class TwitDeleteController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import command.Command;
+import dto.TwitDTO;
+import dao.TwitterDAO;
 
-    public TwitDeleteController() {
-        super();
-    }
+public class TwitDeleteController implements Command {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 
@@ -40,7 +35,13 @@ public class TwitDeleteController extends HttpServlet {
 			session.setAttribute("twits", twits);
 		}
 		
-		response.sendRedirect((String) session.getAttribute("currentPage"));
+		if(session.getAttribute("currentPage").equals("home")) {
+			response.sendRedirect("login.do");
+		}
+		else if (session.getAttribute("currentPage").equals("profile")) {
+			response.sendRedirect("profile.do");
+		}	
+		
 	}
 
 }

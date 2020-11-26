@@ -1,5 +1,5 @@
-<%@page import="dao.TwitDTO"%>
-<%@ page import="dao.InfoDTO" %>
+<%@page import="dto.TwitDTO"%>
+<%@ page import="dto.InfoDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@	page import = "java.util.ArrayList" %>
@@ -20,9 +20,9 @@
 	<meta charset="UTF-8">
 	<title>
 		<%
-// 			if(session.getAttribute("userId") != null) {
-// 				out.print((String)session.getAttribute("userId")) ;
-// 			} 
+			if(session.getAttribute("userId") != null) {
+				out.print((String)session.getAttribute("userId")) ;
+			} 
 		%>
 	</title>
 	<link rel="stylesheet" href="./css/bootstrap.css">
@@ -37,7 +37,7 @@
 // 		if(session.getAttribute("userId") == null) {
 // 			response.sendRedirect("index.jsp");
 // 		}
-		session.setAttribute("currentPage", "./PageController");
+		session.setAttribute("currentPage", "profile");
 	%>
 	<div class="hnDiv">
 		<nav class="hnNav">
@@ -97,7 +97,7 @@
 									<img src="./img/profile.png" id="TLProfileImg">
 								</div>
 								<div class="TLRight">
-									<form action="TwitDeleteController" method="post">
+									<form action="delete.do" method="post">
 									<input type="hidden" name="twitnumber" value="<%= array.get(i).getTwitnumber() %>">
 										<div id="TLTwitContainer">
 											<div id="TLTwitInfo">

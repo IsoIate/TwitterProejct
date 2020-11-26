@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class=mainDiv>
-		<form action="SignUpController" method="post">
+		<form action="signUp.do" method="post">
 		
 			<header class="signUp_header">
 				<a href="signUp.jsp"><img src="./img/arrow.png" id="arrowImg" class="img-responsive" alt="Responsive image"></a>

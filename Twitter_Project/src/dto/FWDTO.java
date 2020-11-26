@@ -1,4 +1,4 @@
-package dao;
+package dto;
 
 public class FWDTO {
 	private int user_num;

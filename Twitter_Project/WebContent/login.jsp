@@ -32,7 +32,7 @@
 		<section>
 			<h3 id="login_comment">트위터 로그인</h3><br>
 			<div>
-				<form action="LoginController" method="post">
+				<form action="login.do" method="post">
 					<input type="text" name="loginId" class="form-control" placeholder="휴대폰, 이메일, 사용자 아이디"><br>
 					<input type="password" name="loginPw" class="form-control" placeholder="비밀번호"><br>
 					<input type=submit id="loginPageBtn" class="btn btn-info btn-block" value="로그인">

@@ -1,4 +1,4 @@
-package dao;
+package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,15 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-    public LoginController() {
-        super();
-    }
+import command.Command;
+import dto.InfoDTO;
+import dao.TwitterDAO;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class LoginController implements Command {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String id = request.getParameter("loginId") == null ? (String) session.getAttribute("userId") : request.getParameter("loginId");
 		String password = request.getParameter("loginPw") == null ? (String) session.getAttribute("userPw") : request.getParameter("loginPw");

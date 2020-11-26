@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%! String[] src = {"./img/home.png", "./img/sharp.png", "./img/alarm.png", "./img/message.png", "./img/bookmark.png",
-					"./img/list.png", "./img/list.png", "./img/list.png"};
-	String[] href = {"./LoginController", "", "", "", "", "", "./PageController", ""};
+					"./img/list.png", "./img/profile_1.png", "./img/ellipsis.png"};
+	String[] href = {"./login.do", "", "", "", "", "", "./profile.do", ""};
 	String[] text = {"홈", "탐색하기", "알림", "쪽지", "북마크", "리스트", "프로필", "더보기"};
 %>
 <!DOCTYPE html>
@@ -53,7 +53,11 @@
 				<% 
 					for(int i = 0; i < src.length; i++) {
 				%>
-					<li id="navLi"><a id="navA" href= <%= href[i] %>><img id="navImg" src=<%= src[i] %>><%= text[i] %></a></li>
+					<li id="navLi"><a id="navA" href= <%= href[i] %>><img id="navImg" 
+					<% if(src[i] == "./img/bookmark.png") { %>
+						style="padding-left: 3px;"
+					<% } %>
+					src=<%= src[i] %>><%= text[i] %></a></li>
 				<%		
 					}
 				%>
@@ -62,7 +66,7 @@
 		<div id="navButtons">
 			<input type="button" onClick="" class="btn btn-info btn-block" value="트윗" id="navButton" data-toggle="modal" data-target="#myModal">
 			
-			<form action="LogoutController" method="post">
+			<form action="logout.do" method="post">
 				<input type="submit" value="로그아웃" class="btn btn-info btn-block" id="navButton">
 			</form>
 			
@@ -80,7 +84,7 @@
 								</div>
 							</section>
 							<section class="wtRight">
-								<form action="TwitWriteController" method="post" >
+								<form action="write.do" method="post" >
 									<div id="wtTwit">
 										<textarea id="wtArea" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>				
 									</div>
