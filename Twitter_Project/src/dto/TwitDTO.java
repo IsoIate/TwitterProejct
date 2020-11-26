@@ -7,6 +7,7 @@ public class TwitDTO {
 	private String text;
 	private Date twittime;
 	private int twitnumber;
+	private LoginDTO loginDTO;
 	
 	public TwitDTO () {}
 	
@@ -41,6 +42,14 @@ public class TwitDTO {
 	}
 	public void setTwitnumber(int twitnumber) {
 		this.twitnumber = twitnumber;
+	}
+
+	public LoginDTO getLoginDTO() {
+		return loginDTO;
+	}
+
+	public void setLoginDTO(LoginDTO loginDTO) {
+		this.loginDTO = loginDTO;
 	}
 	
 }

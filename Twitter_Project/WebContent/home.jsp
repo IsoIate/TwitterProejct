@@ -79,7 +79,7 @@
 								        	
 								        </label>	
 								    </div> -->
-								        <!-- <img src="./img/img.png" id="icon"> -->							        							
+								        <img src="./img/img.png" id="icon">						        							
 										<img src="./img/gif.png" id="icon">
 										<img src="./img/barchart.png" id="icon">
 										<img src="./img/smile.png" id="icon">

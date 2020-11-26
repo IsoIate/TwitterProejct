@@ -384,5 +384,97 @@ public class TwitterDAO {
 			System.out.println("changePw error");
 		}
 	}
+	
+	public ArrayList<TwitDTO> searchPop() {
+		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE user_login.user_num = twit.user_num ORDER BY rand()";
+		ArrayList<TwitDTO> searchResult = new ArrayList<TwitDTO>();
+		SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
+		TwitDTO twit = new TwitDTO();
+		LoginDTO login = new LoginDTO();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				login.setId(rs.getString(1));				// 유저 아이디
+				twit.setLoginDTO(login);
+				twit.setText(rs.getString(2));				// 유저 트윗
+				Date to = simple.parse(rs.getString(3));	
+				twit.setTwittime(to);						// 트윗 작성일자
+				searchResult.add(twit);						// ArrayList타입으로 반환
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("searchPop error");
+		}
+		return searchResult;
+	}
+	
+	public void searchLate() {
+		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE user_login.user_num = twit.user_num ORDER BY twittime DESC";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				rs.getString(1);
+				rs.getString(2);
+				rs.getString(3);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("changePw error");
+		}
+	}
+	
+	public void searchUser() {
+		String sql = "SELECT user_login.id, user_info.profileImg FROM user_login, user_info WHERE user_login.user_num = user_info.user_num";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				rs.getString(1);
+				rs.getString(2);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("changePw error");
+		}
+	}
+	
+	public void searchPhoto() {
+		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE user_login.user_num = twit.user_num ORDER BY rand()";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				rs.getString(1);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("changePw error");
+		}
+	}
+	
+	public void searchVideo() {
+		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE user_login.user_num = twit.user_num ORDER BY rand()";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				rs.getString(1);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("changePw error");
+		}
+	}
 
 }

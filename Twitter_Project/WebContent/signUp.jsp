@@ -14,7 +14,7 @@
 <body>
 	<div class=mainDiv>
 	
-		<form action="signUp.do" method="post">
+		<form action="signUp_1.jsp" method="post">
 		
 			<header class="signUp_header">
 				<img alt="" src="./img/twitter_logo.png" id="logoImage">

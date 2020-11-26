@@ -15,6 +15,7 @@ public class CommandHandler {
 		command.put("pwReset", "controller.PwResetController");
 		command.put("pwChange", "controller.PwChangeController");
 		command.put("fileUpload", "controller.FileUploadController");
+		command.put("search", "controller.SearchController");
 //		command.put("home", "controller.HomeController");
 	}
 	
