@@ -62,7 +62,7 @@
 				<div>
 					<p id="homeText">홈</p>
 				</div>
-				<form action="write.do" method="post">
+				<form action="write.do" method="post"> <!-- enctype="multipart/form-data" -->
 					<div class="hnLine">
 						<div class="homeInputArround">
 							<img src="./img/profile.png" id="homeProfileImg">
@@ -72,7 +72,14 @@
 								</div>
 								<div class="hometwc">
 									<div class="homeTwitIcon">
+									<!-- <div class="button" onclick="onclick=document.all.file.click()">
 										<img src="./img/img.png" id="icon">
+										<label>
+								        	<input type="file" name="file" style="display: none;">
+								        	
+								        </label>	
+								    </div> -->
+								        <!-- <img src="./img/img.png" id="icon"> -->							        							
 										<img src="./img/gif.png" id="icon">
 										<img src="./img/barchart.png" id="icon">
 										<img src="./img/smile.png" id="icon">

@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 body, html {
 	width:100%;
@@ -604,6 +605,10 @@ body, html {
 .homeTwitIcon {
 	display: flex;
 	margin: 10px 0 10px 0;
+}
+
+#inputFileIcon {
+	background-image: "./img/img.png";
 }
 
 #icon {

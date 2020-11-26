@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import command.Command;
 import dto.TwitDTO;
 import dao.TwitterDAO;
@@ -16,7 +18,7 @@ public class TwitWriteController implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();	
 		request.setCharacterEncoding("utf-8");
 		
 		String twit = request.getParameter("twit");
