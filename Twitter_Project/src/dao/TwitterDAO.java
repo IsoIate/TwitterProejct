@@ -272,7 +272,7 @@ public class TwitterDAO {
 		ArrayList<TwitDTO> twits = new ArrayList<>();
 
 		try {
-			String selectTwits = "SELECT TEXT, TWITNUMBER FROM twit WHERE USER_NUM=? ORDER BY twitnumber DESC";
+			String selectTwits = "SELECT TEXT, twitnumber FROM twit WHERE USER_NUM=? ORDER BY twitnumber DESC";
 			
 			pstmt = conn.prepareStatement(selectTwits);
 			pstmt.setInt(1, userNum);
