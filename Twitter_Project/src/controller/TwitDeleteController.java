@@ -39,7 +39,7 @@ public class TwitDeleteController implements Command {
 			response.sendRedirect("login.do");
 		}
 		else if (session.getAttribute("currentPage").equals("profile")) {
-			response.sendRedirect("page.do");
+			response.sendRedirect("profile.do");
 		}	
 		
 	}

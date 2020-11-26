@@ -14,6 +14,7 @@ public class CommandHandler {
 		command.put("searchID", "controller.SearchIDController");
 		command.put("pwReset", "controller.PwResetController");
 		command.put("pwChange", "controller.PwChangeController");
+//		command.put("home", "controller.HomeController");
 	}
 	
 	public Command getCommand(String cmd) {
