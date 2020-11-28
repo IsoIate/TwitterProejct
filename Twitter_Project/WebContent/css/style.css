@@ -828,6 +828,7 @@ body, html {
 #deleteImg {
 	width: 15px;
 	height: 15px;
+	outline: none;
 }
 
 #TLTwitText {
@@ -981,18 +982,27 @@ body, html {
 .searchDiv {
 	display: flex;
 	flex-direction: row;
+	width: 100%;
+}
+
+.searchSection {
+	display: flex;
+	flex-direction: column;
+	width: 45%;
 }
 
 .searchTop {
 	display: flex;
 	flex-direction: column;
-	width: 50%;
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0; 
 }
 
 #searchContaioner {
 	display: flex;
 	flex-direction: row;
-	margin: 10px 0px;
+	margin: 5px 0px;
+	
 }
 
 /*
@@ -1017,14 +1027,18 @@ body, html {
 	height: 18px;
 }
 
+#searchForm {
+	display: flex;
+	flex-grow: 8;
+	background-color: #efefef;
+	padding: 5px 10px 10px 15px;
+	border-radius: 25px;
+	margin: 10px;
+	height: 40px;
+}
+
 #searchInput {
 	display: flex;
-	background-color: #efefef;
-	margin: 10px;
-	padding: 5px 10px 10px 15px;
-	flex-grow: 5;
-	height: 40px;
-	border-radius: 25px;
 }
 
 #searchMoreButton {
@@ -1034,8 +1048,9 @@ body, html {
 }
 
 #searchContext {
-	border: none; background: transparent;
-	box-shadow: none;	
+	border: none; 
+	background: transparent;
+	box-shadow: none;
 }
 
 #searchButtons {
@@ -1072,5 +1087,18 @@ body, html {
 	background-color:transparent;
 }
 
+.searchResultContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
 
+.searchTimeline {
+	display: flex;
+	flex-direction: row;
+	height: 90px;
+
+	border: 1px solid #e0e0e0;
+	border-top: none;
+}
 

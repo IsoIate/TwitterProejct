@@ -39,7 +39,12 @@
 			}); 
 			
 		});
-		
+		$(function onEnterLogin(){
+			var keyCode = window.event.keyCode;	
+			if (keyCode == 13) { //엔테키 이면
+				loginForm.submit();
+			}
+		});
 	</script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -146,11 +151,16 @@
 			</div>
 		</section>
 	
-		<aside class="hnAside">
+		<aside class="hnAside" onkeydown="javascript:onEnterLogin();">
+			<form action="search.do" method="post" name="searchEnter">
 			<div id="hnSearch">
-				<i id="hnSearchImg" class="fa fa-search fa-2x"></i>
-				<input type="text" class="form-control" id="hnSearchText" placeholder="트위터 검색">
+				
+					<i id="hnSearchImg" class="fa fa-search fa-2x"></i>
+					<input type="text" class="form-control" id="hnSearchText" name="searchContext" placeholder="트위터 검색" autocomplete=off>
+					<input type="submit" hidden="hidden">
+				
 			</div>
+			</form>
 		</aside>
 	</div>
 </body>

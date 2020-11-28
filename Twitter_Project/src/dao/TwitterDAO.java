@@ -385,22 +385,28 @@ public class TwitterDAO {
 		}
 	}
 	
-	public ArrayList<TwitDTO> searchPop() {
-		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE user_login.user_num = twit.user_num ORDER BY rand()";
+	public ArrayList<TwitDTO> searchPop(String input) {
+		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE text LIKE CONCAT ('%', ? , '%') AND user_login.user_num = twit.user_num ORDER BY rand()";
 		ArrayList<TwitDTO> searchResult = new ArrayList<TwitDTO>();
 		SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
-		TwitDTO twit = new TwitDTO();
-		LoginDTO login = new LoginDTO();
+		String temp = null;
+		String[] date = null;
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, input);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				TwitDTO twit = new TwitDTO();
+				LoginDTO login = new LoginDTO();
+
 				login.setId(rs.getString(1));				// 유저 아이디
 				twit.setLoginDTO(login);
 				twit.setText(rs.getString(2));				// 유저 트윗
-				Date to = simple.parse(rs.getString(3));	
-				twit.setTwittime(to);						// 트윗 작성일자
+
+				Date tempDate = rs.getDate(3);
+				twit.setTwittime(tempDate);					// 트윗 작성일자
 				searchResult.add(twit);						// ArrayList타입으로 반환
 			}
 		} catch(Exception e) {
@@ -410,39 +416,66 @@ public class TwitterDAO {
 		return searchResult;
 	}
 	
-	public void searchLate() {
-		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE user_login.user_num = twit.user_num ORDER BY twittime DESC";
+	public ArrayList<TwitDTO> searchLate(String input) {
+		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE text LIKE  concat ('%', ?, '%') AND user_login.user_num = twit.user_num ORDER BY twittime DESC";
 
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				rs.getString(1);
-				rs.getString(2);
-				rs.getString(3);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("changePw error");
-		}
-	}
-	
-	public void searchUser() {
-		String sql = "SELECT user_login.id, user_info.profileImg FROM user_login, user_info WHERE user_login.user_num = user_info.user_num";
+		ArrayList<TwitDTO> searchResult = new ArrayList<TwitDTO>();
+		SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
+		String temp = null;
+		String[] date = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, input);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				rs.getString(1);
-				rs.getString(2);
+				TwitDTO twit = new TwitDTO();
+				LoginDTO login = new LoginDTO();
+
+				login.setId(rs.getString(1));				// 유저 아이디
+				twit.setLoginDTO(login);
+				twit.setText(rs.getString(2));				// 유저 트윗
+
+				Date tempDate = rs.getDate(3);
+				twit.setTwittime(tempDate);					// 트윗 작성일자
+				searchResult.add(twit);						// ArrayList타입으로 반환
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("changePw error");
+			System.out.println("searchPop error");
 		}
+		return searchResult;
+	}
+	
+	public ArrayList<TwitDTO> searchUser(String input) {
+		String sql = "SELECT user_login.id, user_info.profileImg FROM user_login, user_info WHERE id LIKE  concat ('%', ?, '%') AND user_login.user_num = user_info.user_num";
+		
+		ArrayList<TwitDTO> searchResult = new ArrayList<TwitDTO>();
+		SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
+		String temp = null;
+		String[] date = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, input);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				TwitDTO twit = new TwitDTO();
+				LoginDTO login = new LoginDTO();
+
+				login.setId(rs.getString(1));				// 유저 아이디
+				twit.setLoginDTO(login);
+				twit.setText(rs.getString(2));				// 프로필 이미지
+
+				searchResult.add(twit);						// ArrayList타입으로 반환
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("searchPop error");
+		}
+		return searchResult;
 	}
 	
 	public void searchPhoto() {

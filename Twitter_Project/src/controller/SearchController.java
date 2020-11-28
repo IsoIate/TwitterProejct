@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.Command;
 import dao.TwitterDAO;
@@ -20,22 +21,13 @@ public class SearchController implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		TwitterDAO dao = new TwitterDAO();
+		String searchInput = request.getParameter("searchContext");
 		
-		if(request.getParameter("popularity") != null) {
-			request.setAttribute("searchResult", dao.searchPop());
-		}
-		else if(request.getParameter("latest") != null) {
-			dao.searchPop();
-		}
-		else if(request.getParameter("user") != null) {
-			dao.searchPop();
-		}
-		else if(request.getParameter("photo") != null) {
-			dao.searchPop();
-		}
-		else if(request.getParameter("video") != null) {
-			dao.searchPop();
-		}
+		request.setAttribute("searchInput", searchInput);
+		ArrayList<TwitDTO> searchResult = null;
+		
+		searchResult = dao.searchPop(searchInput);
+		request.setAttribute("searchResult", searchResult);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
 		dispatcher.forward(request, response);
