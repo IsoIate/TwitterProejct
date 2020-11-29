@@ -36,9 +36,29 @@
 				}
 			}); 
 			
+			$('#myModal').on('hidden.bs.modal', function (e) {
+				$(this).find('#navModal')[0].reset();
+			});
+			
+			$('#navButton').click(function(){
+				var content = $('#wtArea').val();
+			    $('#navCounter').html("("+ content.length + " / 최대 140자)");    //글자수 실시간 카운팅
+			});
+
 			$("#wtButton").submit(function(){
 				document.form_chk.action = "${TwitWriteController}";
 				document.form_chk.submit();				 
+			});
+
+			$('#wtArea').keyup(function (e){
+			    var content = $(this).val();
+			    $('#navCounter').html("("+ content.length + " / 최대 140자)");    //글자수 실시간 카운팅
+
+			    if (content.length > 140){
+			        alert("최대 140자까지 입력 가능합니다.");
+			        $(this).val(content.substring(0, 140));
+			        $('#navCounter').html("(140 / 최대 140자)");
+			    }
 			});
 		});
 	</script>
@@ -84,9 +104,10 @@
 								</div>
 							</section>
 							<section class="wtRight">
-								<form action="write.do" method="post" >
+								<form action="write.do" method="post" id="navModal">
 									<div id="wtTwit">
-										<textarea id="wtArea" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>				
+										<textarea id="wtArea" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>
+										<div id="navCounter">(0 / 최대 40자)</div>				
 									</div>
 									<div id="wtBot">
 								        <div class="wtTwitIcon">

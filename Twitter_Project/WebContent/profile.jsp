@@ -60,8 +60,35 @@
 				document.form_chk.submit();				 
 			});
 			$('#profileModal').on('hidden.bs.modal', function (e) {
-			    console.log('modal close');
 			  $(this).find('#modalForm')[0].reset();
+			});
+			
+			$('#profileSettingBtn').click(function(){
+				var contentName = $('#pmInputName').val();
+				var contentProfile = $('#pmInputProfile').val();
+			    $('#counter').html("("+ contentName.length + " / 최대 40자)");
+			    $('#counter_1').html("("+ contentProfile.length + " / 최대 140자)");
+			});
+			
+			$('#pmInputName').keyup(function (e){
+			    var content = $(this).val();
+			    $('#counter').html("("+ content.length + " / 최대 40자)");    //글자수 실시간 카운팅
+
+			    if (content.length > 40){
+			        alert("최대 40자까지 입력 가능합니다.");
+			        $(this).val(content.substring(0, 40));
+			        $('#counter').html("(40 / 최대 40자)");
+			    }
+			});
+			$('#pmInputProfile').keyup(function (e){
+			    var content = $(this).val();
+			    $('#counter_1').html("("+ content.length + " / 최대 140자)");    //글자수 실시간 카운팅
+
+			    if (content.length > 140){
+			        alert("최대 140자까지 입력 가능합니다.");
+			        $(this).val(content.substring(0, 140));
+			        $('#counter_1').html("(140 / 최대 140자)");
+			    }
 			});
 		});
 		
@@ -206,12 +233,14 @@
 						        		<input type="text" id="pmInputName" name="inputName" value="<%= pro.getNickname() %>" autocomplete=off>
 						        	</div>
 						        </div>
-						        <div class="pmInputContainer_2">
+						        <div id="counter">(0 / 최대 40자)</div>
+						        <div class="pmInputContainer">
 						        	<div id="pmNameCont">
 						        		<p>자기소개</p>
-						        		<input type="text" id="pmInputName" name="inputProfile" value="<%= pro.getProfile() %>" autocomplete=off> 
+						        		<input type="text" id="pmInputProfile" name="inputProfile" value="<%= pro.getProfile() %>" autocomplete=off> 
 						        	</div>
 						        </div>
+						        <div id="counter_1">(0 / 최대 140자)</div>
 				      		</div>
 			      		</form>
 			    	</div>
