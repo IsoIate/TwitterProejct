@@ -21,7 +21,7 @@ public class TabController implements Command {
 		TwitterDAO dao = new TwitterDAO();
 		String searchInput = request.getParameter("searchContext");	// 검색어
 		
-		String pop = request.getParameter("popularity");
+		String pop = request.getParameter("tabName");
 		ArrayList<TwitDTO> searchResult = null;						// 검색 결과 리스트
 		
 		if(pop.equals("인기")) {
@@ -36,12 +36,12 @@ public class TabController implements Command {
 		else if(pop.equals("사진")) {
 			searchResult = dao.searchPop(searchInput);
 		}
-		else if(pop.equals("비디오")) {
+		else if(pop.equals("동영상")) {
 			searchResult = dao.searchPop(searchInput);
 		}
 		request.setAttribute("searchInput", searchInput);
 		request.setAttribute("searchResult", searchResult);
-		System.out.println(request.getAttribute("searchResult") + "result");
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
 		dispatcher.forward(request, response);
 	}

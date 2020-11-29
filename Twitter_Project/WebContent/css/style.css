@@ -699,7 +699,7 @@ body, html {
 }
 
 #profileImage {
-	
+	border: 5px solid white;
 	border-radius: 100px;
 	width: 175px;
 	height: 175px;
@@ -709,9 +709,13 @@ body, html {
 	z-index: 10;
 }
 
-#profileSettingBtn {
-	border: 1px solid #0080ff;
-	color: #0080ff;
+#profileSettingBtn { 
+	/*
+	#ff90b7;	
+	#fff4f8;
+	*/
+	border: 1px solid #ff90b7;
+	color:#ff90b7;
 	border-radius: 25px;
 	align-self: center;
 	padding: 10px 10px 7px 10px;
@@ -719,6 +723,27 @@ body, html {
 	font-weight: bold;
 	margin-right: 16px;
 	outline: none;
+	box-shadow: none;
+}
+
+#profileSettingBtn:hover {
+	background-color: #fff4f8;
+}
+
+/* profile Modal */
+
+#profileModalSubmit {
+	display: flex;
+	margin: 10px 15px;
+	padding: 10px 17px 10px 17px;
+	
+	border-radius: 25px;
+	font-size: 15px;
+	font-weight: bold;
+	outline: none;
+	background-color: #ff90b7; 
+	font-weight: bold; 
+	border: none;
 }
 
 #profileInfo {
@@ -732,6 +757,10 @@ body, html {
 	color: #657786;
 	font-weight: lighter;
 	margin: 0 5px 0 5px;
+}
+
+#profileValue {
+	margin: 0 5px;
 }
 
 #profileFw {
@@ -975,6 +1004,99 @@ body, html {
 .modal-footer {
 	display: flex;
 	justify-content: space-between;
+}
+
+#modalHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0px;
+}
+
+#pmLabel {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: 'TmoneyRoundWindRegular';
+	display: flex;
+	align-items: center;
+	margin: 10px;
+}
+
+#pmExitButton {
+	width: 20px;
+	height: 20px;
+	margin: 10px 20px;
+}
+
+#modalBody {
+	padding: 0px;
+}
+
+#pmBg{
+	display: flex;
+	justify-content: center;
+	background-color: #e0e0e0;
+	height: 150px;
+	width: 100%;
+	
+}
+
+#pmSetting {
+	display: flex;
+	flex-direction: column;
+	height: 50px;
+}
+
+#pmImage {
+	border: 5px solid white;
+	border-radius: 100px;
+	width: 115px;
+	height: 115px;
+	left: 30px;
+	position: relative;
+	bottom: 60px;
+	z-index: 3;
+}
+
+.pmInputContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 0px 20px;
+	margin-top: 40px;
+}
+
+.pmInputContainer:focus {
+	border: 2px solid #ff90b7;
+	outline-color: #ff90b7;
+}
+
+.pmInputContainer_2 {
+	display: flex;
+	flex-direction: column;
+	padding: 0px 20px;
+	margin-top: 40px; 
+	margin-bottom: 40px;
+}
+
+#pmNameCont {
+	background-color: #efefef;
+	border-bottom: 2px solid black;
+}
+
+#pmNameCont p {
+	font-size: 16px;
+	color: gray;
+	margin: 10px 0px 0px 10px;
+}
+
+#pmInputName {
+	font-size: 20px;
+	font-family: 'TmoneyRoundWindRegular';
+	margin: 10px 0px 0px 10px;
+	border: none;
+	background-color: transparent;
+	outline: none;
+	width: 530px;
 }
 
 /* search.jsp */

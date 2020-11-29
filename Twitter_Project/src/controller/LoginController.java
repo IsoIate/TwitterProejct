@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import command.Command;
 import dto.InfoDTO;
+import dto.ProfileDTO;
 import dao.TwitterDAO;
 
 public class LoginController implements Command {
@@ -28,9 +29,7 @@ public class LoginController implements Command {
 
 		TwitterDAO dao = new TwitterDAO();
 		InfoDTO info = dao.signIn(id, password);
-		
-		
-		// UserData user = dao.userData(year, month, day, follow, follower);
+		ProfileDTO pro = dao.selectProfile(id);
 		
 		if(info.getUser_num() != 0) {
 			nextPage = "home.jsp";
@@ -38,14 +37,7 @@ public class LoginController implements Command {
 			session.setAttribute("userPw", password);
 			
 			request.setAttribute("info", info);
-//			session.setAttribute("userNum",user.get(0));
-//			session.setAttribute("twitCount",user.get(1));
-//			session.setAttribute("follow",user.get(2));
-//			session.setAttribute("follower",user.get(3));
-//			session.setAttribute("madeYear",user.get(4));
-//			session.setAttribute("madeMonth",user.get(5));
-//			session.setAttribute("madeDay",user.get(6));
-			
+			request.setAttribute("profile", pro);
 			session.setAttribute("twits", dao.selectTwit(info.getUser_num()));	// 트윗 조회 후 가져오기
 		}
 		else nextPage = "loginError.jsp";

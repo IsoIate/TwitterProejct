@@ -6,11 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import command.Command;
+import dao.TwitterDAO;
 import dto.InfoDTO;
 import dto.ProfileDTO;
-import dao.TwitterDAO;
 
-public class ProfileController implements Command {
+public class ProfileUpdateController implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -20,16 +20,21 @@ public class ProfileController implements Command {
 		
 		String userId = (String) session.getAttribute("userId");
 		String userPw = (String) session.getAttribute("userPw");
-		
+		String nick = request.getParameter("inputName");
+		String profile = request.getParameter("inputProfile");
+
 		TwitterDAO dao = new TwitterDAO();
+		dao.profileUpdater(userId, nick, profile);
+		
 		InfoDTO info = dao.signIn(userId, userPw);
 		ProfileDTO pro = dao.selectProfile(userId);
 		
 		request.setAttribute("info", info);
 		request.setAttribute("profile", pro);
-		
 		request.setAttribute("twits", dao.selectTwit(info.getUser_num()));
-		RequestDispatcher dispatcher = request.getRequestDispatcher("./profile.jsp");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
 		dispatcher.forward(request, response);
 	}
+
 }

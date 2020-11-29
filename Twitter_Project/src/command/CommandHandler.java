@@ -17,6 +17,7 @@ public class CommandHandler {
 		command.put("fileUpload", "controller.FileUploadController");
 		command.put("search", "controller.SearchController");
 		command.put("tab", "controller.TabController");
+		command.put("update", "controller.ProfileUpdateController");
 //		command.put("home", "controller.HomeController");
 	}
 	

@@ -1,3 +1,4 @@
+<%@page import="dto.ProfileDTO"%>
 <%@ page import="dto.TwitDTO" %>
 <%@ page import="dto.InfoDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,13 +6,20 @@
 <%@	page import = "java.util.ArrayList" %>
 <%
 	InfoDTO info = null;
+	ProfileDTO pro = null;
 	Integer index = 0;
 	
 	Object object = request.getAttribute("info");
+	Object object_1 = request.getAttribute("profile");
+	
 	if(object != null) {
 		info = (InfoDTO) object;
 		index = info.getTwitCount();
 	}
+	if(object_1 != null) {
+		pro = (ProfileDTO) object_1;
+	}
+	
 	ArrayList<TwitDTO> array = (ArrayList) session.getAttribute("twits");
 %>
 <!DOCTYPE html>
@@ -121,7 +129,7 @@
 												<input type="hidden" name="twitnumber" value="<%= array.get(i).getTwitnumber() %>">
 													<div id="TLTwitInfo">
 														<div>
-															<span id="userNickname"><%= session.getAttribute("userId") %></span>
+															<span id="userNickname"><%= pro.getNickname() %></span>
 															<span id="userId"><%= "@" + session.getAttribute("userId") %></span>
 															<span id="twitTime"><%= "25분" %></span>
 														</div>
