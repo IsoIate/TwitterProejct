@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import command.Command;
 import dto.TwitDTO;
@@ -21,19 +22,25 @@ public class TwitWriteController implements Command {
 		HttpSession session = request.getSession();	
 		request.setCharacterEncoding("utf-8");
 		
-		String twit = request.getParameter("twit");
+		// 파일 업로드 관련
+		// String savePath = "C:/Users/50405/git/TwitterProject/Twitter_Project/WebContent/upload";
+		String savePath = request.getServletContext().getRealPath("upload");
+		int sizeLimit = 1024*1024*15;
+		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+		String fileName = multi.getFilesystemName("inputImage");
+		String filePathName = "./upload/" + fileName;
+		
+		System.out.println("file : " + "./upload/" + fileName);
+		
+		// 트윗 작성 관련
+		String twit = multi.getParameter("twit");
 		String userId = (String) session.getAttribute("userId");
-//		int userNum = (int) session.getAttribute("userNum");
+		
 		ArrayList<TwitDTO> twits = new ArrayList<>();
-		
 		TwitterDAO dao = new TwitterDAO();
-		session.setAttribute("twitCount", dao.insertTwit(twit, userId));
 		
-//		if(!session.getAttribute("twitCount").equals(0)) {
-//			twits = dao.selectTwit(userNum);
-//			session.setAttribute("twits", twits);
-//		}
-		
+		session.setAttribute("twitCount", dao.insertTwit(twit, userId, filePathName));
+
 		if(session.getAttribute("currentPage").equals("home")) {
 			response.sendRedirect("login.do");
 		}

@@ -20,7 +20,8 @@
 		pro = (ProfileDTO) object_1;
 	}
 	
-	ArrayList<TwitDTO> array = (ArrayList) session.getAttribute("twits");
+	ArrayList<TwitDTO> array = (ArrayList) request.getAttribute("twits");
+	/* System.out.println(array.get(1).getImage()); */
 %>
 <!DOCTYPE html>
 <html>
@@ -45,7 +46,7 @@
 					$("#homeTwitButton").attr("disabled", false);
 				}
 			}); 
-			
+				
 		});
 		$(function onEnterLogin(){
 			var keyCode = window.event.keyCode;	
@@ -53,6 +54,34 @@
 				loginForm.submit();
 			}
 		});
+		var InputImage = 
+			 (function loadImageFile() {
+			    if (window.FileReader) {
+					var ImagePre; 
+			        var ImgReader = new window.FileReader();
+			        var fileType = /^(?:image\/bmp|image\/gif|image\/jpeg|image\/png|image\/x\-xwindowdump|image\/x\-portable\-bitmap)$/i; 
+			 
+			        ImgReader.onload = function (Event) {
+			        	if (!ImagePre) {
+			                var newPreview = document.getElementById("imagePreview");
+			                ImagePre = new Image();
+			                
+			                newPreview.appendChild(ImagePre);
+			            }
+			            ImagePre.src = Event.target.result;  
+			        };
+			 
+			        return function () {
+			        	var img = document.getElementById("image").files; 
+			        	if (!fileType.test(img[0].type)) { 
+				        	alert("이미지 파일을 업로드 하세요"); 
+				            return; 
+			        	}
+			            ImgReader.readAsDataURL(img[0]);
+			        }
+			    }
+			        document.getElementById("imagePreview").src = document.getElementById("image").value;
+			})();
 	</script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -72,27 +101,28 @@
 			
 		<section class="hnSection">
 			<div class="homeSectionTop" >
-				<div>
+				<div class="homeTitleContainer">
 					<p id="homeText">홈</p>
 				</div>
-				<form action="write.do" method="post"> <!-- enctype="multipart/form-data" -->
+				<form action="write.do" method="post" enctype="multipart/form-data"> <!--  -->
 					<div class="hnLine">
 						<div class="homeInputArround">
 							<img src="./img/profile.png" id="homeProfileImg">
 							<div class="homeInput">
 								<div id="homeTwitDiv">
 									<textarea id="homeTwitWritePlace" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>
+									<div id="imagePreview"></div>
 								</div>
 								<div class="hometwc">
 									<div class="homeTwitIcon">
-									<!-- <div class="button" onclick="onclick=document.all.file.click()">
+									<div class="button" onclick="onclick=document.all.image.click()">
 										<img src="./img/img.png" id="icon">
 										<label>
-								        	<input type="file" name="file" style="display: none;">
-								        	
+								        	<!-- <input type="file" name="file" style="display: none;"> -->
+								        	<input id="image" type="file" name="inputImage" onchange="InputImage();" style="display: none;">
 								        </label>	
-								    </div> -->
-								        <img src="./img/img.png" id="icon">						        							
+								    </div>
+								        <!-- <img src="./img/img.png" id="icon"> -->						        							
 										<img src="./img/gif.png" id="icon">
 										<img src="./img/barchart.png" id="icon">
 										<img src="./img/smile.png" id="icon">
@@ -139,6 +169,8 @@
 													</div>
 													<div id="TLTwitText">
 														<input type="text" name="twitContent" id="twitContents" value="<%= array.get(i).getText() %>" disabled="disabled">
+														<%--<img id="homeImagePrint" src="./upload/EoCUL1UVcAEeG363.jpg">--%>
+														<img id="homeImagePrint" src="<%=array.get(i).getImage()%>"> 
 													</div>			
 													<div class="TLTwitButtons">
 														<img src="./img/img.png" id="TLButton">

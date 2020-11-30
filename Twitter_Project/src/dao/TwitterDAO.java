@@ -198,18 +198,18 @@ public class TwitterDAO {
 	}
 	
 	// 트윗 작성
-	public int insertTwit(String twit, String userId) {
+	public int insertTwit(String twit, String userId, String filePathName) {
 		int twits = 0;
 		
 		try {
 			
 			String user_Num = "SELECT USER_NUM FROM USER_LOGIN WHERE ID=?";
-			String insertTwit = "INSERT INTO twit (user_num, text, twittime) VALUE (?, ?, now())";
+			String insertTwit = "INSERT INTO twit (user_num, text, twittime, image) VALUE (?, ?, now(), ?)";
 			String twitCount = "SELECT count(user_num) twits FROM twit WHERE user_num=?";
 			String twitUpdate = "UPDATE user_info SET twitcount=? WHERE user_num=?";
 			int userNum = userNumExq(user_Num, userId);
 			
-			insertTwitEx(insertTwit, userNum, twit);	
+			insertTwitEx(insertTwit, userNum, twit, filePathName);	
 			twits = twitCounter(twitCount, userNum);
 			twitUpdater(twitUpdate, twits, userNum);
 			
@@ -257,11 +257,12 @@ public class TwitterDAO {
 		return user_num;
 	}
 
-	void insertTwitEx(String sql, int userNum, String text) {
+	void insertTwitEx(String sql, int userNum, String text, String filePathName) {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, userNum);
 			pstmt.setString(2, text);
+			pstmt.setString(3, filePathName);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -302,10 +303,10 @@ public class TwitterDAO {
 	
 	// 트윗 게시글 조회
 	public ArrayList<TwitDTO> selectTwit(int userNum) {
-		ArrayList<TwitDTO> twits = new ArrayList<>();
+		ArrayList<TwitDTO> twits = new ArrayList<TwitDTO>();
 
 		try {
-			String selectTwits = "SELECT TEXT, TWITNUMBER FROM twit WHERE USER_NUM=? ORDER BY twitnumber DESC";
+			String selectTwits = "SELECT TEXT, TWITNUMBER, IMAGE FROM twit WHERE USER_NUM=? ORDER BY twitnumber DESC";
 			
 			pstmt = conn.prepareStatement(selectTwits);
 			pstmt.setInt(1, userNum);
@@ -315,6 +316,7 @@ public class TwitterDAO {
 				TwitDTO dto = new TwitDTO();
 				dto.setText(rs.getString(1));
 				dto.setTwitnumber(rs.getInt(2));
+				dto.setImage(rs.getString(3));
 				twits.add(dto);
 			}
 			

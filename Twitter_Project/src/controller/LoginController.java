@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import command.Command;
 import dto.InfoDTO;
 import dto.ProfileDTO;
+import dto.TwitDTO;
 import dao.TwitterDAO;
 
 public class LoginController implements Command {
@@ -30,6 +31,7 @@ public class LoginController implements Command {
 		TwitterDAO dao = new TwitterDAO();
 		InfoDTO info = dao.signIn(id, password);
 		ProfileDTO pro = dao.selectProfile(id);
+		ArrayList<TwitDTO> twit = dao.selectTwit(info.getUser_num());
 		
 		if(info.getUser_num() != 0) {
 			nextPage = "home.jsp";
@@ -38,7 +40,8 @@ public class LoginController implements Command {
 			
 			request.setAttribute("info", info);
 			request.setAttribute("profile", pro);
-			session.setAttribute("twits", dao.selectTwit(info.getUser_num()));	// 트윗 조회 후 가져오기
+			request.setAttribute("twits", twit);	// 트윗 조회 후 가져오기
+			/* session.setAttribute("twits", ); */
 		}
 		else nextPage = "loginError.jsp";
 		
