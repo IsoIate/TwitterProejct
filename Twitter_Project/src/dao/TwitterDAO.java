@@ -198,6 +198,29 @@ public class TwitterDAO {
 	}
 	
 	// 트윗 작성
+		public int insertTwit(String twit, String userId) {
+			int twits = 0;
+			
+			try {
+				
+				String user_Num = "SELECT USER_NUM FROM USER_LOGIN WHERE ID=?";
+				String insertTwit = "INSERT INTO twit (user_num, text, twittime) VALUE (?, ?, now())";
+				String twitCount = "SELECT count(user_num) twits FROM twit WHERE user_num=?";
+				String twitUpdate = "UPDATE user_info SET twitcount=? WHERE user_num=?";
+				int userNum = userNumExq(user_Num, userId);
+				
+				insertTwitEx(insertTwit, userNum, twit);	
+				twits = twitCounter(twitCount, userNum);
+				twitUpdater(twitUpdate, twits, userNum);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return twits;
+		}
+	
+	// 트윗 작성 + 사진 첨부
 	public int insertTwit(String twit, String userId, String filePathName) {
 		int twits = 0;
 		
@@ -257,6 +280,18 @@ public class TwitterDAO {
 		return user_num;
 	}
 
+	void insertTwitEx(String sql, int userNum, String text) {
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNum);
+			pstmt.setString(2, text);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("insertTwitEx error");
+		}
+	}
+	
 	void insertTwitEx(String sql, int userNum, String text, String filePathName) {
 		try {
 			pstmt = conn.prepareStatement(sql);

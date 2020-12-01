@@ -26,20 +26,30 @@ public class TwitWriteController implements Command {
 		// String savePath = "C:/Users/50405/git/TwitterProject/Twitter_Project/WebContent/upload";
 		String savePath = request.getServletContext().getRealPath("upload");
 		int sizeLimit = 1024*1024*15;
-		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-		String fileName = multi.getFilesystemName("inputImage");
-		String filePathName = "./upload/" + fileName;
-		
-		System.out.println("file : " + "./upload/" + fileName);
-		
-		// 트윗 작성 관련
-		String twit = multi.getParameter("twit");
-		String userId = (String) session.getAttribute("userId");
+		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());;
 		
 		ArrayList<TwitDTO> twits = new ArrayList<>();
 		TwitterDAO dao = new TwitterDAO();
+		String userId = (String) session.getAttribute("userId");
 		
-		session.setAttribute("twitCount", dao.insertTwit(twit, userId, filePathName));
+		if(multi.getFilesystemName("inputImage") != null) {		
+			String fileName = multi.getFilesystemName("inputImage");
+			String filePathName = "./upload/" + fileName;
+			
+			System.out.println("file : " + "./upload/" + fileName);
+			
+			// 트윗 작성 관련
+			String twit = multi.getParameter("twit");
+			session.setAttribute("twitCount", dao.insertTwit(twit, userId, filePathName));
+		}
+		else {
+			// 트윗 작성 관련
+			String twit = multi.getParameter("twit");
+			
+			session.setAttribute("twitCount", dao.insertTwit(twit, userId));
+		}
+		
+		
 
 		if(session.getAttribute("currentPage").equals("home")) {
 			response.sendRedirect("login.do");

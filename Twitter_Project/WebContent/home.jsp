@@ -21,7 +21,7 @@
 	}
 	
 	ArrayList<TwitDTO> array = (ArrayList) request.getAttribute("twits");
-	/* System.out.println(array.get(1).getImage()); */
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -170,7 +170,10 @@
 													<div id="TLTwitText">
 														<input type="text" name="twitContent" id="twitContents" value="<%= array.get(i).getText() %>" disabled="disabled">
 														<%--<img id="homeImagePrint" src="./upload/EoCUL1UVcAEeG363.jpg">--%>
-														<img id="homeImagePrint" src="<%=array.get(i).getImage()%>"> 
+														<% if(array.get(i).getImage() == null || array.get(i).getImage().trim().isEmpty()) { %>
+														<% } else {%>
+															<img id="homeImagePrint" src="<%=array.get(i).getImage()%>"> 
+														<% } %>	
 													</div>			
 													<div class="TLTwitButtons">
 														<img src="./img/img.png" id="TLButton">

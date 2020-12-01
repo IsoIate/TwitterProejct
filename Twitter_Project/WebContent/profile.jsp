@@ -178,7 +178,8 @@
 												</div>
 											</div>
 											<div id="TLTwitText">
-												<%= array.get(i).getText() %>
+												<p id="twitContents"><%= array.get(i).getText() %></p>
+												<img id="homeImagePrint" src="<%=array.get(i).getImage()%>"> 
 											</div>			
 											<div class="TLTwitButtons">
 												<img src="./img/img.png" id="TLButton">
