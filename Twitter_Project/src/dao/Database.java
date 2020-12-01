@@ -66,6 +66,59 @@ public @interface Database {
 		  `follower` int(11) DEFAULT '0',
 		  PRIMARY KEY (`user_num`)
 	  );
+	  
+	  CREATE TABLE `user_login` (
+		`user_num` int NOT NULL AUTO_INCREMENT,
+		`id` varchar(30) NOT NULL,
+		`pw` varchar(45) NOT NULL,
+
+		PRIMARY KEY (`user_num`)
+);
+
+CREATE TABLE `user_info` (
+		`user_num` int NOT NULL AUTO_INCREMENT,
+		`email` varchar(40) NOT NULL,
+   		`twitcount` int default 0,
+		`madetime` timestamp default now(),
+
+		PRIMARY KEY (`user_num`)
+);
+
+CREATE TABLE `user_profile` (
+		`user_num` int NOT NULL AUTO_INCREMENT,
+		`nickname` varchar(45) DEFAULT NULL,
+		`profileImg` varchar(100) DEFAULT NULL,
+        `profile` varchar(140) DEFAULT 'Hello',
+
+		PRIMARY KEY (`user_num`)
+);
+
+CREATE TABLE `user_birthday` (
+		`user_num` int NOT NULL AUTO_INCREMENT,
+		`year` int DEFAULT NULL,
+		`month` int DEFAULT NULL,
+		`day` int DEFAULT NULL,
+
+		PRIMARY KEY (`user_num`)
+);
+
+CREATE TABLE `twit` (
+		`user_num` int,
+		`text` varchar(140) NOT NULL,
+        `image` varchar(200) default "",
+		`twittime` timestamp default now(),
+        `twitnumber`  int NOT NULL AUTO_INCREMENT,
+		PRIMARY KEY (`twitnumber`)
+);
+
+
+CREATE TABLE `user_fw` (
+	  `user_num` int(11) NOT NULL AUTO_INCREMENT,
+	  `follow` int(11) DEFAULT '0',
+	  `follower` int(11) DEFAULT '0',
+	  PRIMARY KEY (`user_num`)
+  );
+
 
 */
 }
