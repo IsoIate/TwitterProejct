@@ -515,9 +515,10 @@ body, html {
 }
 
 .hnAside {
-	width: 30%;
+	width: 20%;
 	height: 100%;
 	display: flex;
+	flex-direction: column;
 }
 
 #hnSearch {
@@ -525,7 +526,7 @@ body, html {
 	background-color: #efefef;
 	margin: 10px;
 	padding: 5px 10px 10px 15px;
-	width: 250px;
+	
 	height: 40px;
 	border-radius: 25px;
 }
@@ -540,7 +541,115 @@ body, html {
 	box-shadow: none;
 }
 
+.searchSide {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
 
+#trend {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 5px 10px;
+	border: none;
+	border-radius: 25px; 
+	background-color: #f3f4f5;
+}
+
+#trend :nth-child(n) {
+	padding-left: 10px;
+	font-family: 'TmoneyRoundWindRegular';
+}
+
+#trend h4 {
+	font-weight: bold;
+}
+
+#recommend {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 15px 10px 10px 10px;
+	border: none;
+	border-radius: 25px;
+	background-color: #f3f4f5;
+}
+
+#recommend :nth-child(n) {
+	padding-left: 10px;
+	font-family: 'TmoneyRoundWindRegular';
+}
+
+#recommend h4 {
+	font-weight: bold;
+}
+
+#trHeader {
+	border-bottom: 1px solid #e0e0e0;
+	margin: 10px 0px;
+}
+
+#trHeader h3 {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 5px 0px 15px 0px;
+}
+
+#trContext {
+	border-bottom: 1px solid #e0e0e0;
+	margin: 10px 0px;
+}
+
+#trContextF {
+	margin: 10px 0px;
+}
+
+#reContext {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	border-bottom: 1px solid #e0e0e0;
+	margin: 10px 0px; 
+}
+
+#reContextF {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin: 10px 0px;
+}
+
+#trImg {
+	border: none;
+	border-radius: 25px;
+	width: 50px;
+	height: 50px;
+	padding: 0px !important; 
+}
+
+.reFollow{
+	display: flex;	
+	padding-right: 10px;
+}
+
+#reFollowBtn{
+	height: 40px;
+	
+	justify-content: center;
+	align-self: center;
+	padding: 0px 15px !important;
+	background-color: transparent;
+	
+	font-size: 15px;
+	font-weight: bold;
+	color: #ff90b7;
+	  
+	border: 1px solid #ff90b7;
+	border-radius: 20px;
+	outline: none;
+	box-shadow: none;
+}
 
 /* home */
 
@@ -582,20 +691,31 @@ body, html {
 
 .homeInput {
 	display: flex;
+	flex-direction: row;
+
+}
+
+.homeLeft {
+	display: flex;
+}
+
+.homeRight {
+	display: flex;
 	flex-direction: column;
-	width: 85%;
+	width: 100%;
 }
 
 #homeTwitDiv {
 	display: flex;
 	flex-direction: column;
+	padding-left: 10px;
 }
 
 #homeTwitWritePlace {
 	
 	width: 100%;
-	margin: 10px 0 0 10px;
-	padding-top: 10px;
+	margin-top: 15px;
+	padding: 0px;
     resize: none;
     overflow-y: hidden; 
 	font-size: 18px;
@@ -654,6 +774,7 @@ body, html {
 
 .homeTwb{
 	display: flex;	
+	padding-right: 10px;
 }
 
 #homeTwitButton{
@@ -976,7 +1097,7 @@ body, html {
 #TLButton {
 	width: 18px;
 	height: 18px;
-	
+	cursor: pointer;
 }
 
 /* noTwit.jsp */
@@ -1145,6 +1266,18 @@ body, html {
 
 #pmImage {
 	border: 5px solid white;
+	border-radius: 100px;
+	width: 115px;
+	height: 115px;
+	left: 30px;
+	position: relative;
+	bottom: 60px;
+	z-index: 3;
+}
+
+#proImgPreview {
+	
+	
 	border-radius: 100px;
 	width: 115px;
 	height: 115px;

@@ -28,9 +28,9 @@
 			<section class="signUp_section">
 				<h3 id="signUp_comment">계정을 생성하세요</h3><br>
 				<div>
-					<input type="text" class="form-control" name="createId" value="<% out.println(id);%>"><br>
+					<input type="text" class="form-control" name="createId" value="<% out.println(id);%>" autocomplete=off><br>
 					<input type="password" class="form-control" name="createPw" placeholder="비밀번호 입력"><br>
-					<input class="form-control" name="createEmail" value="<% out.println(email); %>"><br>
+					<input class="form-control" name="createEmail" value="<% out.println(email); %>" autocomplete=off><br>
 					<input type="hidden" name="createDate" value="<% out.println(date); %>"><br>
 				</div>
 				<div id="signUp_comment">

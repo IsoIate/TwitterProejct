@@ -92,7 +92,7 @@
 			});
 		});
 		
-		var InputImage = 
+		var ProInputImage = 
 			 (function loadImageFile() {
 			    if (window.FileReader) {
 					var ImagePre; 
@@ -211,11 +211,11 @@
 												<% } %>	
 											</div>			
 											<div class="TLTwitButtons">
-												<img src="./img/img.png" id="TLButton">
-												<img src="./img/gif.png" id="TLButton">
-												<img src="./img/barchart.png" id="TLButton">
-												<img src="./img/smile.png" id="TLButton">
-												<img src="./img/event.png" id="TLButton">
+												<img src="./img/comment.png" id="TLButton">
+												<img src="./img/retweet.png" id="TLButton" style="height: 15px;">
+												<img src="./img/heart.png" id="TLButton">
+												<img src="./img/upload.png" id="TLButton">
+												<img src="./img/analytics.png" id="TLButton">
 												<p id="TLButton" style="margin: 0px;"></p>
 											</div>
 										</div>
@@ -235,12 +235,84 @@
 					<i id="hnSearchImg" class="fa fa-search fa-2x"></i>
 					<input type="text" class="form-control" id="hnSearchText" name="searchContext" placeholder="트위터 검색" autocomplete=off>
 					<input type="submit" hidden="hidden">
-				
+			</div>
+			<div class="searchSide">
+				<div id="recommend">
+					<div id="trHeader">
+						<h3>팔로우 추천</h3>
+					</div>
+					<div id="reContext">
+						<div>
+							<img src="./img/profile.png" id="trImg">
+						</div>
+						<div>
+							<h4>Honam</h4>
+							<p>@honam</p>
+						</div>
+						<div class="reFollow">
+							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
+						</div>
+					</div>
+					<div id="reContext">
+						<div>
+							<img src="./img/profile.png" id="trImg">
+						</div>
+						<div>
+							<h4>Honam</h4>
+							<p>@honam</p>
+						</div>
+						<div class="reFollow">
+							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
+						</div>
+					</div>
+					<div id="reContextF">
+						<div>
+							<img src="./img/profile.png" id="trImg">
+						</div>
+						<div>
+							<h4>Honam</h4>
+							<p>@honam</p>
+						</div>
+						<div class="reFollow">
+							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
+						</div>
+					</div>
+				</div>
+				<div id="trend">
+					<div id="trHeader">
+						<h3>나를 위한 트렌드</h3>
+					</div>
+					<div id="trContext">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+					<div id="trContext">
+						<h4>#헐왓챠에_해리포터</h4>
+						<p>전 시리즈는 왓챠에서 감상하세요!</p>
+						<p>watch.kr님이 프로모션 함</p>
+					</div>
+					<div id="trContext">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+					<div id="trContext">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+					<div id="trContextF">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+				</div>
 			</div>
 			</form>
 		</aside>
 		
-		<!-- Modal -->
+		<!-- 프로필 설정 클릭시 나오는 모달 -->
 			<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 			    	<div class="modal-content">
@@ -257,9 +329,10 @@
 									
 									<div class="button" onclick="onclick=document.all.pmImgInput.click()">
 										<img src="./img/profile.png" id="pmImage">
+<!-- 프로필사진 변경 구현하기 -->
 										<div id="proImgPreview"></div>
 										<label>
-								        	<input id="pmImgInput" type="file" name="inputImage" onchange="InputImage();" style="display: none;">
+								        	<input id="pmImgInput" type="file" name="inputImage" onchange="ProInputImage();" style="display: none;">
 								        </label>	
 								    </div>
 								    
@@ -285,6 +358,7 @@
 			  	</div>
 			</div>
 			
+			<!-- 이미지 클릭시 나오는 모달 -->
 			<div class="modal fade" id="ImgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 			  		<div class="modal-content">
@@ -296,7 +370,7 @@
 					      	 <div class="modal-body" id="modalImageContainer">
 					      	    <% for(int i = 0; i < index; i++) { %>
 					        		<% if (array.get(i).getImage() != null || !(array.get(i).getImage().trim().isEmpty())) { %>
-					        			
+<!-- 이미지 한장씩 출력되도록 구현하기 -->
 										<img id="modalImagePrint" src="<%= array.get(i).getImage() %>">
 										
 									<% } %>	

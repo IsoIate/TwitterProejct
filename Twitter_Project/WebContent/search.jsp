@@ -54,12 +54,12 @@
 					<form action="search.do" method="post" name="searchForm" id="searchForm">
 						<div id="searchInput" onkeydown="javascript:onEnterSearch();">
 							<i id="hnSearchImg" class="fa fa-search fa-2x"></i>
-							<input type="text" class="form-control" id="searchContext" name="searchContext" placeholder="트위터 검색" autocomplete=off>
+							<input type="text" class="form-control" id="searchContext" name="searchContext" value="<%= input %>" autocomplete=off>
 							<input type="submit" hidden="hidden">
 						</div>
 					</form>
 					<div id="searchBack">
-						<a href="login.do" id="searchA"><img id="searchMoreButton" src="./img/ellipsis_1.png"></a>
+						<a href="#" id="searchA"><img id="searchMoreButton" src="./img/ellipsis_1.png"></a>
 					</div>
 				</div>
 				<!-- <form action="search.do" method="post"> -->
@@ -116,12 +116,85 @@
 		</section>		
 		<aside class="hnAside" onkeydown="javascript:onEnterSearch();">
 			<form action="search.do" method="post" name="searchForm">
-			<div id="hnSearch">
-					<i id="hnSearchImg" class="fa fa-search fa-2x"></i>
-					<input type="text" class="form-control" id="hnSearchText" name="searchContext" placeholder="트위터 검색" autocomplete=off>
-					<input type="submit" hidden="hidden">
-			</div>
+				<div id="hnSearch">
+						<i id="hnSearchImg" class="fa fa-search fa-2x"></i>
+						<input type="text" class="form-control" id="hnSearchText" name="searchContext" placeholder="트위터 검색" autocomplete=off>
+						<input type="submit" hidden="hidden">
+				</div>
 			</form>
+			<div class="searchSide">
+				<div id="recommend">
+					<div id="trHeader">
+						<h3>팔로우 추천</h3>
+					</div>
+					<div id="reContext">
+						<div>
+							<img src="./img/profile.png" id="trImg">
+						</div>
+						<div>
+							<h4>Honam</h4>
+							<p>@honam</p>
+						</div>
+						<div class="reFollow">
+							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
+						</div>
+					</div>
+					<div id="reContext">
+						<div>
+							<img src="./img/profile.png" id="trImg">
+						</div>
+						<div>
+							<h4>Honam</h4>
+							<p>@honam</p>
+						</div>
+						<div class="reFollow">
+							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
+						</div>
+					</div>
+					<div id="reContextF">
+						<div>
+							<img src="./img/profile.png" id="trImg">
+						</div>
+						<div>
+							<h4>Honam</h4>
+							<p>@honam</p>
+						</div>
+						<div class="reFollow">
+							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
+						</div>
+					</div>
+				</div>
+				<div id="trend">
+					<div id="trHeader">
+						<h3>나를 위한 트렌드</h3>
+					</div>
+					<div id="trContext">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+					<div id="trContext">
+						<h4>#헐왓챠에_해리포터</h4>
+						<p>전 시리즈는 왓챠에서 감상하세요!</p>
+						<p>watch.kr님이 프로모션 함</p>
+					</div>
+					<div id="trContext">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+					<div id="trContext">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+					<div id="trContextF">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+				</div>
+			</div>
 		</aside>
 		
 		

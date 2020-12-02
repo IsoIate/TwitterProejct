@@ -20,7 +20,7 @@
 				  $(this).height(1).height( $(this).prop('scrollHeight')+20 );
 			}); */
 			
-			$('#wtTwit').ready(function() {
+			$('#wtTwit').ready(function() {								// 스크롤 크기 자동조절
 				$('#wtTwit').on( 'keyup', '#wtArea', function (e){
 			    	$(this).css('height', 'auto' );
 			    	$(this).height( this.scrollHeight );
@@ -40,19 +40,19 @@
 				$(this).find('#navModal')[0].reset();
 			});
 			
-			$('#navButton').click(function(){
+			$('#navButton').click(function(){							// 클릭시 글자 수 0부터 시작
 				var content = $('#wtArea').val();
-			    $('#navCounter').html("("+ content.length + " / 최대 140자)");    //글자수 실시간 카운팅
+			    $('#navCounter').html("("+ content.length + " / 최대 140자)");    
 			});
 
-			$("#wtButton").submit(function(){
+			$("#wtButton").submit(function(){							
 				document.form_chk.action = "${TwitWriteController}";
 				document.form_chk.submit();				 
 			});
 
-			$('#wtArea').keyup(function (e){
+			$('#wtArea').keyup(function (e){							// 글자수 실시간 카운팅
 			    var content = $(this).val();
-			    $('#navCounter').html("("+ content.length + " / 최대 140자)");    //글자수 실시간 카운팅
+			    $('#navCounter').html("("+ content.length + " / 최대 140자)");    
 
 			    if (content.length > 140){
 			        alert("최대 140자까지 입력 가능합니다.");

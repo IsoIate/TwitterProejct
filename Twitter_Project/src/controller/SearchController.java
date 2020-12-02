@@ -20,6 +20,9 @@ public class SearchController implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		
 		TwitterDAO dao = new TwitterDAO();
 		String searchInput = request.getParameter("searchContext");
 		

@@ -22,7 +22,7 @@
 		</div>
 		<div id="pwResetInputBox">
 			<form action="pwReset.do" method="post">
-				<input type="text" name="searchE" class="form-control" id="pwResetInput">
+				<input type="text" name="searchE" class="form-control" id="pwResetInput" autocomplete=off>
 				<div class="signUp_select">
 					<select class="form-control" id="selectMonth" name="searchM">
 						<option>월</option>
@@ -65,7 +65,7 @@
 		</div>
 		<div id="pwResetInputBox">
 			<form action="searchID.do" method="post">
-				<input type="text" name="searchId" class="form-control" id="pwResetInput">
+				<input type="text" name="searchId" class="form-control" id="pwResetInput" autocomplete=off>
 				<input type="submit" class="btn btn-info btn-sm" value="검색" id="pwResetSubmit">
 			</form>
 		</div>
@@ -106,8 +106,8 @@
 		<div id="pwResetInputBox">
 			<h3 id="pwResetT3">두 비밀번호가 서로 다릅니다.</h3>
 			<form action="pwChange.do" method="post">
-				<input type="text" name="newPw" class="form-control" id="pwResetInput" placeholder="새 비밀번호">
-				<input type="text" name="newPwRepeat" class="form-control" id="pwResetInput" placeholder="새 비밀번호 확인">
+				<input type="password" name="newPw" class="form-control" id="pwResetInput" placeholder="새 비밀번호">
+				<input type="password" name="newPwRepeat" class="form-control" id="pwResetInput" placeholder="새 비밀번호 확인">
 				<input type="submit" class="btn btn-info btn-sm" value="변경" id="pwResetSubmit">
 			</form>
 		</div>
@@ -121,7 +121,7 @@
 		</div>
 		<div id="pwResetInputBox">
 			<form action="searchID.do" method="post">
-				<input type="text" name="searchId" class="form-control" id="pwResetInput">
+				<input type="text" name="searchId" class="form-control" id="pwResetInput" autocomplete=off>
 				<input type="submit" class="btn btn-info btn-sm" value="검색" id="pwResetSubmit">
 			</form>
 		</div>

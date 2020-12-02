@@ -107,31 +107,35 @@
 				<form action="write.do" method="post" enctype="multipart/form-data"> <!--  -->
 					<div class="hnLine">
 						<div class="homeInputArround">
-							<img src="./img/profile.png" id="homeProfileImg">
-							<div class="homeInput">
-								<div id="homeTwitDiv">
-									<textarea id="homeTwitWritePlace" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>
-									<div id="homeImgPreview"></div>
+							
+								<div class="homeLeft">
+									<img src="./img/profile.png" id="homeProfileImg">
 								</div>
-								<div class="hometwc">
-									<div class="homeTwitIcon">
-									<div class="button" onclick="onclick=document.all.image.click()">
-										<img src="./img/img.png" id="icon">
-										<label>
-								        	<!-- <input type="file" name="file" style="display: none;"> -->
-								        	<input id="image" type="file" name="inputImage" onchange="HomeImputImg();" style="display: none;">
-								        </label>	
-								    </div>
-								        <!-- <img src="./img/img.png" id="icon"> -->						        							
-										<img src="./img/gif.png" id="icon">
-										<img src="./img/barchart.png" id="icon">
-										<img src="./img/smile.png" id="icon">
-										<img src="./img/event.png" id="icon">
+								<div class="homeRight">
+									<div id="homeTwitDiv">
+										<textarea id="homeTwitWritePlace" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>
+										<div id="homeImgPreview"></div>
 									</div>
-									<div class="homeTwb">
-										<input type="submit" value="트윗" class="btn btn-info" id="homeTwitButton" disabled="disabled">
+									<div class="hometwc">
+										<div class="homeTwitIcon">
+										<div class="button" onclick="onclick=document.all.image.click()">
+											<img src="./img/img.png" id="icon">
+											<label>
+									        	<!-- <input type="file" name="file" style="display: none;"> -->
+									        	<input id="image" type="file" name="inputImage" onchange="HomeImputImg();" style="display: none;">
+									        </label>	
+									    </div>
+									        <!-- <img src="./img/img.png" id="icon"> -->						        							
+											<img src="./img/gif.png" id="icon">
+											<img src="./img/barchart.png" id="icon">
+											<img src="./img/smile.png" id="icon">
+											<img src="./img/event.png" id="icon">
+										</div>
+										<div class="homeTwb">
+											<input type="submit" value="트윗" class="btn btn-info" id="homeTwitButton" disabled="disabled">
+										</div>
 									</div>
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -177,11 +181,11 @@
 														
 													</div>			
 													<div class="TLTwitButtons">
-														<img src="./img/img.png" id="TLButton">
-														<img src="./img/gif.png" id="TLButton">
-														<img src="./img/barchart.png" id="TLButton">
-														<img src="./img/smile.png" id="TLButton">
-														<img src="./img/event.png" id="TLButton">
+														<img src="./img/comment.png" id="TLButton">
+														<img src="./img/retweet.png" id="TLButton" style="height: 15px;">
+														<img src="./img/heart.png" id="TLButton">
+														<img src="./img/upload.png" id="TLButton">
+														<img src="./img/analytics.png" id="TLButton">
 														<p id="TLButton" style="margin: 0px;"></p>
 													</div>
 												</form>
@@ -196,23 +200,96 @@
 		</section>
 	
 		<aside class="hnAside" onkeydown="javascript:onEnterLogin();">
-			<form action="search.do" method="post" name="searchEnter">
-			<div id="hnSearch">
-				
-					<i id="hnSearchImg" class="fa fa-search fa-2x"></i>
-					<input type="text" class="form-control" id="hnSearchText" name="searchContext" placeholder="트위터 검색" autocomplete=off>
-					<input type="submit" hidden="hidden">
-				
+			<div class="searchContainer">
+				<form action="search.do" method="post" name="searchEnter">
+					<div id="hnSearch">
+						
+							<i id="hnSearchImg" class="fa fa-search fa-2x"></i>
+							<input type="text" class="form-control" id="hnSearchText" name="searchContext" placeholder="트위터 검색" autocomplete=off>
+							<input type="submit" hidden="hidden">
+					</div>
+				</form>
 			</div>
-			</form>
+			<div class="searchSide">
+				<div id="trend">
+					<div id="trHeader">
+						<h3>나를 위한 트렌드</h3>
+					</div>
+					<div id="trContext">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+					<div id="trContext">
+						<h4>#헐왓챠에_해리포터</h4>
+						<p>전 시리즈는 왓챠에서 감상하세요!</p>
+						<p>watch.kr님이 프로모션 함</p>
+					</div>
+					<div id="trContext">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+					<div id="trContext">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+					<div id="trContextF">
+						<p>대한민국에서 트렌드 중</p>
+						<h4>#호남대학교</h4>
+						<p>3,000 트윗</p>
+					</div>
+				</div>
+				<div id="recommend">
+					<div id="trHeader">
+						<h3>팔로우 추천</h3>
+					</div>
+					<div id="reContext">
+						<div>
+							<img src="./img/profile.png" id="trImg">
+						</div>
+						<div>
+							<h4>Honam</h4>
+							<p>@honam</p>
+						</div>
+						<div class="reFollow">
+							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
+						</div>
+					</div>
+					<div id="reContext">
+						<div>
+							<img src="./img/profile.png" id="trImg">
+						</div>
+						<div>
+							<h4>Honam</h4>
+							<p>@honam</p>
+						</div>
+						<div class="reFollow">
+							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
+						</div>
+					</div>
+					<div id="reContextF">
+						<div>
+							<img src="./img/profile.png" id="trImg">
+						</div>
+						<div>
+							<h4>Honam</h4>
+							<p>@honam</p>
+						</div>
+						<div class="reFollow">
+							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
+						</div>
+					</div>
+				</div>
+			</div>
 		</aside>
 		
 		<div class="modal fade" id="ImgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 			  		<div class="modal-content">
 			      		<div class="modal-header">
-			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        		<h4 class="modal-title" id="myModalLabel">이미지 원본보기</h4>
+			      			<button type="reset" data-dismiss="modal" id="modalCloseBtn"><img src="./img/exit.png" id="wtExitButton"></button>
 			     	 	</div>
 			     	 	<% if(info.getTwitCount() != 0) { %>
 					      	 <div class="modal-body" id="modalImageContainer">
