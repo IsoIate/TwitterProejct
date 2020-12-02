@@ -1194,6 +1194,36 @@ body, html {
 	margin: 5px 20px 40px 0px;
 }
 
+#modalImageContainer {  
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	margin: 0px;	
+	
+	
+}
+
+#modalImagePrint {
+	/* display: flex;
+	justify-content: center;
+	margin: 10px;
+	background-size: cover; */
+	
+	
+	
+	border-radius: 15px;
+	object-fit: cover; 
+	
+	
+	max-width: 100%;
+	max-height: 100%;
+	
+}
+
+
+
+
 /* search.jsp */
 
 .searchDiv {
@@ -1310,10 +1340,9 @@ body, html {
 	align-items: stretch;
 }
 
-.searchTimeline {
+.searchTimeline { 
 	display: flex;
 	flex-direction: row;
-	height: 90px;
 
 	border: 1px solid #e0e0e0;
 	border-top: none;

@@ -458,7 +458,7 @@ public class TwitterDAO {
 	
 	// 인기순 트윗 검색
 	public ArrayList<TwitDTO> searchPop(String input) {
-		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE text LIKE CONCAT ('%', ? , '%') AND user_login.user_num = twit.user_num ORDER BY rand()";
+		String sql = "SELECT user_login.id, text, twit.image, twittime FROM user_login, twit WHERE text LIKE CONCAT ('%', ? , '%') AND user_login.user_num = twit.user_num ORDER BY rand()";
 		ArrayList<TwitDTO> searchResult = new ArrayList<TwitDTO>();
 		SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
 		String temp = null;
@@ -476,8 +476,9 @@ public class TwitterDAO {
 				login.setId(rs.getString(1));				// 유저 아이디
 				twit.setLoginDTO(login);
 				twit.setText(rs.getString(2));				// 유저 트윗
-
-				Date tempDate = rs.getDate(3);
+				twit.setImage(rs.getString(3));				// 유저 이미지
+				
+				Date tempDate = rs.getDate(4);
 				twit.setTwittime(tempDate);					// 트윗 작성일자
 				searchResult.add(twit);						// ArrayList타입으로 반환
 			}
@@ -490,7 +491,7 @@ public class TwitterDAO {
 	
 	// 최신순 트윗 검색
 	public ArrayList<TwitDTO> searchLate(String input) {
-		String sql = "SELECT user_login.id, text, twittime FROM user_login, twit WHERE text LIKE  concat ('%', ?, '%') AND user_login.user_num = twit.user_num ORDER BY twittime DESC";
+		String sql = "SELECT user_login.id, text, twit.image, twittime FROM user_login, twit WHERE text LIKE  concat ('%', ?, '%') AND user_login.user_num = twit.user_num ORDER BY twittime DESC";
 
 		ArrayList<TwitDTO> searchResult = new ArrayList<TwitDTO>();
 		SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
@@ -509,8 +510,9 @@ public class TwitterDAO {
 				login.setId(rs.getString(1));				// 유저 아이디
 				twit.setLoginDTO(login);
 				twit.setText(rs.getString(2));				// 유저 트윗
-
-				Date tempDate = rs.getDate(3);
+				twit.setImage(rs.getString(3));				// 유저 이미지
+				
+				Date tempDate = rs.getDate(4);
 				twit.setTwittime(tempDate);					// 트윗 작성일자
 				searchResult.add(twit);						// ArrayList타입으로 반환
 			}

@@ -93,6 +93,10 @@
 								</div>
 								<div id="TLTwitText">
 									<input type="text" name="twitContent" id="twitContents" value="<%= dto.get(i).getText() %>" disabled="disabled">
+									<% if(dto.get(i).getImage() == null || dto.get(i).getImage().trim().isEmpty()) { %>
+									<% } else {%>
+										<img id="homeImagePrint" src="<%=dto.get(i).getImage()%>" data-toggle="modal" data-target="#ImgModal"> 
+									<% } %>	
 								</div>			
 								<div class="TLTwitButtons">
 									<img src="./img/img.png" id="TLButton">

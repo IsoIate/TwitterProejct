@@ -179,7 +179,10 @@
 											</div>
 											<div id="TLTwitText">
 												<p id="twitContents"><%= array.get(i).getText() %></p>
-												<img id="homeImagePrint" src="<%=array.get(i).getImage()%>"> 
+												<% if(array.get(i).getImage() == null || array.get(i).getImage().trim().isEmpty()) { %>
+												<% } else {%>
+													<img id="homeImagePrint" src="<%=array.get(i).getImage()%>" data-toggle="modal" data-target="#ImgModal"> 
+												<% } %>	
 											</div>			
 											<div class="TLTwitButtons">
 												<img src="./img/img.png" id="TLButton">
@@ -244,6 +247,28 @@
 						        <div id="counter_1">(0 / 최대 140자)</div>
 				      		</div>
 			      		</form>
+			    	</div>
+			  	</div>
+			</div>
+			
+			<div class="modal fade" id="ImgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+			  		<div class="modal-content">
+			      		<div class="modal-header">
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        		<h4 class="modal-title" id="myModalLabel">이미지 원본보기</h4>
+			     	 	</div>
+			     	 	<% if(info.getTwitCount() != 0) { %>
+					      	 <div class="modal-body" id="modalImageContainer">
+					      	    <% for(int i = 0; i < index; i++) { %>
+					        		<% if (array.get(i).getImage() != null || !(array.get(i).getImage().trim().isEmpty())) { %>
+					        			
+										<img id="modalImagePrint" src="<%= array.get(i).getImage() %>">
+										
+									<% } %>	
+								<% } %>
+					      	 </div>
+			      		<% } %>
 			    	</div>
 			  	</div>
 			</div>

@@ -61,6 +61,35 @@
 			    }
 			});
 		});
+		
+		var InputImage = 
+			 (function loadImageFile() {
+			    if (window.FileReader) {
+					var ImagePre; 
+			        var ImgReader = new window.FileReader();
+			        var fileType = /^(?:image\/bmp|image\/gif|image\/jpeg|image\/png|image\/x\-xwindowdump|image\/x\-portable\-bitmap)$/i; 
+			 
+			        ImgReader.onload = function (Event) {
+			        	if (!ImagePre) {
+			                var newPreview = document.getElementById("imagePreview");
+			                ImagePre = new Image();
+			                
+			                newPreview.appendChild(ImagePre);
+			            }
+			            ImagePre.src = Event.target.result;  
+			        };
+			 
+			        return function () {
+			        	var img = document.getElementById("navImage").files; 
+			        	if (!fileType.test(img[0].type)) { 
+				        	alert("이미지 파일을 업로드 하세요"); 
+				            return; 
+			        	}
+			            ImgReader.readAsDataURL(img[0]);
+			        }
+			    }
+			        document.getElementById("imagePreview").src = document.getElementById("navImage").value;
+			})();
 	</script>
 </head>
 <body style="width:100%; height:100%;">
@@ -104,14 +133,21 @@
 								</div>
 							</section>
 							<section class="wtRight">
-								<form action="write.do" method="post" id="navModal">
+								<form action="write.do" method="post" id="navModal" enctype="multipart/form-data">
 									<div id="wtTwit">
 										<textarea id="wtArea" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>
+										<div id="imagePreview"></div>
 										<div id="navCounter">(0 / 최대 40자)</div>				
 									</div>
 									<div id="wtBot">
 								        <div class="wtTwitIcon">
-											<img src="./img/img.png" id="icon">
+											<div class="button" onclick="onclick=document.all.navImage.click()">
+												<img src="./img/img.png" id="icon">
+												<label>
+										        	<!-- <input type="file" name="file" style="display: none;"> -->
+										        	<input id="navImage" type="file" name="inputImage" onchange="InputImage();" style="display: none;">
+										        </label>	
+										    </div>
 											<img src="./img/gif.png" id="icon">
 											<img src="./img/barchart.png" id="icon">
 											<img src="./img/smile.png" id="icon">
