@@ -54,7 +54,7 @@
 				loginForm.submit();
 			}
 		});
-		var InputImage = 
+		var HomeImputImg = 
 			 (function loadImageFile() {
 			    if (window.FileReader) {
 					var ImagePre; 
@@ -119,7 +119,7 @@
 										<img src="./img/img.png" id="icon">
 										<label>
 								        	<!-- <input type="file" name="file" style="display: none;"> -->
-								        	<input id="image" type="file" name="inputImage" onchange="InputImage();" style="display: none;">
+								        	<input id="image" type="file" name="inputImage" onchange="HomeImputImg();" style="display: none;">
 								        </label>	
 								    </div>
 								        <!-- <img src="./img/img.png" id="icon"> -->						        							

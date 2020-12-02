@@ -605,6 +605,30 @@ body, html {
     outline: none;
 }
 
+#homeImgPreview { 
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	margin: 1% 0px;
+	
+	
+	width: 97%;
+	height: 40%;
+	
+	max-height: 310px;
+}
+
+#homeImgPreview img {
+	border-radius: 15px;
+	object-fit: cover; 
+	object-position: 25% 25%;
+	
+	max-width: 100% !important;
+	
+	height: 280px !important;
+}
+
 .hometwc{
 	display: flex;
 	justify-content: space-between;
@@ -911,7 +935,7 @@ body, html {
 	
 }
 
-#imagePreview {
+#imagePreview { 
 	display: flex;
 	flex-direction: column;
 	position: relative;
