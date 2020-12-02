@@ -26,7 +26,7 @@ public class TwitWriteController implements Command {
 		// String savePath = "C:/Users/50405/git/TwitterProject/Twitter_Project/WebContent/upload";
 		String savePath = request.getServletContext().getRealPath("upload");
 		int sizeLimit = 1024*1024*15;
-		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());;
+		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
 		
 		ArrayList<TwitDTO> twits = new ArrayList<>();
 		TwitterDAO dao = new TwitterDAO();

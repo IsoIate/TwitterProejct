@@ -95,6 +95,7 @@
 									<input type="text" name="twitContent" id="twitContents" value="<%= dto.get(i).getText() %>" disabled="disabled">
 									<% if(dto.get(i).getImage() == null || dto.get(i).getImage().trim().isEmpty()) { %>
 									<% } else {%>
+									<!-- 모달 작업 전 -->
 										<img id="homeImagePrint" src="<%=dto.get(i).getImage()%>" data-toggle="modal" data-target="#ImgModal"> 
 									<% } %>	
 								</div>			
@@ -122,6 +123,9 @@
 			</div>
 			</form>
 		</aside>
+		
+		
+		
 	</div>
 </body>
 </html>

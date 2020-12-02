@@ -63,7 +63,7 @@
 			 
 			        ImgReader.onload = function (Event) {
 			        	if (!ImagePre) {
-			                var newPreview = document.getElementById("imagePreview");
+			                var newPreview = document.getElementById("homeImgPreview");
 			                ImagePre = new Image();
 			                
 			                newPreview.appendChild(ImagePre);
@@ -80,7 +80,7 @@
 			            ImgReader.readAsDataURL(img[0]);
 			        }
 			    }
-			        document.getElementById("imagePreview").src = document.getElementById("image").value;
+			        document.getElementById("homeImgPreview").src = document.getElementById("image").value;
 			})();
 	</script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -111,7 +111,7 @@
 							<div class="homeInput">
 								<div id="homeTwitDiv">
 									<textarea id="homeTwitWritePlace" name="twit" placeholder="무슨 일이 일어나고 있나요?"></textarea>
-									<div id="imagePreview"></div>
+									<div id="homeImgPreview"></div>
 								</div>
 								<div class="hometwc">
 									<div class="homeTwitIcon">
@@ -172,8 +172,9 @@
 														<%--<img id="homeImagePrint" src="./upload/EoCUL1UVcAEeG363.jpg">--%>
 														<% if(array.get(i).getImage() == null || array.get(i).getImage().trim().isEmpty()) { %>
 														<% } else {%>
-															<img id="homeImagePrint" src="<%=array.get(i).getImage()%>"> 
+															<img id="homeImagePrint" src="<%=array.get(i).getImage()%>" data-toggle="modal" data-target="#ImgModal"> 
 														<% } %>	
+														
 													</div>			
 													<div class="TLTwitButtons">
 														<img src="./img/img.png" id="TLButton">
@@ -205,6 +206,29 @@
 			</div>
 			</form>
 		</aside>
+		
+		<div class="modal fade" id="ImgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+			  		<div class="modal-content">
+			      		<div class="modal-header">
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        		<h4 class="modal-title" id="myModalLabel">이미지 원본보기</h4>
+			     	 	</div>
+			     	 	<% if(info.getTwitCount() != 0) { %>
+					      	 <div class="modal-body" id="modalImageContainer">
+					      	    <% for(int i = 0; i < index; i++) { %>
+					        		<% if (array.get(i).getImage() != null || !(array.get(i).getImage().trim().isEmpty())) { %>
+					        			
+										<img id="modalImagePrint" src="<%= array.get(i).getImage() %>">
+										
+									<% } %>	
+								<% } %>
+					      	 </div>
+			      		<% } %>
+			    	</div>
+			  	</div>
+			</div>
+		
 	</div>
 </body>
 </html>

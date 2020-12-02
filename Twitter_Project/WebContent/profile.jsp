@@ -92,6 +92,32 @@
 			});
 		});
 		
+		var InputImage = 
+			 (function loadImageFile() {
+			    if (window.FileReader) {
+					var ImagePre; 
+			        var ImgReader = new window.FileReader();
+			        var fileType = /^(?:image\/bmp|image\/gif|image\/jpeg|image\/png|image\/x\-xwindowdump|image\/x\-portable\-bitmap)$/i; 
+			 
+			        ImgReader.onload = function (Event) {
+			        	if (!ImagePre) {
+			                var newPreview = document.getElementById("proImgPreview");
+			                ImagePre = new Image();
+			                
+			                newPreview.appendChild(ImagePre);
+			            }
+			            ImagePre.src = Event.target.result;  
+			        };
+			 
+			        return function () {
+			        	var img = document.getElementById("pmImgInput").files; 
+			        	
+			            ImgReader.readAsDataURL(img[0]);
+			        }
+			    }
+			        document.getElementById("proImgPreview").src = document.getElementById("pmImgInput").value;
+			})();
+		
 	</script>
 </head>
 <body>
@@ -119,7 +145,7 @@
 					<div id="profileBg"></div>
 					<div id="profileSetting">
 						<div id="profileSettool">
-							<img src="./img/profile.png" id="profileImage">
+							<img src="<%= pro.getImg() %>" id="profileImage">
 							<button type="button" id="profileSettingBtn" class="btn btn-default" data-toggle="modal" data-target="#profileModal">프로필 설정하기</button>
 						</div>
 						<div id="profileInfo">
@@ -218,7 +244,7 @@
 			<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 			    	<div class="modal-content">
-			    		<form action="update.do" method="post" id="modalForm">
+			    		<form action="update.do" method="post" id="modalForm" enctype="multipart/form-data">
 			      			<div class="modal-header" id="modalHeader">
 			        			<button type="reset" data-dismiss="modal" id="modalCloseBtn"><img src="./img/exit.png" id="pmExitButton"></button>
 			        			<p id="pmLabel">프로필 수정</p>
@@ -228,7 +254,15 @@
 					      		<div class="profileSectionMid">
 									<div id="pmBg"></div>
 									<div id="pmSetting">
+									
+									<div class="button" onclick="onclick=document.all.pmImgInput.click()">
 										<img src="./img/profile.png" id="pmImage">
+										<div id="proImgPreview"></div>
+										<label>
+								        	<input id="pmImgInput" type="file" name="inputImage" onchange="InputImage();" style="display: none;">
+								        </label>	
+								    </div>
+								    
 									</div>
 								</div>
 						        <div class="pmInputContainer">

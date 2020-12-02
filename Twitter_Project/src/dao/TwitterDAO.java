@@ -598,4 +598,22 @@ public class TwitterDAO {
 			System.out.println("profileUpdater error");
 		}
 	}
+	
+	public void profileUpdater(String userId, String nickname, String profileImg, String profile) {
+		String sql = "UPDATE user_profile SET nickname = ?, profileImg = ?, profile = ? WHERE user_num = ?";
+		int userNum = userNumExq(userId);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			pstmt.setString(2, profileImg);
+			pstmt.setString(3, profile);
+			pstmt.setInt(4, userNum);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("profileUpdater error");
+		}
+	}
 }
