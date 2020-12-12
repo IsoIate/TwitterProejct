@@ -8,6 +8,7 @@
 	InfoDTO info = null;
 	ProfileDTO pro = null;
 	Integer index = 0;
+	int count = 0;
 	
 	Object object = request.getAttribute("info");
 	Object object_1 = request.getAttribute("profile");
@@ -29,12 +30,41 @@
 	<meta charset="UTF-8">
 	<title>홈</title>
 	<link rel="stylesheet" href="./css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css?ver=2">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.1.js"></script>
 	<script type="text/javascript">
+	var list = null;
+		/* body 실행 시 load.do 요청 */
+		function loadData(){
+			$.ajax({
+				url:"load.do",
+				type:"post",
+				success: function(temp) { /* 호출에 성공하면 response로 받은 ArrayList를 list에 삽입 */
+// 					console.log(temp);
+					list = temp;
+				}
+			});
+		}
+		
 		$(function(){
+			/* homeImagePrint 클릭 시 */
+			$(".homeImagePrint").on('click', function() {
+				var img;
+				var data = $(this).attr('data-id');		/* data-id(twitnumber) 를 가져옴 */
+// 				console.log(data);
+// 				console.log(list.length);
+				for(var i = 0; i < list.length; i++) {	/* 클릭한 twitnumber와 일치하는지 비교 */
+					if(list[i].twitnumber == data) {
+						img = list[i].image;
+					}
+				}
+				
+				$("#modalImagePrint").attr("src", img);	/* 모달에 해당 이미지 주소를 삽입 */
+				$("#ImgModal").modal('show');
+			});
+			
 			$("#homeTwitWritePlace").on('keydown keyup', function () {
 				  $(this).height(1).height( $(this).prop('scrollHeight')+12 );
 			});
@@ -45,8 +75,7 @@
 				}else{
 					$("#homeTwitButton").attr("disabled", false);
 				}
-			}); 
-				
+			}); 	
 		});
 		$(function onEnterLogin(){
 			var keyCode = window.event.keyCode;	
@@ -82,10 +111,12 @@
 			    }
 			        document.getElementById("homeImgPreview").src = document.getElementById("image").value;
 			})();
+		
 	</script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body onLoad="loadData()">
+
 	<%
 		// 로그인하지 않고 접근 시 index로 돌려보냄
 // 		if(info.getUser_num() == 0) {
@@ -118,7 +149,7 @@
 									</div>
 									<div class="hometwc">
 										<div class="homeTwitIcon">
-										<div class="button" onclick="onclick=document.all.image.click()">
+										<div class="ImageInputButton" onclick="onclick=document.all.image.click()">
 											<img src="./img/img.png" id="icon">
 											<label>
 									        	<!-- <input type="file" name="file" style="display: none;"> -->
@@ -175,8 +206,8 @@
 														<input type="text" name="twitContent" id="twitContents" value="<%= array.get(i).getText() %>" disabled="disabled">
 														<%--<img id="homeImagePrint" src="./upload/EoCUL1UVcAEeG363.jpg">--%>
 														<% if(array.get(i).getImage() == null || array.get(i).getImage().trim().isEmpty()) { %>
-														<% } else {%>
-															<img id="homeImagePrint" src="<%=array.get(i).getImage()%>" data-toggle="modal" data-target="#ImgModal"> 
+														<% } else { %>
+																<img data-id=<%= array.get(i).getTwitnumber() %> class="homeImagePrint" src="<%=array.get(i).getImage()%>" > 
 														<% } %>	
 														
 													</div>			
@@ -226,19 +257,19 @@
 						<p>watch.kr님이 프로모션 함</p>
 					</div>
 					<div id="trContext">
-						<p>대한민국에서 트렌드 중</p>
-						<h4>#호남대학교</h4>
-						<p>3,000 트윗</p>
+						<p>호남대학교에서 트렌드 중</p>
+						<h4>#대학종강</h4>
+						<p>1,240 트윗</p>
 					</div>
 					<div id="trContext">
 						<p>대한민국에서 트렌드 중</p>
-						<h4>#호남대학교</h4>
-						<p>3,000 트윗</p>
+						<h4>#크리스마스</h4>
+						<p>1,225 트윗</p>
 					</div>
 					<div id="trContextF">
-						<p>대한민국에서 트렌드 중</p>
-						<h4>#호남대학교</h4>
-						<p>3,000 트윗</p>
+						<p>광주광역시에서 트렌드 중</p>
+						<h4>#연말인데_코로나</h4>
+						<p>1,020 트윗</p>
 					</div>
 				</div>
 				<div id="recommend">
@@ -247,11 +278,11 @@
 					</div>
 					<div id="reContext">
 						<div>
-							<img src="./img/profile.png" id="trImg">
+							<img src="./img/gsIcon.png" id="trImg">
 						</div>
 						<div>
-							<h4>Honam</h4>
-							<p>@honam</p>
+							<h4>광산구청</h4>
+							<p>@Gwangsan_gu</p>
 						</div>
 						<div class="reFollow">
 							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
@@ -259,11 +290,11 @@
 					</div>
 					<div id="reContext">
 						<div>
-							<img src="./img/profile.png" id="trImg">
+							<img src="./img/huIcon.png" id="trImg">
 						</div>
 						<div>
-							<h4>Honam</h4>
-							<p>@honam</p>
+							<h4>호남대학교</h4>
+							<p>@Honam_Univ</p>
 						</div>
 						<div class="reFollow">
 							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
@@ -271,11 +302,11 @@
 					</div>
 					<div id="reContextF">
 						<div>
-							<img src="./img/profile.png" id="trImg">
+							<img src="./img/gjIcon.png" id="trImg">
 						</div>
 						<div>
-							<h4>Honam</h4>
-							<p>@honam</p>
+							<h4>광주광역시</h4>
+							<p>@GwangJu</p>
 						</div>
 						<div class="reFollow">
 							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
@@ -293,13 +324,7 @@
 			     	 	</div>
 			     	 	<% if(info.getTwitCount() != 0) { %>
 					      	 <div class="modal-body" id="modalImageContainer">
-					      	    <% for(int i = 0; i < index; i++) { %>
-					        		<% if (array.get(i).getImage() != null || !(array.get(i).getImage().trim().isEmpty())) { %>
-					        			
-										<img id="modalImagePrint" src="<%= array.get(i).getImage() %>">
-										
-									<% } %>	
-								<% } %>
+					        	<img id="modalImagePrint" >
 					      	 </div>
 			      		<% } %>
 			    	</div>

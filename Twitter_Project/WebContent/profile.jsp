@@ -34,20 +34,41 @@
 		%>
 	</title>
 	<link rel="stylesheet" href="./css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css?ver=3">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.1.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script type="text/javascript">
-		function onEnterLogin(){
-			var keyCode = window.event.keyCode;	
-			if (keyCode == 13) { //엔테키 이면
-				loginForm.submit();
+	var list = null;
+	/* body 실행 시 load.do 요청 */
+	function proLoadData(){
+		$.ajax({
+			url:"proLoad.do",
+			type:"post",
+			success: function(temp) { /* 호출에 성공하면 response로 받은  ArrayList를 list에 삽입 */
+// 				console.log(temp);
+				list = temp;
 			}
-		}
-		
+		});
+	}
+
 		$(function(){
+			/* homeImagePrint 클릭 시 */
+			$(".homeImagePrint").on('click', function() {
+				var img;
+				var data = $(this).attr('data-id');		/* data-id(twitnumber) 를 가져옴 */
+// 				console.log('data ' + data);
+// 				console.log('list ' + list.length);
+				for(var i = 0; i < list.length; i++) {	/* 클릭한 twitnumber와 일치하는지 비교 */
+					if(list[i].twitnumber == data) {
+						img = list[i].image;
+					}
+				}
+				
+				$("#modalImagePrint").attr("src", img);	/* 모달에 해당 이미지 주소를 삽입 */
+				$("#ImgModal").modal('show');
+			});
 			$("#pmInputName").on('input', function() {
 				if($("#pmInputName").val() == ''){
 					$("#profileModalSubmit").prop("disabled", true);
@@ -92,6 +113,13 @@
 			});
 		});
 		
+		function onEnterLogin(){
+			var keyCode = window.event.keyCode;	
+			if (keyCode == 13) { //엔테키 이면
+				loginForm.submit();
+			}
+		}
+		
 		var ProInputImage = 
 			 (function loadImageFile() {
 			    if (window.FileReader) {
@@ -120,7 +148,7 @@
 		
 	</script>
 </head>
-<body>
+<body onLoad="proLoadData()">
 	<%
 // 		if(session.getAttribute("userId") == null) {
 // 			response.sendRedirect("index.jsp");
@@ -207,7 +235,7 @@
 												<p id="twitContents"><%= array.get(i).getText() %></p>
 												<% if(array.get(i).getImage() == null || array.get(i).getImage().trim().isEmpty()) { %>
 												<% } else {%>
-													<img id="homeImagePrint" src="<%=array.get(i).getImage()%>" data-toggle="modal" data-target="#ImgModal"> 
+													<img data-id=<%= array.get(i).getTwitnumber() %> class="homeImagePrint" src="<%=array.get(i).getImage()%>"> 
 												<% } %>	
 											</div>			
 											<div class="TLTwitButtons">
@@ -243,11 +271,11 @@
 					</div>
 					<div id="reContext">
 						<div>
-							<img src="./img/profile.png" id="trImg">
+							<img src="./img/huIcon.png" id="trImg">
 						</div>
 						<div>
-							<h4>Honam</h4>
-							<p>@honam</p>
+							<h4>호남대학교</h4>
+							<p>@Honam_Univ</p>
 						</div>
 						<div class="reFollow">
 							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
@@ -258,8 +286,8 @@
 							<img src="./img/profile.png" id="trImg">
 						</div>
 						<div>
-							<h4>Honam</h4>
-							<p>@honam</p>
+							<h4>김용일</h4>
+							<p>@ylkim</p>
 						</div>
 						<div class="reFollow">
 							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
@@ -270,8 +298,8 @@
 							<img src="./img/profile.png" id="trImg">
 						</div>
 						<div>
-							<h4>Honam</h4>
-							<p>@honam</p>
+							<h4>전현준</h4>
+							<p>@hjJeon</p>
 						</div>
 						<div class="reFollow">
 							<input type="button" value="팔로우" class="btn btn-info" id="reFollowBtn">
@@ -294,18 +322,18 @@
 					</div>
 					<div id="trContext">
 						<p>대한민국에서 트렌드 중</p>
-						<h4>#호남대학교</h4>
-						<p>3,000 트윗</p>
+						<h4>#오늘날씨</h4>
+						<p>2,440 트윗</p>
 					</div>
 					<div id="trContext">
-						<p>대한민국에서 트렌드 중</p>
-						<h4>#호남대학교</h4>
-						<p>3,000 트윗</p>
+						<p>광주광역시에서 트렌드 중</p>
+						<h4>#광주첫눈</h4>
+						<p>2,100 트윗</p>
 					</div>
 					<div id="trContextF">
-						<p>대한민국에서 트렌드 중</p>
-						<h4>#호남대학교</h4>
-						<p>3,000 트윗</p>
+						<p>전세계에서 트렌드 중</p>
+						<h4>#Java Servlet</h4>
+						<p>1,020 트윗</p>
 					</div>
 				</div>
 			</div>
@@ -368,13 +396,7 @@
 			     	 	</div>
 			     	 	<% if(info.getTwitCount() != 0) { %>
 					      	 <div class="modal-body" id="modalImageContainer">
-					      	    <% for(int i = 0; i < index; i++) { %>
-					        		<% if (array.get(i).getImage() != null || !(array.get(i).getImage().trim().isEmpty())) { %>
-<!-- 이미지 한장씩 출력되도록 구현하기 -->
-										<img id="modalImagePrint" src="<%= array.get(i).getImage() %>">
-										
-									<% } %>	
-								<% } %>
+					        	<img id="modalImagePrint">
 					      	 </div>
 			      		<% } %>
 			    	</div>

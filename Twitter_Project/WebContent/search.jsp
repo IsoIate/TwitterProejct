@@ -17,7 +17,35 @@
 	<script src="https://code.jquery.com/jquery-2.2.1.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script type="text/javascript">
+	var list = null;
+	/* body 실행 시 load.do 요청 */
+	function searchLoadData(){
+		$.ajax({
+			url:"searchLoad.do",
+			type:"post",
+			success: function(temp) { /* 호출에 성공하면 response로 받은 ArrayList를 list에 삽입 */
+					console.log(temp);
+				list = temp;
+			}
+		});
+	}
 		$(function(){
+			/* homeImagePrint 클릭 시 */
+			$(".homeImagePrint").on('click', function() {
+				var img;
+				var data = $(this).attr('data-id');		/* data-id(twitnumber) 를 가져옴 */
+ 				console.log(data);
+ 				console.log(list.length);
+				for(var i = 0; i < list.length; i++) {	/* 클릭한 twitnumber와 일치하는지 비교 */
+					if(list[i].twitnumber == data) {
+						img = list[i].image;
+					}
+				}
+				
+				$("#modalImagePrint").attr("src", img);	/* 모달에 해당 이미지 주소를 삽입 */
+				$("#ImgModal").modal('show');
+			});
+			
 			$("#popular").submit(function(){
 				document.form_chk.action = "${SearchController}";
 				document.form_chk.submit();	
@@ -40,7 +68,7 @@
 		}
 	</script>
 </head>
-<body>
+<body onLoad="searchLoadData()">
 	<div class="searchDiv">
 		<nav class="hnNav">
 			<%@ include file = "./nav.jsp" %>
@@ -96,7 +124,7 @@
 									<% if(dto.get(i).getImage() == null || dto.get(i).getImage().trim().isEmpty()) { %>
 									<% } else {%>
 									<!-- 모달 작업 전 -->
-										<img id="homeImagePrint" src="<%=dto.get(i).getImage()%>" data-toggle="modal" data-target="#ImgModal"> 
+										<img data-id=<%= dto.get(i).getTwitnumber() %> class="homeImagePrint" src="<%=dto.get(i).getImage()%>"> 
 									<% } %>	
 								</div>			
 								<div class="TLTwitButtons">
@@ -197,6 +225,18 @@
 			</div>
 		</aside>
 		
+		<div class="modal fade" id="ImgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+			  		<div class="modal-content">
+			      		<div class="modal-header">
+			      			<button type="reset" data-dismiss="modal" id="modalCloseBtn"><img src="./img/exit.png" id="wtExitButton"></button>
+			     	 	</div>
+					      	 <div class="modal-body" id="modalImageContainer">
+					        	<img id="modalImagePrint" >
+					      	 </div>
+			    	</div>
+			  	</div>
+			</div>
 		
 		
 	</div>

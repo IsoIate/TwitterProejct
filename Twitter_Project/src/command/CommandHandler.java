@@ -18,6 +18,9 @@ public class CommandHandler {
 		command.put("search", "controller.SearchController");
 		command.put("tab", "controller.TabController");
 		command.put("update", "controller.ProfileUpdateController");
+		command.put("load", "controller.HomeDataLoadController");
+		command.put("proLoad", "controller.ProfileLoadController");
+		command.put("searchLoad", "controller.SearchLoadController");
 //		command.put("home", "controller.HomeController");
 	}
 	
