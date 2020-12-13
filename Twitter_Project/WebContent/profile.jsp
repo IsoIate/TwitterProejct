@@ -34,7 +34,7 @@
 		%>
 	</title>
 	<link rel="stylesheet" href="./css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css?ver=3">
+	<link rel="stylesheet" type="text/css" href="./css/style.css?ver=4">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.1.js"></script>
@@ -390,9 +390,10 @@
 			<div class="modal fade" id="ImgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 			  		<div class="modal-content">
-			      		<div class="modal-header">
-			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			      		<div class="modal-header" id="modalExit">
+<!-- 			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
 			        		<h4 class="modal-title" id="myModalLabel">이미지 원본보기</h4>
+			        		<button type="reset" data-dismiss="modal" id="modalCloseBtn"><img src="./img/exit.png" id="wtExitButton"></button>
 			     	 	</div>
 			     	 	<% if(info.getTwitCount() != 0) { %>
 					      	 <div class="modal-body" id="modalImageContainer">
